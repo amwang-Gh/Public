@@ -53,3 +53,39 @@ document.querySelector(".search-open").addEventListener("click",()=>{const term=
 document.querySelector(".command-search>div button").addEventListener("click",()=>{const term=document.querySelector("#global-search").value.trim();if(!term)return;const rows=[...document.querySelectorAll("tbody tr")],hit=rows.find(x=>x.innerText.toLowerCase().includes(term.toLowerCase()));(hit||document.querySelector(".trade-panel")).scrollIntoView({behavior:"smooth",block:"center"});if(hit)hit.animate([{background:"#dff3f7"},{background:"transparent"}],{duration:1800})});
 document.querySelector("#global-search").addEventListener("keydown",e=>{if(e.key==="Enter")document.querySelector(".command-search>div button").click()});
 document.querySelectorAll(".command-search p button").forEach(btn=>btn.addEventListener("click",()=>{document.querySelector("#global-search").value=btn.textContent;document.querySelector(".command-search>div button").click()}));
+
+const categoryProfiles={
+  pcb:{name:"PCB / Electronics",summary:"AI 服务器、工业控制与汽车电子继续支撑高层板、HDI 与高频高速板需求；上游铜箔、玻纤布、树脂与金价/铜价变化是主要成本变量。",balance:"高端偏紧，常规板竞争充分",leadtime:"4-10 周，高层/高频板更长",drivers:"铜箔、玻纤布、树脂、良率、产能利用率",risk:"中高：AI 需求、区域集中与材料波动叠加"},
+  connectors:{name:"Connectors / Cable & Wire",summary:"工业自动化、数据中心、电力电子和汽车平台升级推高高可靠连接器、线束与高速线缆需求。",balance:"车规/高速/大电流型号偏紧",leadtime:"6-14 周，定制线束 8-16 周",drivers:"铜、镀金/镀银、塑胶粒子、端子良率、认证周期",risk:"中高：贵金属成本、认证切换慢、区域产能集中"},
+  metals:{name:"Casting / Stamping / Busbar / Metal Fab",summary:"能源、军工、数据中心和电网投资支撑铝、铜、钢制件需求；上游电价、关税和矿端扰动决定报价弹性。",balance:"标准件平衡，高导电/高纯材料偏紧",leadtime:"4-12 周，模具或新项目 10-20 周",drivers:"铜铝价格、能源、废料回收价、关税、加工费",risk:"中：原料波动和区域政策是主要风险"},
+  machining:{name:"Machining / Heatsink / Fans & Blowers",summary:"散热、精密加工和风扇品类受 AI 电源、服务器、逆变器与工业控制项目拉动。",balance:"CNC 产能可用，高端散热与轴承件偏紧",leadtime:"3-8 周，定制散热 8-12 周",drivers:"铝/铜、轴承、人工、表面处理、良率",risk:"中：需求排产、材料和表面处理瓶颈"},
+  plastics:{name:"Plastics / Labels / Fasteners",summary:"塑胶件总体供应较宽松，但阻燃、耐高温、车规材料受石化链和认证约束影响更大。",balance:"通用料宽松，工程塑料局部偏紧",leadtime:"2-8 周，认证料更长",drivers:"石脑油、树脂、阻燃剂、模具、合规认证",risk:"中低：成本传导快于缺料风险"},
+  freight:{name:"Freight / Logistics",summary:"海运价格从峰值回落但波动仍大，燃料、绕航、旺季提前出货和关税窗口会快速改变 landed cost。",balance:"舱位整体改善，热点航线阶段性紧张",leadtime:"亚洲-美国 2-5 周，亚洲-欧洲 4-7 周",drivers:"FBX/SCFI、燃油、港口拥堵、关税窗口、旺季",risk:"中高：合同附加费和临时绕航是关键"},
+  electronics:{name:"Passive / Relay / Circuit Break / Power Supplier",summary:"AI、工业与能源基础设施拉动电源、保护器件、继电器和被动件的结构性需求。",balance:"通用被动件平衡，高可靠/高压产品偏紧",leadtime:"6-16 周，特殊规格更长",drivers:"铜、银、磁材、半导体、安规认证、产能利用率",risk:"中高：认证周期和关键子件供应决定恢复速度"}
+};
+function setCategoryProfile(key){
+  const item=categoryProfiles[key]||categoryProfiles.pcb;
+  document.getElementById("categoryName").textContent=item.name;
+  document.getElementById("categorySummary").textContent=item.summary;
+  document.getElementById("categoryBalance").textContent=item.balance;
+  document.getElementById("categoryLeadtime").textContent=item.leadtime;
+  document.getElementById("categoryDrivers").textContent=item.drivers;
+  document.getElementById("categoryRisk").textContent=item.risk;
+}
+function filterCategoryNews(){
+  const active=document.querySelector("[data-category-filter].active")?.dataset.categoryFilter||"all";
+  const term=document.getElementById("category-search")?.value.trim().toLowerCase()||"";
+  document.querySelectorAll("#newsBoard article").forEach(card=>{
+    const tags=card.dataset.tags||"",text=card.innerText.toLowerCase();
+    const tagMatch=active==="all"||tags.includes(active);
+    const textMatch=!term||text.includes(term)||tags.includes(term);
+    card.classList.toggle("hidden",!(tagMatch&&textMatch));
+  });
+}
+document.querySelectorAll("[data-category-filter]").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll("[data-category-filter]").forEach(b=>b.classList.remove("active"));btn.classList.add("active");
+  if(btn.dataset.categoryFilter!=="all")setCategoryProfile(btn.dataset.categoryFilter);
+  filterCategoryNews();
+}));
+document.getElementById("category-search")?.addEventListener("input",filterCategoryNews);
+document.querySelectorAll("[data-profile]").forEach(btn=>btn.addEventListener("click",()=>{setCategoryProfile(btn.dataset.profile);document.querySelector(".category-profile").scrollIntoView({behavior:"smooth",block:"center"})}));
