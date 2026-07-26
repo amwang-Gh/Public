@@ -191,14 +191,17 @@ nav a:hover { color: var(--orange); }
   .mode-panel input[type="date"] { padding: 10px 12px; border: 1px solid #aaa; background: #fff; }
   .mode-panel button { padding: 9px 14px; border: 1px solid #aaa; background: #fff; cursor: pointer; font-weight: 700; }
   .mode-panel button.active { color: #fff; border-color: #111; background: #111; }
-  .timeline-panel { justify-content: space-between; }
+  .timeline-panel { justify-content: space-between; flex-wrap: wrap; }
   .timeline-years { display: flex; gap: 8px; }
+  .criteria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; width: 100%; background: #bbb; }
+  .criteria span { padding: 12px; background: #fff; font-size: 11px; line-height: 1.4; }
+  .criteria b { display: block; color: var(--red); font-size: 18px; }
   .algorithm { margin-left: auto; max-width: 620px; color: #555; font-size: 11px; line-height: 1.5; }
   .filters { display: none; }
   .news-grid { grid-template-columns: repeat(3, 1fr); border-top: 5px solid #111; }
   .news-card { min-height: 500px; padding: 25px; background: #fff; }
   .news-card[hidden], .empty[hidden] { display: none !important; }
-  .timeline-wrap[hidden], .timeline-event[hidden] { display: none !important; }
+  .timeline-wrap[hidden], .timeline-event[hidden], .knowledge-wrap[hidden], .term-tile[hidden], .term-detail[hidden] { display: none !important; }
   .news-card:hover { transform: none; box-shadow: inset 0 5px 0 var(--red); }
   .news-card h3 { max-width: 88%; margin: 52px 0 22px; font-family: Arial, "Noto Sans SC", sans-serif; font-size: 25px; font-weight: 900; line-height: 1.25; }
   .heat-badge { align-self: flex-start; margin: -10px 0 16px; padding: 5px 9px; color: #fff; background: var(--red); font-size: 11px; font-weight: 900; }
@@ -218,6 +221,27 @@ nav a:hover { color: var(--orange); }
   .timeline-content h3 { margin: 14px 0 10px; font-size: 27px; line-height: 1.18; }
   .timeline-content p { margin: 0 0 14px; color: #444; line-height: 1.65; }
   .timeline-content a { color: var(--red); font-size: 13px; font-weight: 900; }
+  .knowledge-wrap { margin-top: 30px; }
+  .knowledge-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 24px; padding: 25px; color: #fff; background: #111; }
+  .knowledge-intro h3 { margin: 0; font-size: 28px; }
+  .knowledge-intro p { margin: 0; color: #ccc; line-height: 1.6; }
+  .heat-legend { display: flex; align-items: center; gap: 8px; margin: 15px 0; color: #666; font-size: 11px; font-weight: 800; }
+  .heat-legend i { width: 44px; height: 10px; background: #e9e9e9; }
+  .heat-legend i:nth-of-type(2) { background: #ef8a73; }
+  .heat-legend i:nth-of-type(3) { background: var(--red); }
+  .term-heatmap { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-flow: dense; gap: 8px; }
+  .term-tile { grid-column: span var(--term-weight); min-height: 150px; padding: 18px; border: 0; text-align: left; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+  .term-tile.hot { color: #fff; background: var(--red); }
+  .term-tile.warm { color: #111; background: #ef8a73; }
+  .term-tile.cool { color: #111; background: #e9e9e9; }
+  .term-tile:hover, .term-tile.active { transform: translateY(-3px); box-shadow: 0 8px 0 #111; }
+  .term-category, .term-heat { display: block; font-size: 10px; font-weight: 900; letter-spacing: .05em; }
+  .term-tile strong { display: block; margin: 12px 0 8px; font-size: clamp(20px, 2.3vw, 34px); line-height: 1; }
+  .term-summary { display: block; margin-top: 18px; font-size: 12px; line-height: 1.5; }
+  .term-detail { margin-top: 12px; padding: 28px; border: 4px solid #111; background: #fff; }
+  .term-detail > div { display: flex; justify-content: space-between; color: var(--red); font-size: 11px; font-weight: 900; }
+  .term-detail h3 { margin: 14px 0; font-size: 32px; }
+  .term-detail p { margin: 8px 0; line-height: 1.7; }
   .about { grid-template-columns: .45fr 1fr 1fr; color: #fff; background: #111; }
   .about .eyebrow { color: #ff5555; }
   .site-footer { background: #000; }
@@ -239,6 +263,10 @@ nav a:hover { color: var(--orange); }
     .timeline-event::before { left: 76px; }
     .timeline-content { margin-left: 10px; }
     .timeline-content h3 { font-size: 22px; }
+    .criteria { grid-template-columns: repeat(2, 1fr); }
+    .knowledge-intro { grid-template-columns: 1fr; }
+    .term-heatmap { grid-template-columns: repeat(2, 1fr); }
+    .term-tile { grid-column: span 1 !important; }
     .algorithm { width: 100%; margin-left: 0; }
     .news-grid { grid-template-columns: 1fr; }
     .about { grid-template-columns: 1fr; padding: 70px 20px; }
@@ -249,7 +277,7 @@ nav a:hover { color: var(--orange); }
 <main>
   <header class="site-header">
     <a class="brand" href="#top"><span class="brand-mark">AI</span><span>热点雷达</span></a>
-    <nav><a href="#news">今日热点</a><a href="#news" data-open-timeline>AI 大事记</a><a href="#about">关于</a></nav>
+    <nav><a href="#news">今日热点</a><a href="#news" data-open-timeline>AI 大事记</a><a href="#news" data-open-knowledge>AI 知识</a><a href="#about">关于</a></nav>
     <div class="live"><i></i>更新于 2026.07.26</div>
   </header>
   <div class="breaking"><b>热点速递</b><span>全球 AI 竞赛进入产业化深水区：Agent、芯片、开放模型与监管同步提速</span></div>
@@ -279,6 +307,7 @@ nav a:hover { color: var(--orange); }
       <button type="button" data-mode="archive">历史归档</button>
       <button type="button" data-mode="top">TOP 新闻</button>
       <button type="button" data-mode="timeline">AI 大事记</button>
+      <button type="button" data-mode="knowledge">AI 知识专区</button>
     </div>
     <div class="mode-panel" data-panel="archive" hidden>
       <label for="archive-date">选择归档日期</label>
@@ -294,11 +323,25 @@ nav a:hover { color: var(--orange); }
       <span class="algorithm">热度分 = 35% 影响力 + 25% 受众覆盖 + 25% 讨论动量 + 15% 来源权威性 − 时间衰减。满分 100，编辑信号用于解释排序，不代表投资价值。</span>
     </div>
     <div class="mode-panel timeline-panel" data-panel="timeline" hidden>
-      <div><strong>时间轴年份</strong><span class="section-title-note"> · 从 2025 年开始持续更新</span></div>
+      <div><strong>时间轴年份</strong><span class="section-title-note"> · 从 2025 年开始持续更新，共 19 个里程碑</span></div>
       <div class="timeline-years" role="group" aria-label="时间轴年份">
         <button type="button" data-timeline-year="all" class="active">全部年份</button>
         <button type="button" data-timeline-year="2025">2025</button>
         <button type="button" data-timeline-year="2026">2026</button>
+      </div>
+      <div class="criteria">
+        <span><b>35%</b>长期行业影响</span>
+        <span><b>25%</b>技术范式变化</span>
+        <span><b>20%</b>产业覆盖范围</span>
+        <span><b>20%</b>证据与持续性</span>
+      </div>
+    </div>
+    <div class="mode-panel" data-panel="knowledge" hidden>
+      <div class="criteria">
+        <span><b>35%</b>长期行业影响</span>
+        <span><b>25%</b>技术范式变化</span>
+        <span><b>20%</b>产业覆盖范围</span>
+        <span><b>20%</b>证据与持续性</span>
       </div>
     </div>
     <div class="result-meta"><span id="result-count">显示 9 条新闻</span><span>按发布时间排序</span></div>
@@ -435,6 +478,26 @@ nav a:hover { color: var(--orange); }
       <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
+  <article class="timeline-event" data-timeline-region="北美" data-timeline-year="2025" data-timeline-search="anthropic 发布 claude 4 模型家族 claude opus 4 与 sonnet 4 强化长期编码、工具使用和 agent 任务，编程能力成为前沿模型商业化的关键入口。 ai 编程 anthropic 北美">
+    <div class="timeline-date"><strong>05.22</strong><span>2025</span></div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+    <div class="timeline-content">
+      <div class="timeline-meta"><span>北美 · AI 编程</span><b>重要度 95</b></div>
+      <h3>Anthropic 发布 Claude 4 模型家族</h3>
+      <p>Claude Opus 4 与 Sonnet 4 强化长期编码、工具使用和 Agent 任务，编程能力成为前沿模型商业化的关键入口。</p>
+      <a href="https://www.anthropic.com/news/claude-4" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
+    </div>
+  </article>
+  <article class="timeline-event" data-timeline-region="北美" data-timeline-year="2025" data-timeline-search="google veo 3 实现原生音视频联合生成 视频模型首次把画面、对白、音效和环境声统一生成，显著提高 ai 视频的完整度并冲击内容制作流程。 生成式视频 google 北美">
+    <div class="timeline-date"><strong>05.20</strong><span>2025</span></div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+    <div class="timeline-content">
+      <div class="timeline-meta"><span>北美 · 生成式视频</span><b>重要度 94</b></div>
+      <h3>Google Veo 3 实现原生音视频联合生成</h3>
+      <p>视频模型首次把画面、对白、音效和环境声统一生成，显著提高 AI 视频的完整度并冲击内容制作流程。</p>
+      <a href="https://blog.google/innovation-and-ai/technology/ai/io-2025-keynote/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
+    </div>
+  </article>
   <article class="timeline-event" data-timeline-region="亚洲" data-timeline-year="2025" data-timeline-search="阿里云 qwen3 系列开放权重 qwen3 同时覆盖混合专家与稠密模型，并支持思考与快速回答两种模式，亚洲开放模型生态进一步扩大。 开放生态 qwen 亚洲">
     <div class="timeline-date"><strong>04.29</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
@@ -443,6 +506,26 @@ nav a:hover { color: var(--orange); }
       <h3>阿里云 Qwen3 系列开放权重</h3>
       <p>Qwen3 同时覆盖混合专家与稠密模型，并支持思考与快速回答两种模式，亚洲开放模型生态进一步扩大。</p>
       <a href="https://qwenlm.github.io/blog/qwen3/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
+    </div>
+  </article>
+  <article class="timeline-event" data-timeline-region="北美" data-timeline-year="2025" data-timeline-search="openai o3 与 o4-mini 将推理和工具调用融合 模型开始在推理过程中主动组合网页、代码、文件与图像工具，agent 从工作流拼装迈向模型原生决策。 推理与 agent openai 北美">
+    <div class="timeline-date"><strong>04.16</strong><span>2025</span></div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+    <div class="timeline-content">
+      <div class="timeline-meta"><span>北美 · 推理与 Agent</span><b>重要度 96</b></div>
+      <h3>OpenAI o3 与 o4-mini 将推理和工具调用融合</h3>
+      <p>模型开始在推理过程中主动组合网页、代码、文件与图像工具，Agent 从工作流拼装迈向模型原生决策。</p>
+      <a href="https://openai.com/index/introducing-o3-and-o4-mini/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
+    </div>
+  </article>
+  <article class="timeline-event" data-timeline-region="北美" data-timeline-year="2025" data-timeline-search="openai 发布 gpt-4.1 系列 更强的代码、指令遵循和长上下文能力进入 api，模型竞争进一步转向可靠执行开发者任务与控制成本。 开发者模型 openai 北美">
+    <div class="timeline-date"><strong>04.14</strong><span>2025</span></div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+    <div class="timeline-content">
+      <div class="timeline-meta"><span>北美 · 开发者模型</span><b>重要度 88</b></div>
+      <h3>OpenAI 发布 GPT-4.1 系列</h3>
+      <p>更强的代码、指令遵循和长上下文能力进入 API，模型竞争进一步转向可靠执行开发者任务与控制成本。</p>
+      <a href="https://openai.com/index/gpt-4-1/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
   <article class="timeline-event" data-timeline-region="北美" data-timeline-year="2025" data-timeline-search="meta 发布 llama 4 scout 与 maverick 原生多模态、混合专家架构和超长上下文进入 llama 生态，开放权重模型与闭源 api 的竞争继续升温。 开放生态 meta ai 北美">
@@ -463,6 +546,16 @@ nav a:hover { color: var(--orange); }
       <h3>Google 发布 Gemini 2.5 Pro 实验版</h3>
       <p>“思考模型”成为头部厂商的标准能力路线，复杂推理、代码和长上下文继续成为模型竞赛主战场。</p>
       <a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
+    </div>
+  </article>
+  <article class="timeline-event" data-timeline-region="北美" data-timeline-year="2025" data-timeline-search="nvidia 公布 blackwell ultra 与下一代算力路线 ai 工厂的竞争从单颗 gpu 转向整机柜、网络、推理吞吐与能源效率，芯片路线开始直接定义模型扩张速度。 ai 芯片 nvidia 北美">
+    <div class="timeline-date"><strong>03.18</strong><span>2025</span></div>
+    <div class="timeline-dot" aria-hidden="true"></div>
+    <div class="timeline-content">
+      <div class="timeline-meta"><span>北美 · AI 芯片</span><b>重要度 95</b></div>
+      <h3>NVIDIA 公布 Blackwell Ultra 与下一代算力路线</h3>
+      <p>AI 工厂的竞争从单颗 GPU 转向整机柜、网络、推理吞吐与能源效率，芯片路线开始直接定义模型扩张速度。</p>
+      <a href="https://blogs.nvidia.com/blog/nvidia-keynote-at-gtc-2025-ai-news-live-updates/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
   <article class="timeline-event" data-timeline-region="北美" data-timeline-year="2025" data-timeline-search="claude 3.7 sonnet 与 claude code 同日亮相 混合推理模型与命令行编程 agent 结合，标志着生成式 ai 从回答代码问题走向直接承担工程任务。 ai 编程 anthropic 北美">
@@ -525,6 +618,228 @@ nav a:hover { color: var(--orange); }
       <a href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article></div>
+    <div class="knowledge-wrap" hidden>
+      <div class="knowledge-intro"><h3>AI 热词，不只知道名字。</h3><p>面积和颜色代表编辑关注度：越大、越红，表示它越频繁地影响当前 AI 产品、研究与产业讨论。点击任意词块查看通俗解释。</p></div>
+      <div class="heat-legend"><span>关注度</span><i></i><span>基础</span><i></i><span>升温</span><i></i><span>热门</span></div>
+      <div class="term-heatmap">
+  <button class="term-tile hot" type="button" style="--term-weight:5" data-term-index="0" data-term-search="ai agent 产品形态 能够规划步骤、调用工具并持续执行任务的 ai 系统。 它把 ai 从“给答案”推进到“把事情做完”，是企业自动化和个人助手的核心方向。" aria-expanded="false">
+    <span class="term-category">产品形态</span>
+    <strong>AI Agent</strong>
+    <span class="term-heat">关注度 98</span>
+    <span class="term-summary">能够规划步骤、调用工具并持续执行任务的 AI 系统。</span>
+  </button>
+  <button class="term-tile hot" type="button" style="--term-weight:5" data-term-index="1" data-term-search="推理模型 模型能力 在回答前投入更多计算进行分步分析、自检和修正的模型。 它显著提升数学、代码、科学和复杂决策表现，但通常更慢、成本更高。" aria-expanded="false">
+    <span class="term-category">模型能力</span>
+    <strong>推理模型</strong>
+    <span class="term-heat">关注度 97</span>
+    <span class="term-summary">在回答前投入更多计算进行分步分析、自检和修正的模型。</span>
+  </button>
+  <button class="term-tile hot" type="button" style="--term-weight:4" data-term-index="2" data-term-search="多模态 模型能力 同一模型理解或生成文字、图像、语音、视频等多种信息。 多模态让 ai 更接近人类感知世界的方式，也是实时助手与机器人的基础。" aria-expanded="false">
+    <span class="term-category">模型能力</span>
+    <strong>多模态</strong>
+    <span class="term-heat">关注度 95</span>
+    <span class="term-summary">同一模型理解或生成文字、图像、语音、视频等多种信息。</span>
+  </button>
+  <button class="term-tile hot" type="button" style="--term-weight:4" data-term-index="3" data-term-search="具身智能 机器人 让 ai 通过机器人身体感知环境、学习并完成现实世界动作。 它连接软件智能与物理世界，可能改变制造、物流、家务和养老服务。" aria-expanded="false">
+    <span class="term-category">机器人</span>
+    <strong>具身智能</strong>
+    <span class="term-heat">关注度 94</span>
+    <span class="term-summary">让 AI 通过机器人身体感知环境、学习并完成现实世界动作。</span>
+  </button>
+  <button class="term-tile hot" type="button" style="--term-weight:4" data-term-index="4" data-term-search="世界模型 前沿研究 学习环境运行规律，并预测行动后果的内部模型。 被视为自动驾驶、机器人和通用智能进行规划与模拟的重要技术路线。" aria-expanded="false">
+    <span class="term-category">前沿研究</span>
+    <strong>世界模型</strong>
+    <span class="term-heat">关注度 92</span>
+    <span class="term-summary">学习环境运行规律，并预测行动后果的内部模型。</span>
+  </button>
+  <button class="term-tile warm" type="button" style="--term-weight:4" data-term-index="5" data-term-search="mcp 开发生态 model context protocol，一种让 ai 应用以统一方式连接工具和数据源的开放协议。 它试图成为 ai 工具连接层的通用接口，降低每个应用重复集成的成本。" aria-expanded="false">
+    <span class="term-category">开发生态</span>
+    <strong>MCP</strong>
+    <span class="term-heat">关注度 91</span>
+    <span class="term-summary">Model Context Protocol，一种让 AI 应用以统一方式连接工具和数据源的开放协议。</span>
+  </button>
+  <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="6" data-term-search="rag 企业应用 检索增强生成：先从可信资料中找内容，再让模型据此回答。 它能补充私有知识、减少过时信息和幻觉，是企业知识助手的常见架构。" aria-expanded="false">
+    <span class="term-category">企业应用</span>
+    <strong>RAG</strong>
+    <span class="term-heat">关注度 90</span>
+    <span class="term-summary">检索增强生成：先从可信资料中找内容，再让模型据此回答。</span>
+  </button>
+  <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="7" data-term-search="幻觉 安全与质量 模型生成听起来合理、但事实错误或并无依据的内容。 这是医疗、法律、金融和企业应用必须通过来源、评测与人工复核控制的风险。" aria-expanded="false">
+    <span class="term-category">安全与质量</span>
+    <strong>幻觉</strong>
+    <span class="term-heat">关注度 89</span>
+    <span class="term-summary">模型生成听起来合理、但事实错误或并无依据的内容。</span>
+  </button>
+  <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="8" data-term-search="上下文窗口 模型能力 模型一次能够读取和处理的信息总量。 窗口越大，越能处理长文档和大型代码库，但不等同于真正理解或永久记忆。" aria-expanded="false">
+    <span class="term-category">模型能力</span>
+    <strong>上下文窗口</strong>
+    <span class="term-heat">关注度 88</span>
+    <span class="term-summary">模型一次能够读取和处理的信息总量。</span>
+  </button>
+  <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="9" data-term-search="moe 模型架构 混合专家架构：每次只激活模型中的部分专家网络处理任务。 它能在扩大总参数量的同时控制计算成本，是多个前沿开放模型的重要架构。" aria-expanded="false">
+    <span class="term-category">模型架构</span>
+    <strong>MoE</strong>
+    <span class="term-heat">关注度 87</span>
+    <span class="term-summary">混合专家架构：每次只激活模型中的部分专家网络处理任务。</span>
+  </button>
+  <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="10" data-term-search="开放权重 开放生态 模型参数可被下载、运行或进一步训练，但许可条件不一定等同于开源软件。 它影响技术自主、研究透明度、部署成本以及安全治理方式。" aria-expanded="false">
+    <span class="term-category">开放生态</span>
+    <strong>开放权重</strong>
+    <span class="term-heat">关注度 86</span>
+    <span class="term-summary">模型参数可被下载、运行或进一步训练，但许可条件不一定等同于开源软件。</span>
+  </button>
+  <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="11" data-term-search="token 基础概念 模型处理文本时使用的基本片段，可能是一个字、词或词的一部分。 上下文长度、api 价格和输出速度通常都以 token 计算。" aria-expanded="false">
+    <span class="term-category">基础概念</span>
+    <strong>Token</strong>
+    <span class="term-heat">关注度 85</span>
+    <span class="term-summary">模型处理文本时使用的基本片段，可能是一个字、词或词的一部分。</span>
+  </button>
+  <button class="term-tile warm" type="button" style="--term-weight:2" data-term-index="12" data-term-search="ai 推理 算力 训练完成后，模型接收输入并生成结果的计算过程。 随着用户和 agent 增长，推理成本、延迟与能源消耗正在成为产业竞争重点。" aria-expanded="false">
+    <span class="term-category">算力</span>
+    <strong>AI 推理</strong>
+    <span class="term-heat">关注度 84</span>
+    <span class="term-summary">训练完成后，模型接收输入并生成结果的计算过程。</span>
+  </button>
+  <button class="term-tile cool" type="button" style="--term-weight:2" data-term-index="13" data-term-search="对齐 安全与质量 让模型行为更符合人类意图、规则和安全目标的一系列方法。 对齐决定模型是否可控、诚实且适合真实场景，也是前沿 ai 安全的核心问题。" aria-expanded="false">
+    <span class="term-category">安全与质量</span>
+    <strong>对齐</strong>
+    <span class="term-heat">关注度 82</span>
+    <span class="term-summary">让模型行为更符合人类意图、规则和安全目标的一系列方法。</span>
+  </button>
+  <button class="term-tile cool" type="button" style="--term-weight:2" data-term-index="14" data-term-search="蒸馏 模型训练 让较小模型学习较大模型的输出或推理模式。 蒸馏能把部分前沿能力迁移到成本更低、更容易本地部署的小模型。" aria-expanded="false">
+    <span class="term-category">模型训练</span>
+    <strong>蒸馏</strong>
+    <span class="term-heat">关注度 80</span>
+    <span class="term-summary">让较小模型学习较大模型的输出或推理模式。</span>
+  </button>
+  <button class="term-tile cool" type="button" style="--term-weight:1" data-term-index="15" data-term-search="微调 模型训练 用特定数据继续训练基础模型，使它更适合某类任务、语气或领域。 它能增强专业适配，但数据质量、成本和模型更新维护都是现实门槛。" aria-expanded="false">
+    <span class="term-category">模型训练</span>
+    <strong>微调</strong>
+    <span class="term-heat">关注度 78</span>
+    <span class="term-summary">用特定数据继续训练基础模型，使它更适合某类任务、语气或领域。</span>
+  </button>
+  <button class="term-tile cool" type="button" style="--term-weight:1" data-term-index="16" data-term-search="向量数据库 开发生态 存储和检索文本、图片等内容的向量表示，用相似度寻找相关信息。 它常用于语义搜索和 rag，但并非所有知识库都必须使用专用向量数据库。" aria-expanded="false">
+    <span class="term-category">开发生态</span>
+    <strong>向量数据库</strong>
+    <span class="term-heat">关注度 76</span>
+    <span class="term-summary">存储和检索文本、图片等内容的向量表示，用相似度寻找相关信息。</span>
+  </button>
+  <button class="term-tile cool" type="button" style="--term-weight:1" data-term-index="17" data-term-search="量化 模型部署 用更低精度表示模型参数，减少显存占用并提升推理速度。 量化让大模型更容易在个人电脑、手机和边缘设备运行，但可能损失少量能力。" aria-expanded="false">
+    <span class="term-category">模型部署</span>
+    <strong>量化</strong>
+    <span class="term-heat">关注度 74</span>
+    <span class="term-summary">用更低精度表示模型参数，减少显存占用并提升推理速度。</span>
+  </button></div>
+      <div class="term-details">
+  <article class="term-detail" data-term-detail="0" hidden>
+    <div><span>产品形态</span><b>关注度 98</b></div>
+    <h3>AI Agent</h3>
+    <p><strong>它是什么：</strong>能够规划步骤、调用工具并持续执行任务的 AI 系统。</p>
+    <p><strong>为什么重要：</strong>它把 AI 从“给答案”推进到“把事情做完”，是企业自动化和个人助手的核心方向。</p>
+  </article>
+  <article class="term-detail" data-term-detail="1" hidden>
+    <div><span>模型能力</span><b>关注度 97</b></div>
+    <h3>推理模型</h3>
+    <p><strong>它是什么：</strong>在回答前投入更多计算进行分步分析、自检和修正的模型。</p>
+    <p><strong>为什么重要：</strong>它显著提升数学、代码、科学和复杂决策表现，但通常更慢、成本更高。</p>
+  </article>
+  <article class="term-detail" data-term-detail="2" hidden>
+    <div><span>模型能力</span><b>关注度 95</b></div>
+    <h3>多模态</h3>
+    <p><strong>它是什么：</strong>同一模型理解或生成文字、图像、语音、视频等多种信息。</p>
+    <p><strong>为什么重要：</strong>多模态让 AI 更接近人类感知世界的方式，也是实时助手与机器人的基础。</p>
+  </article>
+  <article class="term-detail" data-term-detail="3" hidden>
+    <div><span>机器人</span><b>关注度 94</b></div>
+    <h3>具身智能</h3>
+    <p><strong>它是什么：</strong>让 AI 通过机器人身体感知环境、学习并完成现实世界动作。</p>
+    <p><strong>为什么重要：</strong>它连接软件智能与物理世界，可能改变制造、物流、家务和养老服务。</p>
+  </article>
+  <article class="term-detail" data-term-detail="4" hidden>
+    <div><span>前沿研究</span><b>关注度 92</b></div>
+    <h3>世界模型</h3>
+    <p><strong>它是什么：</strong>学习环境运行规律，并预测行动后果的内部模型。</p>
+    <p><strong>为什么重要：</strong>被视为自动驾驶、机器人和通用智能进行规划与模拟的重要技术路线。</p>
+  </article>
+  <article class="term-detail" data-term-detail="5" hidden>
+    <div><span>开发生态</span><b>关注度 91</b></div>
+    <h3>MCP</h3>
+    <p><strong>它是什么：</strong>Model Context Protocol，一种让 AI 应用以统一方式连接工具和数据源的开放协议。</p>
+    <p><strong>为什么重要：</strong>它试图成为 AI 工具连接层的通用接口，降低每个应用重复集成的成本。</p>
+  </article>
+  <article class="term-detail" data-term-detail="6" hidden>
+    <div><span>企业应用</span><b>关注度 90</b></div>
+    <h3>RAG</h3>
+    <p><strong>它是什么：</strong>检索增强生成：先从可信资料中找内容，再让模型据此回答。</p>
+    <p><strong>为什么重要：</strong>它能补充私有知识、减少过时信息和幻觉，是企业知识助手的常见架构。</p>
+  </article>
+  <article class="term-detail" data-term-detail="7" hidden>
+    <div><span>安全与质量</span><b>关注度 89</b></div>
+    <h3>幻觉</h3>
+    <p><strong>它是什么：</strong>模型生成听起来合理、但事实错误或并无依据的内容。</p>
+    <p><strong>为什么重要：</strong>这是医疗、法律、金融和企业应用必须通过来源、评测与人工复核控制的风险。</p>
+  </article>
+  <article class="term-detail" data-term-detail="8" hidden>
+    <div><span>模型能力</span><b>关注度 88</b></div>
+    <h3>上下文窗口</h3>
+    <p><strong>它是什么：</strong>模型一次能够读取和处理的信息总量。</p>
+    <p><strong>为什么重要：</strong>窗口越大，越能处理长文档和大型代码库，但不等同于真正理解或永久记忆。</p>
+  </article>
+  <article class="term-detail" data-term-detail="9" hidden>
+    <div><span>模型架构</span><b>关注度 87</b></div>
+    <h3>MoE</h3>
+    <p><strong>它是什么：</strong>混合专家架构：每次只激活模型中的部分专家网络处理任务。</p>
+    <p><strong>为什么重要：</strong>它能在扩大总参数量的同时控制计算成本，是多个前沿开放模型的重要架构。</p>
+  </article>
+  <article class="term-detail" data-term-detail="10" hidden>
+    <div><span>开放生态</span><b>关注度 86</b></div>
+    <h3>开放权重</h3>
+    <p><strong>它是什么：</strong>模型参数可被下载、运行或进一步训练，但许可条件不一定等同于开源软件。</p>
+    <p><strong>为什么重要：</strong>它影响技术自主、研究透明度、部署成本以及安全治理方式。</p>
+  </article>
+  <article class="term-detail" data-term-detail="11" hidden>
+    <div><span>基础概念</span><b>关注度 85</b></div>
+    <h3>Token</h3>
+    <p><strong>它是什么：</strong>模型处理文本时使用的基本片段，可能是一个字、词或词的一部分。</p>
+    <p><strong>为什么重要：</strong>上下文长度、API 价格和输出速度通常都以 Token 计算。</p>
+  </article>
+  <article class="term-detail" data-term-detail="12" hidden>
+    <div><span>算力</span><b>关注度 84</b></div>
+    <h3>AI 推理</h3>
+    <p><strong>它是什么：</strong>训练完成后，模型接收输入并生成结果的计算过程。</p>
+    <p><strong>为什么重要：</strong>随着用户和 Agent 增长，推理成本、延迟与能源消耗正在成为产业竞争重点。</p>
+  </article>
+  <article class="term-detail" data-term-detail="13" hidden>
+    <div><span>安全与质量</span><b>关注度 82</b></div>
+    <h3>对齐</h3>
+    <p><strong>它是什么：</strong>让模型行为更符合人类意图、规则和安全目标的一系列方法。</p>
+    <p><strong>为什么重要：</strong>对齐决定模型是否可控、诚实且适合真实场景，也是前沿 AI 安全的核心问题。</p>
+  </article>
+  <article class="term-detail" data-term-detail="14" hidden>
+    <div><span>模型训练</span><b>关注度 80</b></div>
+    <h3>蒸馏</h3>
+    <p><strong>它是什么：</strong>让较小模型学习较大模型的输出或推理模式。</p>
+    <p><strong>为什么重要：</strong>蒸馏能把部分前沿能力迁移到成本更低、更容易本地部署的小模型。</p>
+  </article>
+  <article class="term-detail" data-term-detail="15" hidden>
+    <div><span>模型训练</span><b>关注度 78</b></div>
+    <h3>微调</h3>
+    <p><strong>它是什么：</strong>用特定数据继续训练基础模型，使它更适合某类任务、语气或领域。</p>
+    <p><strong>为什么重要：</strong>它能增强专业适配，但数据质量、成本和模型更新维护都是现实门槛。</p>
+  </article>
+  <article class="term-detail" data-term-detail="16" hidden>
+    <div><span>开发生态</span><b>关注度 76</b></div>
+    <h3>向量数据库</h3>
+    <p><strong>它是什么：</strong>存储和检索文本、图片等内容的向量表示，用相似度寻找相关信息。</p>
+    <p><strong>为什么重要：</strong>它常用于语义搜索和 RAG，但并非所有知识库都必须使用专用向量数据库。</p>
+  </article>
+  <article class="term-detail" data-term-detail="17" hidden>
+    <div><span>模型部署</span><b>关注度 74</b></div>
+    <h3>量化</h3>
+    <p><strong>它是什么：</strong>用更低精度表示模型参数，减少显存占用并提升推理速度。</p>
+    <p><strong>为什么重要：</strong>量化让大模型更容易在个人电脑、手机和边缘设备运行，但可能损失少量能力。</p>
+  </article></div>
+    </div>
     <div class="empty" hidden>没有找到匹配内容，试试其他关键词。</div>
   </section>
   <section class="about" id="about">
@@ -545,6 +860,8 @@ nav a:hover { color: var(--orange); }
     const grid = document.querySelector(".news-grid");
     const timeline = document.querySelector(".timeline-wrap");
     const timelineEvents = [...document.querySelectorAll(".timeline-event")];
+    const knowledge = document.querySelector(".knowledge-wrap");
+    const termTiles = [...document.querySelectorAll(".term-tile")];
     const count = document.querySelector("#result-count");
     const empty = document.querySelector(".empty");
     const title = document.querySelector("#section-title");
@@ -558,8 +875,11 @@ nav a:hover { color: var(--orange); }
     function update() {
       const query = input.value.trim().toLowerCase();
       const isTimeline = mode === "timeline";
-      grid.hidden = isTimeline;
+      const isKnowledge = mode === "knowledge";
+      const isNews = !isTimeline && !isKnowledge;
+      grid.hidden = !isNews;
       timeline.hidden = !isTimeline;
+      knowledge.hidden = !isKnowledge;
       restoreOrder();
       if (mode === "top") {
         [...cards].sort((a, b) => Number(b.dataset.heat) - Number(a.dataset.heat)).forEach((card) => grid.appendChild(card));
@@ -571,7 +891,7 @@ nav a:hover { color: var(--orange); }
         const archiveMatch = mode !== "archive" || !selectedDate || card.dataset.date === selectedDate;
         const ageDays = Math.round((new Date("2026-07-26T00:00:00Z") - new Date(card.dataset.date + "T00:00:00Z")) / 86400000);
         const periodMatch = mode !== "top" || period === "all" || ageDays <= Number(period);
-        const show = !isTimeline && regionMatch && searchMatch && archiveMatch && periodMatch;
+        const show = isNews && regionMatch && searchMatch && archiveMatch && periodMatch;
         card.hidden = !show;
         if (show) visible += 1;
       });
@@ -584,8 +904,14 @@ nav a:hover { color: var(--orange); }
           event.hidden = !show;
           if (show) visible += 1;
         });
+      } else if (isKnowledge) {
+        termTiles.forEach((term) => {
+          const show = !query || term.dataset.termSearch.includes(query);
+          term.hidden = !show;
+          if (show) visible += 1;
+        });
       }
-      count.textContent = "显示 " + visible + (isTimeline ? " 个重要事件" : " 条新闻");
+      count.textContent = "显示 " + visible + (isTimeline ? " 个重要事件" : isKnowledge ? " 个 AI 热词" : " 条新闻");
       empty.hidden = visible !== 0;
       if (mode === "latest") {
         title.textContent = regionLabel() + "热点简报";
@@ -596,9 +922,12 @@ nav a:hover { color: var(--orange); }
       } else if (mode === "top") {
         title.textContent = regionLabel() + " TOP 新闻";
         note.textContent = period === "all" ? "按全部时间热度排序" : "按近 " + period + " 天热度排序";
-      } else {
+      } else if (mode === "timeline") {
         title.textContent = regionLabel() + " AI 大事记";
         note.textContent = (timelineYear === "all" ? "2025 年至今" : timelineYear + " 年") + "的重要 AI 事件时间轴";
+      } else {
+        title.textContent = "AI 知识热力图";
+        note.textContent = "用通俗语言读懂正在塑造 AI 世界的核心概念";
       }
     }
     document.querySelectorAll("[data-filter]").forEach((button) => button.addEventListener("click", () => {
@@ -626,6 +955,25 @@ nav a:hover { color: var(--orange); }
     document.querySelectorAll("[data-open-timeline]").forEach((link) => link.addEventListener("click", () => {
       const button = document.querySelector('[data-mode="timeline"]');
       button.click();
+    }));
+    document.querySelectorAll("[data-open-knowledge]").forEach((link) => link.addEventListener("click", () => {
+      const button = document.querySelector('[data-mode="knowledge"]');
+      button.click();
+    }));
+    termTiles.forEach((tile) => tile.addEventListener("click", () => {
+      const wasActive = tile.classList.contains("active");
+      termTiles.forEach((item) => {
+        item.classList.remove("active");
+        item.setAttribute("aria-expanded", "false");
+      });
+      document.querySelectorAll("[data-term-detail]").forEach((detail) => detail.hidden = true);
+      if (!wasActive) {
+        tile.classList.add("active");
+        tile.setAttribute("aria-expanded", "true");
+        const detail = document.querySelector('[data-term-detail="' + tile.dataset.termIndex + '"]');
+        detail.hidden = false;
+        detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
     }));
     dateInput.addEventListener("change", () => {
       selectedDate = dateInput.value;
