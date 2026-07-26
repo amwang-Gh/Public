@@ -191,7 +191,11 @@ nav a:hover { color: var(--orange); }
   .mode-panel { display: flex; align-items: center; gap: 16px; min-height: 72px; padding: 15px 18px; background: #f1f1f1; border-bottom: 1px solid #ccc; }
   .mode-panel[hidden] { display: none; }
   .mode-panel label { font-size: 13px; font-weight: 800; }
-  .mode-panel input[type="date"] { padding: 10px 12px; border: 1px solid #aaa; background: #fff; }
+  .date-control { position: relative; display: inline-flex; min-width: 210px; background: #fff; }
+  .mode-panel input[type="date"] { width: 100%; padding: 10px 12px; border: 1px solid #aaa; background: transparent; color: transparent; }
+  .mode-panel input[type="date"]::-webkit-datetime-edit { color: transparent; }
+  .mode-panel input[type="date"]::-webkit-calendar-picker-indicator { position: relative; z-index: 2; opacity: 1; cursor: pointer; }
+  .date-display { position: absolute; inset: 0 44px 0 13px; display: flex; align-items: center; color: #111; pointer-events: none; }
   .mode-panel button { padding: 9px 14px; border: 1px solid #aaa; background: #fff; cursor: pointer; font-weight: 700; }
   .mode-panel button.active { color: #fff; border-color: #111; background: #111; }
   .timeline-panel { justify-content: space-between; flex-wrap: wrap; }
@@ -316,7 +320,10 @@ nav a:hover { color: var(--orange); }
     </div>
     <div class="mode-panel" data-panel="archive" hidden>
       <label for="archive-date" data-en="Choose archive date">选择归档日期</label>
-      <input id="archive-date" type="date" min="2026-07-07" max="2026-07-25">
+      <span class="date-control">
+        <input id="archive-date" type="date" min="2026-07-07" max="2026-07-25" aria-label="选择归档日期">
+        <span class="date-display" id="date-display" aria-hidden="true">年 / 月 / 日</span>
+      </span>
       <button type="button" id="clear-date" data-en="All dates">查看全部日期</button>
       <span class="section-title-note" data-en="Choose a date to display the stories published that day.">日历中有新闻的日期会在选中后显示对应报道。</span>
     </div>
@@ -873,6 +880,7 @@ nav a:hover { color: var(--orange); }
     const title = document.querySelector("#section-title");
     const note = document.querySelector("#section-note");
     const dateInput = document.querySelector("#archive-date");
+    const dateDisplay = document.querySelector("#date-display");
     const originalOrder = [...cards];
     const regionLabel = () => language === "en"
       ? (activeRegion === "全部" ? "Global" : activeRegion === "北美" ? "North America" : activeRegion === "亚洲" ? "Asia" : "Europe")
@@ -889,6 +897,8 @@ nav a:hover { color: var(--orange); }
       });
       input.placeholder = language === "en" ? "Search topics, companies or keywords" : "搜索主题、公司或关键词";
       input.setAttribute("aria-label", language === "en" ? "Search stories" : "搜索新闻");
+      dateInput.setAttribute("aria-label", language === "en" ? "Choose archive date" : "选择归档日期");
+      dateDisplay.textContent = selectedDate || (language === "en" ? "YYYY / MM / DD" : "年 / 月 / 日");
       document.querySelector(".region-nav").setAttribute("aria-label", language === "en" ? "Region filter" : "地区分类");
       document.querySelector(".browse-modes").setAttribute("aria-label", language === "en" ? "Browse modes" : "浏览模式");
       document.querySelector(".timeline-years").setAttribute("aria-label", language === "en" ? "Timeline year" : "时间轴年份");
@@ -1013,11 +1023,13 @@ nav a:hover { color: var(--orange); }
     });
     dateInput.addEventListener("change", () => {
       selectedDate = dateInput.value;
+      dateDisplay.textContent = selectedDate || (language === "en" ? "YYYY / MM / DD" : "年 / 月 / 日");
       update();
     });
     document.querySelector("#clear-date").addEventListener("click", () => {
       selectedDate = "";
       dateInput.value = "";
+      dateDisplay.textContent = language === "en" ? "YYYY / MM / DD" : "年 / 月 / 日";
       update();
     });
     input.addEventListener("input", update);
