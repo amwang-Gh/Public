@@ -9,7 +9,7 @@
   <meta property="og:image" content="./og-v2.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>链界情报｜全球供应链风险雷达</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=20260726-2">
 </head>
 <body>
   <div class="topline"><span>SC SIGNAL DESK · 2026.07.26</span><p>全球贸易 / 采购风险 / 运价 / 关键原料</p><div class="live">● DATA LIVE</div></div>
@@ -88,66 +88,68 @@
       <p>FBX 风格航线观察视图；指数为示意展示，请以 Freightos / Baltic Exchange 正式数据为准。</p>
     </section>
 
-    <section class="section category-center" id="categories">
-      <div class="section-title"><div><p class="eyebrow">CATEGORY NEWS CENTER</p><h2>品类中心与供应链新闻</h2></div><p>按品类检索主流行业媒体与公开研究信号</p></div>
-      <div class="category-tools">
-        <div class="category-search"><label for="category-search">搜索品类 / 关键词</label><input id="category-search" placeholder="例如：PCB / connector / copper / freight / casting"></div>
-        <div class="category-chips" aria-label="品类筛选">
-          <button class="active" data-category-filter="all">全部</button><button data-category-filter="pcb">PCB</button><button data-category-filter="connectors">Connectors</button><button data-category-filter="metals">Metals</button><button data-category-filter="machining">Machining</button><button data-category-filter="plastics">Plastics</button><button data-category-filter="freight">Freight</button><button data-category-filter="electronics">Electronics</button>
+    <section class="category-center" id="categories">
+      <div class="category-shell">
+        <div class="panel-heading category-heading"><div><span>CATEGORY NEWS CENTER</span><h2>品类中心与供应链新闻</h2></div><p>按品类检索主流行业媒体与公开研究信号</p></div>
+        <div class="category-tools">
+          <div class="category-search"><label for="category-search">搜索品类 / 关键词</label><input id="category-search" placeholder="PCB / connector / copper / freight / casting"></div>
+          <div class="category-chips" aria-label="品类筛选">
+            <button class="active" data-category-filter="all">全部</button><button data-category-filter="pcb">PCB</button><button data-category-filter="connectors">Connectors</button><button data-category-filter="metals">Metals</button><button data-category-filter="machining">Machining</button><button data-category-filter="plastics">Plastics</button><button data-category-filter="freight">Freight</button><button data-category-filter="electronics">Electronics</button>
+          </div>
         </div>
-      </div>
-      <div class="category-layout">
-        <aside class="category-profile">
-          <span>SELECTED SNAPSHOT</span>
-          <h3 id="categoryName">PCB / Electronics</h3>
-          <p id="categorySummary">AI 服务器、工业控制与汽车电子继续支撑高层板、HDI 与高频高速板需求；上游铜箔、玻纤布、树脂与金价/铜价变化是主要成本变量。</p>
-          <dl>
-            <div><dt>供需状态</dt><dd id="categoryBalance">高端偏紧，常规板竞争充分</dd></div>
-            <div><dt>典型交期</dt><dd id="categoryLeadtime">4-10 周，高层/高频板更长</dd></div>
-            <div><dt>价格驱动</dt><dd id="categoryDrivers">铜箔、玻纤布、树脂、良率、产能利用率</dd></div>
-            <div><dt>供应风险</dt><dd id="categoryRisk">中高：AI 需求、区域集中与材料波动叠加</dd></div>
-          </dl>
-        </aside>
-        <div class="news-board" id="newsBoard">
-          <article data-tags="electronics pcb">
-            <div><span>S&P Global · Electronics</span><time>2026.03</time></div>
-            <h3>电子供应链：AI 数据中心拉动内存与工业电子需求</h3>
-            <p>高算力设备需求推高关键电子零部件价格，新增产能对 2027 年以前的缓解有限。</p>
-            <footer><button data-profile="pcb">查看 PCB 影响</button><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/03/electronics-supply-chain-outlook" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
-          </article>
-          <article data-tags="metals plastics freight">
-            <div><span>S&P Global · Commodity Watch</span><time>2026.05</time></div>
-            <h3>霍尔木兹扰动扩大油气、硫磺、铝与化工链风险</h3>
-            <p>中东冲突若延续，将不仅影响燃料，还可能传导到半导体用氦气、硫酸、铝和树脂体系。</p>
-            <footer><button data-profile="metals">查看金属影响</button><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/05/commodity-price-watch-may-2026" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
-          </article>
-          <article data-tags="electronics connectors pcb">
-            <div><span>S&P Global · Q3 Strategy</span><time>2026.07</time></div>
-            <h3>瓶颈从地理通道转向稀缺材料、受限零部件与决策时间</h3>
-            <p>AI 内存需求、石化替代难度、关税不确定性与提前出货共同改变电子和机电供应策略。</p>
-            <footer><button data-profile="connectors">查看连接器影响</button><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/07/corporate-strategy-supply-chain-outlook-q3-2026" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
-          </article>
-          <article data-tags="freight logistics">
-            <div><span>Freightos · FBX</span><time>2026.07</time></div>
-            <h3>海运价格从高位回落，但红海/霍尔木兹风险仍支撑燃料溢价</h3>
-            <p>FBX 周报显示亚美、亚欧航线波动仍高，采购应把旺季、燃料与绕航成本纳入报价条款。</p>
-            <footer><button data-profile="freight">查看物流影响</button><a href="https://www.freightos.com/?term=0&type=BLOG_POST" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
-          </article>
-          <article data-tags="risk supplier electronics machining">
-            <div><span>Gartner · Supply Chain</span><time>2026.06</time></div>
-            <h3>供应链领先企业正在转向网络化运营与 AI 辅助决策</h3>
-            <p>Gartner Top 25 强调端到端协同、自治劳动力与供应网络策略，对供应商风险管理提出更高要求。</p>
-            <footer><button data-profile="machining">查看制造件影响</button><a href="https://www.gartner.com/en/newsroom/press-releases/2026-06-17-gartner-announces-2026-rankings-of-the-global-supply-chain-top-25" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
-          </article>
-          <article data-tags="risk supplier electronics">
-            <div><span>Gartner · Supplier Risk</span><time>2026.05</time></div>
-            <h3>供应商风险管理工具成为应对地缘、合规与中断风险的基础能力</h3>
-            <p>多级供应商映射、预警与恢复能力是连接器、PCB、铸造、线缆等多品类管理的共同底座。</p>
-            <footer><button data-profile="electronics">查看电子件影响</button><a href="https://www.gartner.com/en/documents/7800353" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
-          </article>
+        <div class="category-layout">
+          <aside class="category-profile">
+            <span>SELECTED SNAPSHOT</span>
+            <h3 id="categoryName">PCB / Electronics</h3>
+            <p id="categorySummary">AI 服务器、工业控制与汽车电子继续支撑高层板、HDI 与高频高速板需求；上游铜箔、玻纤布、树脂与金价/铜价变化是主要成本变量。</p>
+            <dl>
+              <div><dt>供需状态</dt><dd id="categoryBalance">高端偏紧，常规板竞争充分</dd></div>
+              <div><dt>典型交期</dt><dd id="categoryLeadtime">4-10 周，高层/高频板更长</dd></div>
+              <div><dt>价格驱动</dt><dd id="categoryDrivers">铜箔、玻纤布、树脂、良率、产能利用率</dd></div>
+              <div><dt>供应风险</dt><dd id="categoryRisk">中高：AI 需求、区域集中与材料波动叠加</dd></div>
+            </dl>
+          </aside>
+          <div class="news-board" id="newsBoard">
+            <article data-tags="electronics pcb">
+              <div><span>S&P Global · Electronics</span><time>2026.03</time></div>
+              <h3>电子供应链：AI 数据中心拉动内存与工业电子需求</h3>
+              <p>高算力设备需求推高关键电子零部件价格，新增产能对 2027 年以前的缓解有限。</p>
+              <footer><button data-profile="pcb">查看 PCB 影响</button><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/03/electronics-supply-chain-outlook" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
+            </article>
+            <article data-tags="metals plastics freight">
+              <div><span>S&P Global · Commodity Watch</span><time>2026.05</time></div>
+              <h3>霍尔木兹扰动扩大油气、硫磺、铝与化工链风险</h3>
+              <p>中东冲突若延续，将不仅影响燃料，还可能传导到半导体用氦气、硫酸、铝和树脂体系。</p>
+              <footer><button data-profile="metals">查看金属影响</button><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/05/commodity-price-watch-may-2026" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
+            </article>
+            <article data-tags="electronics connectors pcb">
+              <div><span>S&P Global · Q3 Strategy</span><time>2026.07</time></div>
+              <h3>瓶颈从地理通道转向稀缺材料、受限零部件与决策时间</h3>
+              <p>AI 内存需求、石化替代难度、关税不确定性与提前出货共同改变电子和机电供应策略。</p>
+              <footer><button data-profile="connectors">查看连接器影响</button><a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/07/corporate-strategy-supply-chain-outlook-q3-2026" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
+            </article>
+            <article data-tags="freight logistics">
+              <div><span>Freightos · FBX</span><time>2026.07</time></div>
+              <h3>海运价格从高位回落，但红海/霍尔木兹风险仍支撑燃料溢价</h3>
+              <p>FBX 周报显示亚美、亚欧航线波动仍高，采购应把旺季、燃料与绕航成本纳入报价条款。</p>
+              <footer><button data-profile="freight">查看物流影响</button><a href="https://www.freightos.com/?term=0&type=BLOG_POST" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
+            </article>
+            <article data-tags="risk supplier electronics machining">
+              <div><span>Gartner · Supply Chain</span><time>2026.06</time></div>
+              <h3>供应链领先企业正在转向网络化运营与 AI 辅助决策</h3>
+              <p>Gartner Top 25 强调端到端协同、自治劳动力与供应网络策略，对供应商风险管理提出更高要求。</p>
+              <footer><button data-profile="machining">查看制造件影响</button><a href="https://www.gartner.com/en/newsroom/press-releases/2026-06-17-gartner-announces-2026-rankings-of-the-global-supply-chain-top-25" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
+            </article>
+            <article data-tags="risk supplier electronics">
+              <div><span>Gartner · Supplier Risk</span><time>2026.05</time></div>
+              <h3>供应商风险管理工具成为应对地缘、合规与中断风险的基础能力</h3>
+              <p>多级供应商映射、预警与恢复能力是连接器、PCB、铸造、线缆等多品类管理的共同底座。</p>
+              <footer><button data-profile="electronics">查看电子件影响</button><a href="https://www.gartner.com/en/documents/7800353" target="_blank" rel="noreferrer">来源链接 ↗</a></footer>
+            </article>
+          </div>
         </div>
+        <p class="category-note">新闻链接来自公开页面；摘要为采购情报视角的二次归纳，正式决策请结合供应商报价、合约条款与实时市场数据。</p>
       </div>
-      <p class="category-note">新闻链接来自公开页面；摘要为采购情报视角的二次归纳，正式决策请结合供应商报价、合约条款与实时市场数据。</p>
     </section>
 
     <section class="grid-main">
@@ -222,6 +224,6 @@
 
   <footer class="site-footer"><div class="brand"><span class="brandmark">链</span><span><b>链界情报</b><small>SUPPLY SIGNALS</small></span></div><p>数据来源：IEA、World Bank 等公开资料<br>快照更新：2026.07.26</p><div><a href="../">返回原站</a><a href="https://www.iea.org/reports/global-critical-minerals-outlook-2026" target="_blank" rel="noreferrer">来源与方法</a></div></footer>
   <div class="toast" role="status">摘要已复制</div>
-  <script src="./app.js"></script>
+  <script src="./app.js?v=20260726-2"></script>
 </body>
 </html>
