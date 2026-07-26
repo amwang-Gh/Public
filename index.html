@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI 热点雷达</title>
+  <title>智潮经纬</title>
   <meta name="description" content="读懂 AI 浪潮，而不只是追逐标题。">
   <style>:root {
   --ink: #17251f;
@@ -280,7 +280,7 @@ nav a:hover { color: var(--orange); }
 <body>
 <main>
   <header class="site-header">
-    <a class="brand" href="#top"><span class="brand-mark">AI</span><span>热点雷达</span></a>
+    <a class="brand" href="#top"><span class="brand-mark" data-en="SA">智</span><span data-en="THE SIGNAL ATLAS">智潮经纬</span></a>
     <nav><a href="#news" data-en="Latest">今日热点</a><a href="#news" data-open-timeline data-en="Milestones">AI 大事记</a><a href="#news" data-open-knowledge data-en="AI Glossary">AI 知识</a><a href="#about" data-en="About">关于</a></nav>
     <div class="header-actions"><button class="language-switch" id="language-switch" type="button">EN</button><div class="live"><i></i><span data-en="UPDATED 2026.07.26">更新于 2026.07.26</span></div></div>
   </header>
@@ -847,10 +847,10 @@ nav a:hover { color: var(--orange); }
     <div class="empty" hidden>没有找到匹配内容，试试其他关键词。</div>
   </section>
   <section class="about" id="about">
-    <p class="eyebrow">EDITORIAL NOTE</p><h2>不是更多新闻，<br>而是更清楚的信号。</h2>
-    <p>本页聚合公开报道与机构原文，关键结论为编辑性摘要，不构成投资建议。发布时间以来源页面为准，点击每张卡片可核对完整上下文。</p>
+    <p class="eyebrow" data-en="EDITORIAL NOTE">编辑说明</p><h2 data-en="Not more news—clearer signals.">不是更多新闻，而是更清楚的信号。</h2>
+    <p data-en="This publication curates public reporting and original institutional sources. Key takeaways are editorial summaries, not investment advice. Publication dates follow the original sources; use each story link to review the full context.">本页聚合公开报道与机构原文，关键结论为编辑性摘要，不构成投资建议。发布时间以来源页面为准，点击每张卡片可核对完整上下文。</p>
   </section>
-  <footer class="site-footer"><span>AI 热点雷达</span><span>Curated with care · 2026</span></footer>
+  <footer class="site-footer"><span data-en="THE SIGNAL ATLAS">智潮经纬</span><span data-en="CURATED WITH CARE · 2026">用心编选 · 2026</span></footer>
 </main>
 <script>
   (() => {
@@ -878,6 +878,10 @@ nav a:hover { color: var(--orange); }
       : (activeRegion === "全部" ? "全球" : activeRegion);
     function applyLanguage() {
       document.documentElement.lang = language === "en" ? "en" : "zh-CN";
+      document.title = language === "en" ? "The Signal Atlas" : "智潮经纬";
+      document.querySelector('meta[name="description"]').content = language === "en"
+        ? "Understand the AI wave, not just the headlines."
+        : "读懂 AI 浪潮，而不只是追逐标题。";
       document.querySelectorAll("[data-en]").forEach((element) => {
         if (!element.dataset.zh) element.dataset.zh = element.textContent;
         element.textContent = language === "en" ? element.dataset.en : element.dataset.zh;
