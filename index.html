@@ -160,6 +160,9 @@ nav a:hover { color: var(--orange); }
   nav a:hover { color: #fff; }
   .live { color: #ddd; }
   .live i { background: var(--red); box-shadow: 0 0 0 4px rgba(204,0,0,.2); }
+  .header-actions { display: flex; align-items: center; gap: 18px; }
+  .language-switch { padding: 7px 10px; color: #fff; border: 1px solid #777; background: transparent; font-size: 11px; font-weight: 900; cursor: pointer; }
+  .language-switch:hover { border-color: #fff; }
   .breaking { display: flex; align-items: stretch; min-height: 42px; color: #fff; background: #222; }
   .breaking b { display: flex; align-items: center; padding: 0 4vw; background: var(--red); font-size: 12px; letter-spacing: .08em; white-space: nowrap; }
   .breaking span { display: flex; align-items: center; padding: 8px 20px; font-size: 13px; font-weight: 700; }
@@ -248,6 +251,7 @@ nav a:hover { color: var(--orange); }
   @media (max-width: 960px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 760px) {
     .site-header { padding: 0 18px; } nav { display: none; }
+    .live { display: none; }
     .breaking b { padding: 0 18px; }
     .region-nav { padding: 0; overflow-x: auto; }
     .region-nav button { flex: 1; padding: 14px 18px; }
@@ -277,23 +281,23 @@ nav a:hover { color: var(--orange); }
 <main>
   <header class="site-header">
     <a class="brand" href="#top"><span class="brand-mark">AI</span><span>热点雷达</span></a>
-    <nav><a href="#news">今日热点</a><a href="#news" data-open-timeline>AI 大事记</a><a href="#news" data-open-knowledge>AI 知识</a><a href="#about">关于</a></nav>
-    <div class="live"><i></i>更新于 2026.07.26</div>
+    <nav><a href="#news" data-en="Latest">今日热点</a><a href="#news" data-open-timeline data-en="Milestones">AI 大事记</a><a href="#news" data-open-knowledge data-en="AI Glossary">AI 知识</a><a href="#about" data-en="About">关于</a></nav>
+    <div class="header-actions"><button class="language-switch" id="language-switch" type="button">EN</button><div class="live"><i></i><span data-en="UPDATED 2026.07.26">更新于 2026.07.26</span></div></div>
   </header>
-  <div class="breaking"><b>热点速递</b><span>全球 AI 竞赛进入产业化深水区：Agent、芯片、开放模型与监管同步提速</span></div>
+  <div class="breaking"><b data-en="BREAKING">热点速递</b><span data-en="The global AI race enters industrial deep water as agents, chips, open models and regulation accelerate together.">全球 AI 竞赛进入产业化深水区：Agent、芯片、开放模型与监管同步提速</span></div>
   <div class="region-nav" role="group" aria-label="地区分类">
-    <button data-filter="全部" class="active">全球首页</button><button data-filter="北美" class="">北美</button><button data-filter="亚洲" class="">亚洲</button><button data-filter="欧洲" class="">欧洲</button>
+    <button data-filter="全部" data-en="Global" class="active">全球首页</button><button data-filter="北美" data-en="North America" class="">北美</button><button data-filter="亚洲" data-en="Asia" class="">亚洲</button><button data-filter="欧洲" data-en="Europe" class="">欧洲</button>
   </div>
   <section class="hero" id="top">
     <div class="hero-copy">
       <p class="eyebrow">THE SIGNAL, NOT THE NOISE</p>
-      <h1>读懂 AI 浪潮，<br>而不只是追逐标题。</h1>
-      <p class="intro">筛选全球 AI 领域值得关注的变化，用一句话抓住关键影响。少一点信息焦虑，多一点判断依据。</p>
-      <div class="hero-actions"><a class="primary" href="#news">浏览全球报道 <span>↓</span></a><span>精选 9 条 · 3 个大区</span></div>
+      <h1 data-en="Understand the AI wave, not just the headlines.">读懂 AI 浪潮，而不只是追逐标题。</h1>
+      <p class="intro" data-en="We filter the AI changes that matter and capture their impact in plain language—less information anxiety, more informed judgment.">筛选全球 AI 领域值得关注的变化，用一句话抓住关键影响。少一点信息焦虑，多一点判断依据。</p>
+      <div class="hero-actions"><a class="primary" href="#news" data-en="Explore global coverage ↓">浏览全球报道 ↓</a><span data-en="9 stories · 3 regions">精选 9 条 · 3 个大区</span></div>
     </div>
     <aside class="featured">
-      <div class="featured-top"><span>本期焦点</span><span>AI Agent</span></div>
-      <h2>OpenAI 推出 Presence，把企业 AI Agent 推向生产环境</h2><p>企业部署 AI Agent 的竞争焦点，正在从“模型能不能做”转向权限、评测、护栏与人工升级机制是否足够可靠。</p>
+      <div class="featured-top"><span data-en="FEATURED">本期焦点</span><span data-en="AI Agents">AI Agent</span></div>
+      <h2 data-en="OpenAI launches Presence to bring enterprise AI agents into production">OpenAI 推出 Presence，把企业 AI Agent 推向生产环境</h2><p data-en="The enterprise AI-agent race is shifting from what models can do to whether permissions, evaluations, guardrails and human escalation are dependable.">企业部署 AI Agent 的竞争焦点，正在从“模型能不能做”转向权限、评测、护栏与人工升级机制是否足够可靠。</p>
       <a href="https://openai.com/index/introducing-openai-presence/" target="_blank" rel="noreferrer">阅读原文 ↗</a>
     </aside>
   </section>
@@ -303,11 +307,11 @@ nav a:hover { color: var(--orange); }
       <label class="search"><span>⌕</span><input id="search-input" placeholder="搜索主题、公司或关键词" aria-label="搜索新闻"></label>
     </div>
     <div class="browse-modes" role="group" aria-label="浏览模式">
-      <button type="button" data-mode="latest" class="active">最新报道</button>
-      <button type="button" data-mode="archive">历史归档</button>
-      <button type="button" data-mode="top">TOP 新闻</button>
-      <button type="button" data-mode="timeline">AI 大事记</button>
-      <button type="button" data-mode="knowledge">AI 知识专区</button>
+      <button type="button" data-mode="latest" data-en="Latest" class="active">最新报道</button>
+      <button type="button" data-mode="archive" data-en="Archive">历史归档</button>
+      <button type="button" data-mode="top" data-en="Top Stories">TOP 新闻</button>
+      <button type="button" data-mode="timeline" data-en="AI Milestones">AI 大事记</button>
+      <button type="button" data-mode="knowledge" data-en="AI Glossary">AI 知识专区</button>
     </div>
     <div class="mode-panel" data-panel="archive" hidden>
       <label for="archive-date">选择归档日期</label>
@@ -348,83 +352,83 @@ nav a:hover { color: var(--orange); }
     <div class="news-grid">
   <article class="news-card" data-region="北美" data-date="2026-07-22" data-heat="92" data-order="0" data-search="openai 推出 presence，把企业 ai agent 推向生产环境 企业部署 ai agent 的竞争焦点，正在从“模型能不能做”转向权限、评测、护栏与人工升级机制是否足够可靠。 presence 面向语音和聊天工作流，可连接企业系统并执行获批操作。openai 表示其内部电话支持已能自动解决 75% 的来电问题。 openai 北美">
     <div class="card-index">01</div>
-    <div class="card-meta"><span>北美 · AI Agent</span><time>2026.07.22</time></div>
-    <h3>OpenAI 推出 Presence，把企业 AI Agent 推向生产环境</h3>
+    <div class="card-meta"><span data-en="North America · AI Agents">北美 · AI Agent</span><time>2026.07.22</time></div>
+    <h3 data-en="OpenAI launches Presence to bring enterprise AI agents into production">OpenAI 推出 Presence，把企业 AI Agent 推向生产环境</h3>
     <div class="heat-badge" title="综合影响力、覆盖面、讨论动量、来源权威性与时间衰减">热度 92</div>
-    <div class="takeaway"><b>KEY TAKEAWAY</b><p>企业部署 AI Agent 的竞争焦点，正在从“模型能不能做”转向权限、评测、护栏与人工升级机制是否足够可靠。</p></div>
-    <p class="detail">Presence 面向语音和聊天工作流，可连接企业系统并执行获批操作。OpenAI 表示其内部电话支持已能自动解决 75% 的来电问题。</p>
+    <div class="takeaway"><b>KEY TAKEAWAY</b><p data-en="The enterprise AI-agent race is shifting from what models can do to whether permissions, evaluations, guardrails and human escalation are dependable.">企业部署 AI Agent 的竞争焦点，正在从“模型能不能做”转向权限、评测、护栏与人工升级机制是否足够可靠。</p></div>
+    <p class="detail" data-en="Presence supports voice and chat workflows, connects to enterprise systems and performs approved actions. OpenAI says its internal phone support now automatically resolves 75% of calls.">Presence 面向语音和聊天工作流，可连接企业系统并执行获批操作。OpenAI 表示其内部电话支持已能自动解决 75% 的来电问题。</p>
     <footer><span>OpenAI · 6 分钟</span><a href="https://openai.com/index/introducing-openai-presence/" target="_blank" rel="noreferrer">原文 ↗</a></footer>
   </article>
   <article class="news-card" data-region="北美" data-date="2026-07-24" data-heat="86" data-order="1" data-search="meta 加速迈向 agent 时代，ai 开始连接日历与邮件 消费级 ai 的竞争正从聊天体验转向跨应用执行任务，但长流程可靠性仍是 meta 与头部对手之间的关键差距。 meta ai 开始接入 google calendar 与 gmail，可生成每日更新、辅助研究和规划项目，个人智能助理的入口争夺进一步升温。 axios 北美">
     <div class="card-index">02</div>
-    <div class="card-meta"><span>北美 · AI Agent</span><time>2026.07.24</time></div>
-    <h3>Meta 加速迈向 Agent 时代，AI 开始连接日历与邮件</h3>
+    <div class="card-meta"><span data-en="North America · AI Agents">北美 · AI Agent</span><time>2026.07.24</time></div>
+    <h3 data-en="Meta accelerates into the agent era with calendar and email connections">Meta 加速迈向 Agent 时代，AI 开始连接日历与邮件</h3>
     <div class="heat-badge" title="综合影响力、覆盖面、讨论动量、来源权威性与时间衰减">热度 86</div>
-    <div class="takeaway"><b>KEY TAKEAWAY</b><p>消费级 AI 的竞争正从聊天体验转向跨应用执行任务，但长流程可靠性仍是 Meta 与头部对手之间的关键差距。</p></div>
-    <p class="detail">Meta AI 开始接入 Google Calendar 与 Gmail，可生成每日更新、辅助研究和规划项目，个人智能助理的入口争夺进一步升温。</p>
+    <div class="takeaway"><b>KEY TAKEAWAY</b><p data-en="Consumer AI competition is moving from chat toward cross-app execution, while long-horizon reliability remains the critical gap.">消费级 AI 的竞争正从聊天体验转向跨应用执行任务，但长流程可靠性仍是 Meta 与头部对手之间的关键差距。</p></div>
+    <p class="detail" data-en="Meta AI is connecting to Google Calendar and Gmail for daily updates, research and project planning, intensifying the race to become the personal-assistant entry point.">Meta AI 开始接入 Google Calendar 与 Gmail，可生成每日更新、辅助研究和规划项目，个人智能助理的入口争夺进一步升温。</p>
     <footer><span>Axios · 4 分钟</span><a href="https://www.axios.com/2026/07/24/meta-muse-spark-agents" target="_blank" rel="noreferrer">原文 ↗</a></footer>
   </article>
   <article class="news-card" data-region="北美" data-date="2026-07-24" data-heat="89" data-order="2" data-search="nvidia 等 25 家公司联署支持开放权重模型 美国 ai 产业对开放模型的态度出现明显分层：基础设施与创业公司强调创新扩散，部分头部模型厂商则保持距离。 联署方呼吁政策制定者避免过早限制开放权重模型；openai、anthropic 与 google 未出现在名单中。 tom's hardware 北美">
     <div class="card-index">03</div>
-    <div class="card-meta"><span>北美 · 开放生态</span><time>2026.07.24</time></div>
-    <h3>NVIDIA 等 25 家公司联署支持开放权重模型</h3>
+    <div class="card-meta"><span data-en="North America · Open Ecosystem">北美 · 开放生态</span><time>2026.07.24</time></div>
+    <h3 data-en="NVIDIA and 24 companies back open-weight AI models">NVIDIA 等 25 家公司联署支持开放权重模型</h3>
     <div class="heat-badge" title="综合影响力、覆盖面、讨论动量、来源权威性与时间衰减">热度 89</div>
-    <div class="takeaway"><b>KEY TAKEAWAY</b><p>美国 AI 产业对开放模型的态度出现明显分层：基础设施与创业公司强调创新扩散，部分头部模型厂商则保持距离。</p></div>
-    <p class="detail">联署方呼吁政策制定者避免过早限制开放权重模型；OpenAI、Anthropic 与 Google 未出现在名单中。</p>
+    <div class="takeaway"><b>KEY TAKEAWAY</b><p data-en="The US AI industry is splitting over open models: infrastructure providers and startups emphasize diffusion, while several frontier-model companies remain cautious.">美国 AI 产业对开放模型的态度出现明显分层：基础设施与创业公司强调创新扩散，部分头部模型厂商则保持距离。</p></div>
+    <p class="detail" data-en="The signatories urge policymakers not to restrict open-weight models prematurely; OpenAI, Anthropic and Google did not appear on the list.">联署方呼吁政策制定者避免过早限制开放权重模型；OpenAI、Anthropic 与 Google 未出现在名单中。</p>
     <footer><span>Tom's Hardware · 4 分钟</span><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-and-24-other-companies-sign-open-weights-letter-as-washington-weighs-chinese-ai-model-ban" target="_blank" rel="noreferrer">原文 ↗</a></footer>
   </article>
   <article class="news-card" data-region="亚洲" data-date="2026-07-18" data-heat="88" data-order="3" data-search="中国 kimi k3 改写模型竞争格局 中国开放模型在性能与价格上的追赶，正在压缩美国领先窗口，也让“限制获取”与“保持开放竞争”的政策争论升温。 北京月之暗面推出的 kimi k3 引发全球关注；其表现使亚洲模型生态成为下一轮 ai 竞争的重要变量。 axios 亚洲">
     <div class="card-index">04</div>
-    <div class="card-meta"><span>亚洲 · 前沿模型</span><time>2026.07.18</time></div>
-    <h3>中国 Kimi K3 改写模型竞争格局</h3>
+    <div class="card-meta"><span data-en="Asia · Frontier Models">亚洲 · 前沿模型</span><time>2026.07.18</time></div>
+    <h3 data-en="China's Kimi K3 reshapes the model race">中国 Kimi K3 改写模型竞争格局</h3>
     <div class="heat-badge" title="综合影响力、覆盖面、讨论动量、来源权威性与时间衰减">热度 88</div>
-    <div class="takeaway"><b>KEY TAKEAWAY</b><p>中国开放模型在性能与价格上的追赶，正在压缩美国领先窗口，也让“限制获取”与“保持开放竞争”的政策争论升温。</p></div>
-    <p class="detail">北京月之暗面推出的 Kimi K3 引发全球关注；其表现使亚洲模型生态成为下一轮 AI 竞争的重要变量。</p>
+    <div class="takeaway"><b>KEY TAKEAWAY</b><p data-en="Chinese open models are narrowing the performance-price gap and sharpening the policy debate between restricting access and preserving open competition.">中国开放模型在性能与价格上的追赶，正在压缩美国领先窗口，也让“限制获取”与“保持开放竞争”的政策争论升温。</p></div>
+    <p class="detail" data-en="Moonshot AI's Kimi K3 drew global attention and made Asia's model ecosystem a central variable in the next phase of AI competition.">北京月之暗面推出的 Kimi K3 引发全球关注；其表现使亚洲模型生态成为下一轮 AI 竞争的重要变量。</p>
     <footer><span>Axios · 5 分钟</span><a href="https://www.axios.com/2026/07/18/kimi-k3-ai-models-china-us-japan" target="_blank" rel="noreferrer">原文 ↗</a></footer>
   </article>
   <article class="news-card" data-region="亚洲" data-date="2026-07-25" data-heat="88" data-order="4" data-search="韩国提出成为全球 ai 半导体供应链核心 韩国正在把存储芯片和先进制造优势升级为国家级 ai 战略，目标是成为可信赖的算力生产与供应伙伴。 韩国总统李在明在旧金山公布愿景，强调 ai 半导体、制造能力与国际供应链合作。 yonhap 亚洲">
     <div class="card-index">05</div>
-    <div class="card-meta"><span>亚洲 · 芯片与供应链</span><time>2026.07.25</time></div>
-    <h3>韩国提出成为全球 AI 半导体供应链核心</h3>
+    <div class="card-meta"><span data-en="Asia · Chips &amp; Supply Chain">亚洲 · 芯片与供应链</span><time>2026.07.25</time></div>
+    <h3 data-en="South Korea aims to become a core of the global AI semiconductor supply chain">韩国提出成为全球 AI 半导体供应链核心</h3>
     <div class="heat-badge" title="综合影响力、覆盖面、讨论动量、来源权威性与时间衰减">热度 88</div>
-    <div class="takeaway"><b>KEY TAKEAWAY</b><p>韩国正在把存储芯片和先进制造优势升级为国家级 AI 战略，目标是成为可信赖的算力生产与供应伙伴。</p></div>
-    <p class="detail">韩国总统李在明在旧金山公布愿景，强调 AI 半导体、制造能力与国际供应链合作。</p>
+    <div class="takeaway"><b>KEY TAKEAWAY</b><p data-en="South Korea is turning its memory-chip and advanced-manufacturing strengths into a national AI strategy and a trusted global compute partnership.">韩国正在把存储芯片和先进制造优势升级为国家级 AI 战略，目标是成为可信赖的算力生产与供应伙伴。</p></div>
+    <p class="detail" data-en="President Lee Jae-myung outlined a vision centered on AI semiconductors, manufacturing capacity and international supply-chain cooperation.">韩国总统李在明在旧金山公布愿景，强调 AI 半导体、制造能力与国际供应链合作。</p>
     <footer><span>Yonhap · 4 分钟</span><a href="https://en.yna.co.kr/view/AEN20260725001151315" target="_blank" rel="noreferrer">原文 ↗</a></footer>
   </article>
   <article class="news-card" data-region="亚洲" data-date="2026-07-15" data-heat="80" data-order="5" data-search="日本押注全栈 ai 与机器人产业 日本把精密制造与 ai 结合，试图以机器人和智能工厂缓解劳动力短缺，并形成新的产业增长引擎。 nvidia 与日本企业展示开放模型、机器人和制造方案，产业焦点从模型训练走向物理世界。 nvidia 亚洲">
     <div class="card-index">06</div>
-    <div class="card-meta"><span>亚洲 · 机器人</span><time>2026.07.15</time></div>
-    <h3>日本押注全栈 AI 与机器人产业</h3>
+    <div class="card-meta"><span data-en="Asia · Robotics">亚洲 · 机器人</span><time>2026.07.15</time></div>
+    <h3 data-en="Japan bets on full-stack AI and robotics">日本押注全栈 AI 与机器人产业</h3>
     <div class="heat-badge" title="综合影响力、覆盖面、讨论动量、来源权威性与时间衰减">热度 80</div>
-    <div class="takeaway"><b>KEY TAKEAWAY</b><p>日本把精密制造与 AI 结合，试图以机器人和智能工厂缓解劳动力短缺，并形成新的产业增长引擎。</p></div>
-    <p class="detail">NVIDIA 与日本企业展示开放模型、机器人和制造方案，产业焦点从模型训练走向物理世界。</p>
+    <div class="takeaway"><b>KEY TAKEAWAY</b><p data-en="Japan is combining precision manufacturing with AI to address labor shortages and build a new industrial growth engine.">日本把精密制造与 AI 结合，试图以机器人和智能工厂缓解劳动力短缺，并形成新的产业增长引擎。</p></div>
+    <p class="detail" data-en="NVIDIA and Japanese companies showcased open models, robotics and manufacturing systems as attention moves from model training into the physical world.">NVIDIA 与日本企业展示开放模型、机器人和制造方案，产业焦点从模型训练走向物理世界。</p>
     <footer><span>NVIDIA · 6 分钟</span><a href="https://blogs.nvidia.com/blog/japan-ecosystem-2026/" target="_blank" rel="noreferrer">原文 ↗</a></footer>
   </article>
   <article class="news-card" data-region="欧洲" data-date="2026-07-20" data-heat="88" data-order="6" data-search="欧盟发布 ai act 透明度义务指南 欧洲 ai 监管进入执行细则阶段，生成内容披露、用户告知和系统透明度将从原则转化为具体合规要求。 相关透明度义务将于 2026 年 8 月 2 日开始适用，模型提供者和部署者需要提前调整产品流程。 欧盟委员会 欧洲">
     <div class="card-index">07</div>
-    <div class="card-meta"><span>欧洲 · AI 监管</span><time>2026.07.20</time></div>
-    <h3>欧盟发布 AI Act 透明度义务指南</h3>
+    <div class="card-meta"><span data-en="Europe · AI Regulation">欧洲 · AI 监管</span><time>2026.07.20</time></div>
+    <h3 data-en="EU publishes guidance on AI Act transparency duties">欧盟发布 AI Act 透明度义务指南</h3>
     <div class="heat-badge" title="综合影响力、覆盖面、讨论动量、来源权威性与时间衰减">热度 88</div>
-    <div class="takeaway"><b>KEY TAKEAWAY</b><p>欧洲 AI 监管进入执行细则阶段，生成内容披露、用户告知和系统透明度将从原则转化为具体合规要求。</p></div>
-    <p class="detail">相关透明度义务将于 2026 年 8 月 2 日开始适用，模型提供者和部署者需要提前调整产品流程。</p>
+    <div class="takeaway"><b>KEY TAKEAWAY</b><p data-en="European AI regulation is entering implementation: disclosure, user notice and system transparency are becoming concrete product requirements.">欧洲 AI 监管进入执行细则阶段，生成内容披露、用户告知和系统透明度将从原则转化为具体合规要求。</p></div>
+    <p class="detail" data-en="The transparency obligations begin applying on August 2, 2026, requiring providers and deployers to adjust product and operational processes.">相关透明度义务将于 2026 年 8 月 2 日开始适用，模型提供者和部署者需要提前调整产品流程。</p>
     <footer><span>欧盟委员会 · 5 分钟</span><a href="https://digital-strategy.ec.europa.eu/en/news/commission-publishes-guidelines-transparency-obligations-providers-and-deployers-certain-ai-systems" target="_blank" rel="noreferrer">原文 ↗</a></footer>
   </article>
   <article class="news-card" data-region="欧洲" data-date="2026-07-07" data-heat="77" data-order="7" data-search="欧盟推出先进 ai 网络安全行动方案 欧洲希望同时把先进模型用于网络防御，并降低模型自身带来的攻击风险，主权算力和透明访问条件成为核心议题。 计划覆盖威胁评估、先进模型访问条件、欧洲自主能力建设以及与 enisa 的协作。 欧盟委员会 欧洲">
     <div class="card-index">08</div>
-    <div class="card-meta"><span>欧洲 · 网络安全</span><time>2026.07.07</time></div>
-    <h3>欧盟推出先进 AI 网络安全行动方案</h3>
+    <div class="card-meta"><span data-en="Europe · Cybersecurity">欧洲 · 网络安全</span><time>2026.07.07</time></div>
+    <h3 data-en="EU launches an action plan for advanced-AI cybersecurity">欧盟推出先进 AI 网络安全行动方案</h3>
     <div class="heat-badge" title="综合影响力、覆盖面、讨论动量、来源权威性与时间衰减">热度 77</div>
-    <div class="takeaway"><b>KEY TAKEAWAY</b><p>欧洲希望同时把先进模型用于网络防御，并降低模型自身带来的攻击风险，主权算力和透明访问条件成为核心议题。</p></div>
-    <p class="detail">计划覆盖威胁评估、先进模型访问条件、欧洲自主能力建设以及与 ENISA 的协作。</p>
+    <div class="takeaway"><b>KEY TAKEAWAY</b><p data-en="Europe wants to use frontier models for cyber defense while reducing model-enabled attack risks, with sovereign compute and access conditions at the center.">欧洲希望同时把先进模型用于网络防御，并降低模型自身带来的攻击风险，主权算力和透明访问条件成为核心议题。</p></div>
+    <p class="detail" data-en="The plan covers threat assessment, access to advanced models, European capabilities and cooperation with ENISA.">计划覆盖威胁评估、先进模型访问条件、欧洲自主能力建设以及与 ENISA 的协作。</p>
     <footer><span>欧盟委员会 · 5 分钟</span><a href="https://commission.europa.eu/news-and-media/news/new-eu-plan-address-risks-and-opportunities-advanced-ai-cybersecurity-2026-07-07_en" target="_blank" rel="noreferrer">原文 ↗</a></footer>
   </article>
   <article class="news-card" data-region="欧洲" data-date="2026-07-22" data-heat="85" data-order="8" data-search="google ai overviews 在法国上线，引发流量焦虑 生成式搜索正在改变信息分发：用户更快获得答案，但新闻出版商可能失去搜索点击和直接读者关系。 法国成为 ai overviews 新市场；欧洲媒体持续关注摘要答案对网站流量、版权和广告模式的影响。 le monde 欧洲">
     <div class="card-index">09</div>
-    <div class="card-meta"><span>欧洲 · 搜索与媒体</span><time>2026.07.22</time></div>
-    <h3>Google AI Overviews 在法国上线，引发流量焦虑</h3>
+    <div class="card-meta"><span data-en="Europe · Search &amp; Media">欧洲 · 搜索与媒体</span><time>2026.07.22</time></div>
+    <h3 data-en="Google AI Overviews launches in France and raises traffic concerns">Google AI Overviews 在法国上线，引发流量焦虑</h3>
     <div class="heat-badge" title="综合影响力、覆盖面、讨论动量、来源权威性与时间衰减">热度 85</div>
-    <div class="takeaway"><b>KEY TAKEAWAY</b><p>生成式搜索正在改变信息分发：用户更快获得答案，但新闻出版商可能失去搜索点击和直接读者关系。</p></div>
-    <p class="detail">法国成为 AI Overviews 新市场；欧洲媒体持续关注摘要答案对网站流量、版权和广告模式的影响。</p>
+    <div class="takeaway"><b>KEY TAKEAWAY</b><p data-en="Generative search changes information distribution: users receive faster answers, while publishers may lose clicks and direct reader relationships.">生成式搜索正在改变信息分发：用户更快获得答案，但新闻出版商可能失去搜索点击和直接读者关系。</p></div>
+    <p class="detail" data-en="France became a new AI Overviews market as European media continued debating traffic, copyright and advertising impacts.">法国成为 AI Overviews 新市场；欧洲媒体持续关注摘要答案对网站流量、版权和广告模式的影响。</p>
     <footer><span>Le Monde · 5 分钟</span><a href="https://www.lemonde.fr/en/pixels/article/2026/07/22/google-s-ai-overview-now-available-in-france-raises-anticipation-and-concern_6755715_13.html" target="_blank" rel="noreferrer">原文 ↗</a></footer>
   </article></div>
     <div class="timeline-wrap" hidden>
@@ -432,9 +436,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>07.25</strong><span>2026</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>亚洲 · 芯片与供应链</span><b>重要度 89</b></div>
-      <h3>韩国提出成为全球 AI 半导体供应链核心</h3>
-      <p>韩国把存储芯片与先进制造能力升级为国家 AI 战略，力图成为全球算力建设的关键供应伙伴。</p>
+      <div class="timeline-meta"><span data-en="Asia · Chips &amp; Supply Chain">亚洲 · 芯片与供应链</span><b data-en="SIGNIFICANCE 89">重要度 89</b></div>
+      <h3 data-en="South Korea targets a central role in AI semiconductor supply chains">韩国提出成为全球 AI 半导体供应链核心</h3>
+      <p data-en="The country elevated memory chips and advanced manufacturing into a national AI strategy and a key global compute partnership.">韩国把存储芯片与先进制造能力升级为国家 AI 战略，力图成为全球算力建设的关键供应伙伴。</p>
       <a href="https://en.yna.co.kr/view/AEN20260725001151315" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -442,9 +446,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>07.20</strong><span>2026</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>欧洲 · AI 监管</span><b>重要度 90</b></div>
-      <h3>欧盟发布 AI Act 透明度义务指南</h3>
-      <p>生成内容披露、用户告知与系统透明度从法律原则转化为更具体的产品和运营要求。</p>
+      <div class="timeline-meta"><span data-en="Europe · AI Regulation">欧洲 · AI 监管</span><b data-en="SIGNIFICANCE 90">重要度 90</b></div>
+      <h3 data-en="EU publishes AI Act transparency guidance">欧盟发布 AI Act 透明度义务指南</h3>
+      <p data-en="Disclosure, user notice and system transparency moved from legal principles into specific product and operational requirements.">生成内容披露、用户告知与系统透明度从法律原则转化为更具体的产品和运营要求。</p>
       <a href="https://digital-strategy.ec.europa.eu/en/news/commission-publishes-guidelines-transparency-obligations-providers-and-deployers-certain-ai-systems" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -452,9 +456,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>10.01</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>亚洲 · 芯片与供应链</span><b>重要度 90</b></div>
-      <h3>三星与 SK 加入 Stargate 全球基础设施合作</h3>
-      <p>韩国先进存储芯片与数据中心能力被纳入全球 AI 基础设施扩张，亚洲供应链的重要性进一步上升。</p>
+      <div class="timeline-meta"><span data-en="Asia · Chips &amp; Supply Chain">亚洲 · 芯片与供应链</span><b data-en="SIGNIFICANCE 90">重要度 90</b></div>
+      <h3 data-en="Samsung and SK join global Stargate infrastructure efforts">三星与 SK 加入 Stargate 全球基础设施合作</h3>
+      <p data-en="Korean advanced memory and data-center capacity became part of global AI expansion, increasing Asia's supply-chain importance.">韩国先进存储芯片与数据中心能力被纳入全球 AI 基础设施扩张，亚洲供应链的重要性进一步上升。</p>
       <a href="https://openai.com/index/samsung-and-sk-join-stargate/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -462,9 +466,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>09.23</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · 算力基础设施</span><b>重要度 91</b></div>
-      <h3>Stargate 扩展至五个新的美国数据中心站点</h3>
-      <p>计划容量与投资规模快速落地，算力、能源和建设速度成为模型能力之外的长期竞争壁垒。</p>
+      <div class="timeline-meta"><span data-en="North America · Compute Infrastructure">北美 · 算力基础设施</span><b data-en="SIGNIFICANCE 91">重要度 91</b></div>
+      <h3 data-en="Stargate expands to five new US data-center sites">Stargate 扩展至五个新的美国数据中心站点</h3>
+      <p data-en="Planned capacity and investment moved rapidly toward construction, making compute, energy and deployment speed durable competitive barriers.">计划容量与投资规模快速落地，算力、能源和建设速度成为模型能力之外的长期竞争壁垒。</p>
       <a href="https://openai.com/index/five-new-stargate-sites/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -472,9 +476,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>08.02</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>欧洲 · AI 监管</span><b>重要度 93</b></div>
-      <h3>欧盟通用 AI 模型义务开始适用</h3>
-      <p>通用模型提供者开始面对文档、版权政策与系统性风险治理要求，前沿模型合规从原则进入实际执行。</p>
+      <div class="timeline-meta"><span data-en="Europe · AI Regulation">欧洲 · AI 监管</span><b data-en="SIGNIFICANCE 93">重要度 93</b></div>
+      <h3 data-en="EU obligations for general-purpose AI models take effect">欧盟通用 AI 模型义务开始适用</h3>
+      <p data-en="Model providers began facing documentation, copyright-policy and systemic-risk duties as compliance moved from principle into practice.">通用模型提供者开始面对文档、版权政策与系统性风险治理要求，前沿模型合规从原则进入实际执行。</p>
       <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -482,9 +486,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>05.22</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · AI 编程</span><b>重要度 95</b></div>
-      <h3>Anthropic 发布 Claude 4 模型家族</h3>
-      <p>Claude Opus 4 与 Sonnet 4 强化长期编码、工具使用和 Agent 任务，编程能力成为前沿模型商业化的关键入口。</p>
+      <div class="timeline-meta"><span data-en="North America · AI Coding">北美 · AI 编程</span><b data-en="SIGNIFICANCE 95">重要度 95</b></div>
+      <h3 data-en="Anthropic releases the Claude 4 family">Anthropic 发布 Claude 4 模型家族</h3>
+      <p data-en="Opus 4 and Sonnet 4 strengthened long-running coding, tool use and agent work, making programming a central frontier-model market.">Claude Opus 4 与 Sonnet 4 强化长期编码、工具使用和 Agent 任务，编程能力成为前沿模型商业化的关键入口。</p>
       <a href="https://www.anthropic.com/news/claude-4" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -492,9 +496,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>05.20</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · 生成式视频</span><b>重要度 94</b></div>
-      <h3>Google Veo 3 实现原生音视频联合生成</h3>
-      <p>视频模型首次把画面、对白、音效和环境声统一生成，显著提高 AI 视频的完整度并冲击内容制作流程。</p>
+      <div class="timeline-meta"><span data-en="North America · Generative Video">北美 · 生成式视频</span><b data-en="SIGNIFICANCE 94">重要度 94</b></div>
+      <h3 data-en="Google Veo 3 brings native audio to video generation">Google Veo 3 实现原生音视频联合生成</h3>
+      <p data-en="A video model jointly generated visuals, dialogue, sound effects and ambience, raising the completeness of AI-created video.">视频模型首次把画面、对白、音效和环境声统一生成，显著提高 AI 视频的完整度并冲击内容制作流程。</p>
       <a href="https://blog.google/innovation-and-ai/technology/ai/io-2025-keynote/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -502,9 +506,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>04.29</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>亚洲 · 开放生态</span><b>重要度 90</b></div>
-      <h3>阿里云 Qwen3 系列开放权重</h3>
-      <p>Qwen3 同时覆盖混合专家与稠密模型，并支持思考与快速回答两种模式，亚洲开放模型生态进一步扩大。</p>
+      <div class="timeline-meta"><span data-en="Asia · Open Ecosystem">亚洲 · 开放生态</span><b data-en="SIGNIFICANCE 90">重要度 90</b></div>
+      <h3 data-en="Alibaba releases Qwen3 open weights">阿里云 Qwen3 系列开放权重</h3>
+      <p data-en="Qwen3 covered both MoE and dense models with thinking and fast-response modes, expanding Asia's open-model ecosystem.">Qwen3 同时覆盖混合专家与稠密模型，并支持思考与快速回答两种模式，亚洲开放模型生态进一步扩大。</p>
       <a href="https://qwenlm.github.io/blog/qwen3/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -512,9 +516,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>04.16</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · 推理与 Agent</span><b>重要度 96</b></div>
-      <h3>OpenAI o3 与 o4-mini 将推理和工具调用融合</h3>
-      <p>模型开始在推理过程中主动组合网页、代码、文件与图像工具，Agent 从工作流拼装迈向模型原生决策。</p>
+      <div class="timeline-meta"><span data-en="North America · Reasoning &amp; Agents">北美 · 推理与 Agent</span><b data-en="SIGNIFICANCE 96">重要度 96</b></div>
+      <h3 data-en="OpenAI o3 and o4-mini combine reasoning with tool use">OpenAI o3 与 o4-mini 将推理和工具调用融合</h3>
+      <p data-en="Models began selecting and combining web, code, file and image tools during reasoning, moving agents toward model-native decisions.">模型开始在推理过程中主动组合网页、代码、文件与图像工具，Agent 从工作流拼装迈向模型原生决策。</p>
       <a href="https://openai.com/index/introducing-o3-and-o4-mini/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -522,9 +526,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>04.14</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · 开发者模型</span><b>重要度 88</b></div>
-      <h3>OpenAI 发布 GPT-4.1 系列</h3>
-      <p>更强的代码、指令遵循和长上下文能力进入 API，模型竞争进一步转向可靠执行开发者任务与控制成本。</p>
+      <div class="timeline-meta"><span data-en="North America · Developer Models">北美 · 开发者模型</span><b data-en="SIGNIFICANCE 88">重要度 88</b></div>
+      <h3 data-en="OpenAI releases the GPT-4.1 family">OpenAI 发布 GPT-4.1 系列</h3>
+      <p data-en="Stronger coding, instruction following and long context entered the API as competition focused on reliable execution and cost control.">更强的代码、指令遵循和长上下文能力进入 API，模型竞争进一步转向可靠执行开发者任务与控制成本。</p>
       <a href="https://openai.com/index/gpt-4-1/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -532,9 +536,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>04.05</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · 开放生态</span><b>重要度 89</b></div>
-      <h3>Meta 发布 Llama 4 Scout 与 Maverick</h3>
-      <p>原生多模态、混合专家架构和超长上下文进入 Llama 生态，开放权重模型与闭源 API 的竞争继续升温。</p>
+      <div class="timeline-meta"><span data-en="North America · Open Ecosystem">北美 · 开放生态</span><b data-en="SIGNIFICANCE 89">重要度 89</b></div>
+      <h3 data-en="Meta releases Llama 4 Scout and Maverick">Meta 发布 Llama 4 Scout 与 Maverick</h3>
+      <p data-en="Native multimodality, mixture-of-experts and very long context entered the Llama ecosystem, intensifying open-weight competition.">原生多模态、混合专家架构和超长上下文进入 Llama 生态，开放权重模型与闭源 API 的竞争继续升温。</p>
       <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -542,9 +546,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>03.25</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · 前沿模型</span><b>重要度 93</b></div>
-      <h3>Google 发布 Gemini 2.5 Pro 实验版</h3>
-      <p>“思考模型”成为头部厂商的标准能力路线，复杂推理、代码和长上下文继续成为模型竞赛主战场。</p>
+      <div class="timeline-meta"><span data-en="North America · Frontier Models">北美 · 前沿模型</span><b data-en="SIGNIFICANCE 93">重要度 93</b></div>
+      <h3 data-en="Google releases Gemini 2.5 Pro Experimental">Google 发布 Gemini 2.5 Pro 实验版</h3>
+      <p data-en="Thinking models became a standard frontier direction, with reasoning, coding and long context at the center of the model race.">“思考模型”成为头部厂商的标准能力路线，复杂推理、代码和长上下文继续成为模型竞赛主战场。</p>
       <a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -552,9 +556,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>03.18</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · AI 芯片</span><b>重要度 95</b></div>
-      <h3>NVIDIA 公布 Blackwell Ultra 与下一代算力路线</h3>
-      <p>AI 工厂的竞争从单颗 GPU 转向整机柜、网络、推理吞吐与能源效率，芯片路线开始直接定义模型扩张速度。</p>
+      <div class="timeline-meta"><span data-en="North America · AI Chips">北美 · AI 芯片</span><b data-en="SIGNIFICANCE 95">重要度 95</b></div>
+      <h3 data-en="NVIDIA reveals Blackwell Ultra and its next compute roadmap">NVIDIA 公布 Blackwell Ultra 与下一代算力路线</h3>
+      <p data-en="AI-factory competition shifted from individual GPUs to racks, networking, inference throughput and energy efficiency.">AI 工厂的竞争从单颗 GPU 转向整机柜、网络、推理吞吐与能源效率，芯片路线开始直接定义模型扩张速度。</p>
       <a href="https://blogs.nvidia.com/blog/nvidia-keynote-at-gtc-2025-ai-news-live-updates/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -562,9 +566,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>02.24</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · AI 编程</span><b>重要度 92</b></div>
-      <h3>Claude 3.7 Sonnet 与 Claude Code 同日亮相</h3>
-      <p>混合推理模型与命令行编程 Agent 结合，标志着生成式 AI 从回答代码问题走向直接承担工程任务。</p>
+      <div class="timeline-meta"><span data-en="North America · AI Coding">北美 · AI 编程</span><b data-en="SIGNIFICANCE 92">重要度 92</b></div>
+      <h3 data-en="Claude 3.7 Sonnet and Claude Code debut together">Claude 3.7 Sonnet 与 Claude Code 同日亮相</h3>
+      <p data-en="A hybrid reasoning model paired with a command-line coding agent marked the shift from answering code questions to carrying out engineering work.">混合推理模型与命令行编程 Agent 结合，标志着生成式 AI 从回答代码问题走向直接承担工程任务。</p>
       <a href="https://www.anthropic.com/news/claude-3-7-sonnet" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -572,9 +576,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>02.10</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>欧洲 · 全球治理</span><b>重要度 91</b></div>
-      <h3>巴黎 AI 行动峰会召开</h3>
-      <p>近百个国家围绕开放创新、公共利益、安全与国际治理展开讨论，欧洲试图在中美之外塑造 AI 治理议程。</p>
+      <div class="timeline-meta"><span data-en="Europe · Global Governance">欧洲 · 全球治理</span><b data-en="SIGNIFICANCE 91">重要度 91</b></div>
+      <h3 data-en="The Paris AI Action Summit convenes">巴黎 AI 行动峰会召开</h3>
+      <p data-en="Nearly 100 countries discussed open innovation, public interest, safety and governance as Europe sought to shape an agenda beyond the US-China rivalry.">近百个国家围绕开放创新、公共利益、安全与国际治理展开讨论，欧洲试图在中美之外塑造 AI 治理议程。</p>
       <a href="https://www.elysee.fr/en/sommet-pour-l-action-sur-l-ia/presentation" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -582,9 +586,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>02.06</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>欧洲 · 消费级 AI</span><b>重要度 82</b></div>
-      <h3>Mistral 推出新版 Le Chat</h3>
-      <p>欧洲本土模型公司正面进入个人与企业助手市场，并以高速推理、移动端和私有部署强调差异化竞争。</p>
+      <div class="timeline-meta"><span data-en="Europe · Consumer AI">欧洲 · 消费级 AI</span><b data-en="SIGNIFICANCE 82">重要度 82</b></div>
+      <h3 data-en="Mistral launches a new Le Chat">Mistral 推出新版 Le Chat</h3>
+      <p data-en="A European model company entered the consumer and enterprise assistant market with fast inference, mobile access and private deployment.">欧洲本土模型公司正面进入个人与企业助手市场，并以高速推理、移动端和私有部署强调差异化竞争。</p>
       <a href="https://mistral.ai/news/all-new-le-chat/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -592,9 +596,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>02.02</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>欧洲 · AI 监管</span><b>重要度 94</b></div>
-      <h3>欧盟《AI 法案》首批规则正式适用</h3>
-      <p>AI 素养、AI 系统定义和少数被禁止的高风险用途开始落地，全球首部综合性 AI 法律进入分阶段执行期。</p>
+      <div class="timeline-meta"><span data-en="Europe · AI Regulation">欧洲 · AI 监管</span><b data-en="SIGNIFICANCE 94">重要度 94</b></div>
+      <h3 data-en="The first EU AI Act rules begin to apply">欧盟《AI 法案》首批规则正式适用</h3>
+      <p data-en="AI literacy, the definition of AI systems and a limited set of prohibited uses took effect as the world's first comprehensive AI law entered implementation.">AI 素养、AI 系统定义和少数被禁止的高风险用途开始落地，全球首部综合性 AI 法律进入分阶段执行期。</p>
       <a href="https://digital-strategy.ec.europa.eu/en/news/first-rules-artificial-intelligence-act-are-now-applicable" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -602,9 +606,9 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>01.21</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>北美 · 算力基础设施</span><b>重要度 97</b></div>
-      <h3>Stargate 宣布在美国建设超大规模 AI 基础设施</h3>
-      <p>OpenAI、SoftBank、Oracle 与 MGX 提出四年投入 5,000 亿美元，AI 竞争进一步延伸到电力、芯片和数据中心。</p>
+      <div class="timeline-meta"><span data-en="North America · Compute Infrastructure">北美 · 算力基础设施</span><b data-en="SIGNIFICANCE 97">重要度 97</b></div>
+      <h3 data-en="Stargate announces hyperscale US AI infrastructure">Stargate 宣布在美国建设超大规模 AI 基础设施</h3>
+      <p data-en="OpenAI, SoftBank, Oracle and MGX proposed investing $500 billion over four years, extending AI competition into power, chips and data centers.">OpenAI、SoftBank、Oracle 与 MGX 提出四年投入 5,000 亿美元，AI 竞争进一步延伸到电力、芯片和数据中心。</p>
       <a href="https://openai.com/index/announcing-the-stargate-project/" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article>
@@ -612,232 +616,232 @@ nav a:hover { color: var(--orange); }
     <div class="timeline-date"><strong>01.20</strong><span>2025</span></div>
     <div class="timeline-dot" aria-hidden="true"></div>
     <div class="timeline-content">
-      <div class="timeline-meta"><span>亚洲 · 推理模型</span><b>重要度 98</b></div>
-      <h3>DeepSeek-R1 发布并开放模型权重</h3>
-      <p>高性能推理模型以开放权重和更低使用成本进入全球视野，迅速改变市场对中美模型差距与开源路线的判断。</p>
+      <div class="timeline-meta"><span data-en="Asia · Reasoning Models">亚洲 · 推理模型</span><b data-en="SIGNIFICANCE 98">重要度 98</b></div>
+      <h3 data-en="DeepSeek-R1 launches with open model weights">DeepSeek-R1 发布并开放模型权重</h3>
+      <p data-en="A high-performing reasoning model with open weights and lower usage costs rapidly changed global assumptions about the China-US model gap and open development.">高性能推理模型以开放权重和更低使用成本进入全球视野，迅速改变市场对中美模型差距与开源路线的判断。</p>
       <a href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank" rel="noreferrer">查看事件来源 ↗</a>
     </div>
   </article></div>
     <div class="knowledge-wrap" hidden>
-      <div class="knowledge-intro"><h3>AI 热词，不只知道名字。</h3><p>面积和颜色代表编辑关注度：越大、越红，表示它越频繁地影响当前 AI 产品、研究与产业讨论。点击任意词块查看通俗解释。</p></div>
+      <div class="knowledge-intro"><h3 data-en="Know the ideas, not just the buzzwords.">AI 热词，不只知道名字。</h3><p data-en="Area and color represent editorial attention. Larger and redder terms have greater influence on current AI products, research and industry. Click any tile for a plain-language explanation.">面积和颜色代表编辑关注度：越大、越红，表示它越频繁地影响当前 AI 产品、研究与产业讨论。点击任意词块查看通俗解释。</p></div>
       <div class="heat-legend"><span>关注度</span><i></i><span>基础</span><i></i><span>升温</span><i></i><span>热门</span></div>
       <div class="term-heatmap">
   <button class="term-tile hot" type="button" style="--term-weight:5" data-term-index="0" data-term-search="ai agent 产品形态 能够规划步骤、调用工具并持续执行任务的 ai 系统。 它把 ai 从“给答案”推进到“把事情做完”，是企业自动化和个人助手的核心方向。" aria-expanded="false">
-    <span class="term-category">产品形态</span>
-    <strong>AI Agent</strong>
-    <span class="term-heat">关注度 98</span>
-    <span class="term-summary">能够规划步骤、调用工具并持续执行任务的 AI 系统。</span>
+    <span class="term-category" data-en="Product">产品形态</span>
+    <strong data-en="AI Agent">AI Agent</strong>
+    <span class="term-heat" data-en="INTEREST 98">关注度 98</span>
+    <span class="term-summary" data-en="An AI system that plans steps, calls tools and continues working toward a goal.">能够规划步骤、调用工具并持续执行任务的 AI 系统。</span>
   </button>
   <button class="term-tile hot" type="button" style="--term-weight:5" data-term-index="1" data-term-search="推理模型 模型能力 在回答前投入更多计算进行分步分析、自检和修正的模型。 它显著提升数学、代码、科学和复杂决策表现，但通常更慢、成本更高。" aria-expanded="false">
-    <span class="term-category">模型能力</span>
-    <strong>推理模型</strong>
-    <span class="term-heat">关注度 97</span>
-    <span class="term-summary">在回答前投入更多计算进行分步分析、自检和修正的模型。</span>
+    <span class="term-category" data-en="Model Capability">模型能力</span>
+    <strong data-en="Reasoning Model">推理模型</strong>
+    <span class="term-heat" data-en="INTEREST 97">关注度 97</span>
+    <span class="term-summary" data-en="A model that spends more computation on step-by-step analysis, checking and correction before answering.">在回答前投入更多计算进行分步分析、自检和修正的模型。</span>
   </button>
   <button class="term-tile hot" type="button" style="--term-weight:4" data-term-index="2" data-term-search="多模态 模型能力 同一模型理解或生成文字、图像、语音、视频等多种信息。 多模态让 ai 更接近人类感知世界的方式，也是实时助手与机器人的基础。" aria-expanded="false">
-    <span class="term-category">模型能力</span>
-    <strong>多模态</strong>
-    <span class="term-heat">关注度 95</span>
-    <span class="term-summary">同一模型理解或生成文字、图像、语音、视频等多种信息。</span>
+    <span class="term-category" data-en="Model Capability">模型能力</span>
+    <strong data-en="Multimodal AI">多模态</strong>
+    <span class="term-heat" data-en="INTEREST 95">关注度 95</span>
+    <span class="term-summary" data-en="A model that understands or generates several media types such as text, images, audio and video.">同一模型理解或生成文字、图像、语音、视频等多种信息。</span>
   </button>
   <button class="term-tile hot" type="button" style="--term-weight:4" data-term-index="3" data-term-search="具身智能 机器人 让 ai 通过机器人身体感知环境、学习并完成现实世界动作。 它连接软件智能与物理世界，可能改变制造、物流、家务和养老服务。" aria-expanded="false">
-    <span class="term-category">机器人</span>
-    <strong>具身智能</strong>
-    <span class="term-heat">关注度 94</span>
-    <span class="term-summary">让 AI 通过机器人身体感知环境、学习并完成现实世界动作。</span>
+    <span class="term-category" data-en="Robotics">机器人</span>
+    <strong data-en="Embodied AI">具身智能</strong>
+    <span class="term-heat" data-en="INTEREST 94">关注度 94</span>
+    <span class="term-summary" data-en="AI that perceives and acts in the physical world through a robot body.">让 AI 通过机器人身体感知环境、学习并完成现实世界动作。</span>
   </button>
   <button class="term-tile hot" type="button" style="--term-weight:4" data-term-index="4" data-term-search="世界模型 前沿研究 学习环境运行规律，并预测行动后果的内部模型。 被视为自动驾驶、机器人和通用智能进行规划与模拟的重要技术路线。" aria-expanded="false">
-    <span class="term-category">前沿研究</span>
-    <strong>世界模型</strong>
-    <span class="term-heat">关注度 92</span>
-    <span class="term-summary">学习环境运行规律，并预测行动后果的内部模型。</span>
+    <span class="term-category" data-en="Frontier Research">前沿研究</span>
+    <strong data-en="World Model">世界模型</strong>
+    <span class="term-heat" data-en="INTEREST 92">关注度 92</span>
+    <span class="term-summary" data-en="An internal model that learns how an environment works and predicts the consequences of actions.">学习环境运行规律，并预测行动后果的内部模型。</span>
   </button>
   <button class="term-tile warm" type="button" style="--term-weight:4" data-term-index="5" data-term-search="mcp 开发生态 model context protocol，一种让 ai 应用以统一方式连接工具和数据源的开放协议。 它试图成为 ai 工具连接层的通用接口，降低每个应用重复集成的成本。" aria-expanded="false">
-    <span class="term-category">开发生态</span>
-    <strong>MCP</strong>
-    <span class="term-heat">关注度 91</span>
-    <span class="term-summary">Model Context Protocol，一种让 AI 应用以统一方式连接工具和数据源的开放协议。</span>
+    <span class="term-category" data-en="Developer Ecosystem">开发生态</span>
+    <strong data-en="MCP">MCP</strong>
+    <span class="term-heat" data-en="INTEREST 91">关注度 91</span>
+    <span class="term-summary" data-en="Model Context Protocol, an open protocol for connecting AI applications to tools and data sources.">Model Context Protocol，一种让 AI 应用以统一方式连接工具和数据源的开放协议。</span>
   </button>
   <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="6" data-term-search="rag 企业应用 检索增强生成：先从可信资料中找内容，再让模型据此回答。 它能补充私有知识、减少过时信息和幻觉，是企业知识助手的常见架构。" aria-expanded="false">
-    <span class="term-category">企业应用</span>
-    <strong>RAG</strong>
-    <span class="term-heat">关注度 90</span>
-    <span class="term-summary">检索增强生成：先从可信资料中找内容，再让模型据此回答。</span>
+    <span class="term-category" data-en="Enterprise AI">企业应用</span>
+    <strong data-en="RAG">RAG</strong>
+    <span class="term-heat" data-en="INTEREST 90">关注度 90</span>
+    <span class="term-summary" data-en="Retrieval-augmented generation: find relevant trusted material first, then answer using it.">检索增强生成：先从可信资料中找内容，再让模型据此回答。</span>
   </button>
   <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="7" data-term-search="幻觉 安全与质量 模型生成听起来合理、但事实错误或并无依据的内容。 这是医疗、法律、金融和企业应用必须通过来源、评测与人工复核控制的风险。" aria-expanded="false">
-    <span class="term-category">安全与质量</span>
-    <strong>幻觉</strong>
-    <span class="term-heat">关注度 89</span>
-    <span class="term-summary">模型生成听起来合理、但事实错误或并无依据的内容。</span>
+    <span class="term-category" data-en="Safety &amp; Quality">安全与质量</span>
+    <strong data-en="Hallucination">幻觉</strong>
+    <span class="term-heat" data-en="INTEREST 89">关注度 89</span>
+    <span class="term-summary" data-en="Content that sounds plausible but is factually wrong or unsupported.">模型生成听起来合理、但事实错误或并无依据的内容。</span>
   </button>
   <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="8" data-term-search="上下文窗口 模型能力 模型一次能够读取和处理的信息总量。 窗口越大，越能处理长文档和大型代码库，但不等同于真正理解或永久记忆。" aria-expanded="false">
-    <span class="term-category">模型能力</span>
-    <strong>上下文窗口</strong>
-    <span class="term-heat">关注度 88</span>
-    <span class="term-summary">模型一次能够读取和处理的信息总量。</span>
+    <span class="term-category" data-en="Model Capability">模型能力</span>
+    <strong data-en="Context Window">上下文窗口</strong>
+    <span class="term-heat" data-en="INTEREST 88">关注度 88</span>
+    <span class="term-summary" data-en="The amount of information a model can process in one request.">模型一次能够读取和处理的信息总量。</span>
   </button>
   <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="9" data-term-search="moe 模型架构 混合专家架构：每次只激活模型中的部分专家网络处理任务。 它能在扩大总参数量的同时控制计算成本，是多个前沿开放模型的重要架构。" aria-expanded="false">
-    <span class="term-category">模型架构</span>
-    <strong>MoE</strong>
-    <span class="term-heat">关注度 87</span>
-    <span class="term-summary">混合专家架构：每次只激活模型中的部分专家网络处理任务。</span>
+    <span class="term-category" data-en="Architecture">模型架构</span>
+    <strong data-en="MoE">MoE</strong>
+    <span class="term-heat" data-en="INTEREST 87">关注度 87</span>
+    <span class="term-summary" data-en="Mixture of Experts, an architecture that activates only part of a model for each input.">混合专家架构：每次只激活模型中的部分专家网络处理任务。</span>
   </button>
   <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="10" data-term-search="开放权重 开放生态 模型参数可被下载、运行或进一步训练，但许可条件不一定等同于开源软件。 它影响技术自主、研究透明度、部署成本以及安全治理方式。" aria-expanded="false">
-    <span class="term-category">开放生态</span>
-    <strong>开放权重</strong>
-    <span class="term-heat">关注度 86</span>
-    <span class="term-summary">模型参数可被下载、运行或进一步训练，但许可条件不一定等同于开源软件。</span>
+    <span class="term-category" data-en="Open Ecosystem">开放生态</span>
+    <strong data-en="Open Weights">开放权重</strong>
+    <span class="term-heat" data-en="INTEREST 86">关注度 86</span>
+    <span class="term-summary" data-en="Model parameters that can be downloaded, run or adapted, under license terms that may differ from open-source software.">模型参数可被下载、运行或进一步训练，但许可条件不一定等同于开源软件。</span>
   </button>
   <button class="term-tile warm" type="button" style="--term-weight:3" data-term-index="11" data-term-search="token 基础概念 模型处理文本时使用的基本片段，可能是一个字、词或词的一部分。 上下文长度、api 价格和输出速度通常都以 token 计算。" aria-expanded="false">
-    <span class="term-category">基础概念</span>
-    <strong>Token</strong>
-    <span class="term-heat">关注度 85</span>
-    <span class="term-summary">模型处理文本时使用的基本片段，可能是一个字、词或词的一部分。</span>
+    <span class="term-category" data-en="Fundamentals">基础概念</span>
+    <strong data-en="Token">Token</strong>
+    <span class="term-heat" data-en="INTEREST 85">关注度 85</span>
+    <span class="term-summary" data-en="The basic unit a model uses to process text, often a character, word or part of a word.">模型处理文本时使用的基本片段，可能是一个字、词或词的一部分。</span>
   </button>
   <button class="term-tile warm" type="button" style="--term-weight:2" data-term-index="12" data-term-search="ai 推理 算力 训练完成后，模型接收输入并生成结果的计算过程。 随着用户和 agent 增长，推理成本、延迟与能源消耗正在成为产业竞争重点。" aria-expanded="false">
-    <span class="term-category">算力</span>
-    <strong>AI 推理</strong>
-    <span class="term-heat">关注度 84</span>
-    <span class="term-summary">训练完成后，模型接收输入并生成结果的计算过程。</span>
+    <span class="term-category" data-en="Compute">算力</span>
+    <strong data-en="AI Inference">AI 推理</strong>
+    <span class="term-heat" data-en="INTEREST 84">关注度 84</span>
+    <span class="term-summary" data-en="The computation performed when a trained model receives input and generates a result.">训练完成后，模型接收输入并生成结果的计算过程。</span>
   </button>
   <button class="term-tile cool" type="button" style="--term-weight:2" data-term-index="13" data-term-search="对齐 安全与质量 让模型行为更符合人类意图、规则和安全目标的一系列方法。 对齐决定模型是否可控、诚实且适合真实场景，也是前沿 ai 安全的核心问题。" aria-expanded="false">
-    <span class="term-category">安全与质量</span>
-    <strong>对齐</strong>
-    <span class="term-heat">关注度 82</span>
-    <span class="term-summary">让模型行为更符合人类意图、规则和安全目标的一系列方法。</span>
+    <span class="term-category" data-en="Safety &amp; Quality">安全与质量</span>
+    <strong data-en="Alignment">对齐</strong>
+    <span class="term-heat" data-en="INTEREST 82">关注度 82</span>
+    <span class="term-summary" data-en="Methods for making model behavior better match human intent, rules and safety goals.">让模型行为更符合人类意图、规则和安全目标的一系列方法。</span>
   </button>
   <button class="term-tile cool" type="button" style="--term-weight:2" data-term-index="14" data-term-search="蒸馏 模型训练 让较小模型学习较大模型的输出或推理模式。 蒸馏能把部分前沿能力迁移到成本更低、更容易本地部署的小模型。" aria-expanded="false">
-    <span class="term-category">模型训练</span>
-    <strong>蒸馏</strong>
-    <span class="term-heat">关注度 80</span>
-    <span class="term-summary">让较小模型学习较大模型的输出或推理模式。</span>
+    <span class="term-category" data-en="Model Training">模型训练</span>
+    <strong data-en="Distillation">蒸馏</strong>
+    <span class="term-heat" data-en="INTEREST 80">关注度 80</span>
+    <span class="term-summary" data-en="Training a smaller model to learn from the outputs or reasoning patterns of a larger model.">让较小模型学习较大模型的输出或推理模式。</span>
   </button>
   <button class="term-tile cool" type="button" style="--term-weight:1" data-term-index="15" data-term-search="微调 模型训练 用特定数据继续训练基础模型，使它更适合某类任务、语气或领域。 它能增强专业适配，但数据质量、成本和模型更新维护都是现实门槛。" aria-expanded="false">
-    <span class="term-category">模型训练</span>
-    <strong>微调</strong>
-    <span class="term-heat">关注度 78</span>
-    <span class="term-summary">用特定数据继续训练基础模型，使它更适合某类任务、语气或领域。</span>
+    <span class="term-category" data-en="Model Training">模型训练</span>
+    <strong data-en="Fine-tuning">微调</strong>
+    <span class="term-heat" data-en="INTEREST 78">关注度 78</span>
+    <span class="term-summary" data-en="Continuing to train a base model on specialized data for a task, style or domain.">用特定数据继续训练基础模型，使它更适合某类任务、语气或领域。</span>
   </button>
   <button class="term-tile cool" type="button" style="--term-weight:1" data-term-index="16" data-term-search="向量数据库 开发生态 存储和检索文本、图片等内容的向量表示，用相似度寻找相关信息。 它常用于语义搜索和 rag，但并非所有知识库都必须使用专用向量数据库。" aria-expanded="false">
-    <span class="term-category">开发生态</span>
-    <strong>向量数据库</strong>
-    <span class="term-heat">关注度 76</span>
-    <span class="term-summary">存储和检索文本、图片等内容的向量表示，用相似度寻找相关信息。</span>
+    <span class="term-category" data-en="Developer Ecosystem">开发生态</span>
+    <strong data-en="Vector Database">向量数据库</strong>
+    <span class="term-heat" data-en="INTEREST 76">关注度 76</span>
+    <span class="term-summary" data-en="A system for storing and retrieving vector representations by similarity.">存储和检索文本、图片等内容的向量表示，用相似度寻找相关信息。</span>
   </button>
   <button class="term-tile cool" type="button" style="--term-weight:1" data-term-index="17" data-term-search="量化 模型部署 用更低精度表示模型参数，减少显存占用并提升推理速度。 量化让大模型更容易在个人电脑、手机和边缘设备运行，但可能损失少量能力。" aria-expanded="false">
-    <span class="term-category">模型部署</span>
-    <strong>量化</strong>
-    <span class="term-heat">关注度 74</span>
-    <span class="term-summary">用更低精度表示模型参数，减少显存占用并提升推理速度。</span>
+    <span class="term-category" data-en="Deployment">模型部署</span>
+    <strong data-en="Quantization">量化</strong>
+    <span class="term-heat" data-en="INTEREST 74">关注度 74</span>
+    <span class="term-summary" data-en="Representing model parameters at lower precision to reduce memory and improve inference speed.">用更低精度表示模型参数，减少显存占用并提升推理速度。</span>
   </button></div>
       <div class="term-details">
   <article class="term-detail" data-term-detail="0" hidden>
-    <div><span>产品形态</span><b>关注度 98</b></div>
-    <h3>AI Agent</h3>
-    <p><strong>它是什么：</strong>能够规划步骤、调用工具并持续执行任务的 AI 系统。</p>
-    <p><strong>为什么重要：</strong>它把 AI 从“给答案”推进到“把事情做完”，是企业自动化和个人助手的核心方向。</p>
+    <div><span data-en="Product">产品形态</span><b data-en="INTEREST 98">关注度 98</b></div>
+    <h3 data-en="AI Agent">AI Agent</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="An AI system that plans steps, calls tools and continues working toward a goal.">能够规划步骤、调用工具并持续执行任务的 AI 系统。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It moves AI from giving answers to completing work, powering enterprise automation and personal assistants.">它把 AI 从“给答案”推进到“把事情做完”，是企业自动化和个人助手的核心方向。</span></p>
   </article>
   <article class="term-detail" data-term-detail="1" hidden>
-    <div><span>模型能力</span><b>关注度 97</b></div>
-    <h3>推理模型</h3>
-    <p><strong>它是什么：</strong>在回答前投入更多计算进行分步分析、自检和修正的模型。</p>
-    <p><strong>为什么重要：</strong>它显著提升数学、代码、科学和复杂决策表现，但通常更慢、成本更高。</p>
+    <div><span data-en="Model Capability">模型能力</span><b data-en="INTEREST 97">关注度 97</b></div>
+    <h3 data-en="Reasoning Model">推理模型</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="A model that spends more computation on step-by-step analysis, checking and correction before answering.">在回答前投入更多计算进行分步分析、自检和修正的模型。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It improves math, coding, science and complex decisions, usually with higher latency and cost.">它显著提升数学、代码、科学和复杂决策表现，但通常更慢、成本更高。</span></p>
   </article>
   <article class="term-detail" data-term-detail="2" hidden>
-    <div><span>模型能力</span><b>关注度 95</b></div>
-    <h3>多模态</h3>
-    <p><strong>它是什么：</strong>同一模型理解或生成文字、图像、语音、视频等多种信息。</p>
-    <p><strong>为什么重要：</strong>多模态让 AI 更接近人类感知世界的方式，也是实时助手与机器人的基础。</p>
+    <div><span data-en="Model Capability">模型能力</span><b data-en="INTEREST 95">关注度 95</b></div>
+    <h3 data-en="Multimodal AI">多模态</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="A model that understands or generates several media types such as text, images, audio and video.">同一模型理解或生成文字、图像、语音、视频等多种信息。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It brings AI closer to human perception and underpins real-time assistants and robotics.">多模态让 AI 更接近人类感知世界的方式，也是实时助手与机器人的基础。</span></p>
   </article>
   <article class="term-detail" data-term-detail="3" hidden>
-    <div><span>机器人</span><b>关注度 94</b></div>
-    <h3>具身智能</h3>
-    <p><strong>它是什么：</strong>让 AI 通过机器人身体感知环境、学习并完成现实世界动作。</p>
-    <p><strong>为什么重要：</strong>它连接软件智能与物理世界，可能改变制造、物流、家务和养老服务。</p>
+    <div><span data-en="Robotics">机器人</span><b data-en="INTEREST 94">关注度 94</b></div>
+    <h3 data-en="Embodied AI">具身智能</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="AI that perceives and acts in the physical world through a robot body.">让 AI 通过机器人身体感知环境、学习并完成现实世界动作。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It connects software intelligence with manufacturing, logistics, home assistance and elder care.">它连接软件智能与物理世界，可能改变制造、物流、家务和养老服务。</span></p>
   </article>
   <article class="term-detail" data-term-detail="4" hidden>
-    <div><span>前沿研究</span><b>关注度 92</b></div>
-    <h3>世界模型</h3>
-    <p><strong>它是什么：</strong>学习环境运行规律，并预测行动后果的内部模型。</p>
-    <p><strong>为什么重要：</strong>被视为自动驾驶、机器人和通用智能进行规划与模拟的重要技术路线。</p>
+    <div><span data-en="Frontier Research">前沿研究</span><b data-en="INTEREST 92">关注度 92</b></div>
+    <h3 data-en="World Model">世界模型</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="An internal model that learns how an environment works and predicts the consequences of actions.">学习环境运行规律，并预测行动后果的内部模型。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It is a major approach for planning in autonomous driving, robotics and more general intelligence.">被视为自动驾驶、机器人和通用智能进行规划与模拟的重要技术路线。</span></p>
   </article>
   <article class="term-detail" data-term-detail="5" hidden>
-    <div><span>开发生态</span><b>关注度 91</b></div>
-    <h3>MCP</h3>
-    <p><strong>它是什么：</strong>Model Context Protocol，一种让 AI 应用以统一方式连接工具和数据源的开放协议。</p>
-    <p><strong>为什么重要：</strong>它试图成为 AI 工具连接层的通用接口，降低每个应用重复集成的成本。</p>
+    <div><span data-en="Developer Ecosystem">开发生态</span><b data-en="INTEREST 91">关注度 91</b></div>
+    <h3 data-en="MCP">MCP</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="Model Context Protocol, an open protocol for connecting AI applications to tools and data sources.">Model Context Protocol，一种让 AI 应用以统一方式连接工具和数据源的开放协议。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It aims to become a shared integration layer and reduce repeated custom work.">它试图成为 AI 工具连接层的通用接口，降低每个应用重复集成的成本。</span></p>
   </article>
   <article class="term-detail" data-term-detail="6" hidden>
-    <div><span>企业应用</span><b>关注度 90</b></div>
-    <h3>RAG</h3>
-    <p><strong>它是什么：</strong>检索增强生成：先从可信资料中找内容，再让模型据此回答。</p>
-    <p><strong>为什么重要：</strong>它能补充私有知识、减少过时信息和幻觉，是企业知识助手的常见架构。</p>
+    <div><span data-en="Enterprise AI">企业应用</span><b data-en="INTEREST 90">关注度 90</b></div>
+    <h3 data-en="RAG">RAG</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="Retrieval-augmented generation: find relevant trusted material first, then answer using it.">检索增强生成：先从可信资料中找内容，再让模型据此回答。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It adds private or current knowledge and can reduce hallucination in enterprise assistants.">它能补充私有知识、减少过时信息和幻觉，是企业知识助手的常见架构。</span></p>
   </article>
   <article class="term-detail" data-term-detail="7" hidden>
-    <div><span>安全与质量</span><b>关注度 89</b></div>
-    <h3>幻觉</h3>
-    <p><strong>它是什么：</strong>模型生成听起来合理、但事实错误或并无依据的内容。</p>
-    <p><strong>为什么重要：</strong>这是医疗、法律、金融和企业应用必须通过来源、评测与人工复核控制的风险。</p>
+    <div><span data-en="Safety &amp; Quality">安全与质量</span><b data-en="INTEREST 89">关注度 89</b></div>
+    <h3 data-en="Hallucination">幻觉</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="Content that sounds plausible but is factually wrong or unsupported.">模型生成听起来合理、但事实错误或并无依据的内容。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It is a critical risk in medicine, law, finance and enterprise use, requiring sources, evaluation and review.">这是医疗、法律、金融和企业应用必须通过来源、评测与人工复核控制的风险。</span></p>
   </article>
   <article class="term-detail" data-term-detail="8" hidden>
-    <div><span>模型能力</span><b>关注度 88</b></div>
-    <h3>上下文窗口</h3>
-    <p><strong>它是什么：</strong>模型一次能够读取和处理的信息总量。</p>
-    <p><strong>为什么重要：</strong>窗口越大，越能处理长文档和大型代码库，但不等同于真正理解或永久记忆。</p>
+    <div><span data-en="Model Capability">模型能力</span><b data-en="INTEREST 88">关注度 88</b></div>
+    <h3 data-en="Context Window">上下文窗口</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="The amount of information a model can process in one request.">模型一次能够读取和处理的信息总量。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="A larger window helps with long documents and codebases, but does not guarantee understanding or permanent memory.">窗口越大，越能处理长文档和大型代码库，但不等同于真正理解或永久记忆。</span></p>
   </article>
   <article class="term-detail" data-term-detail="9" hidden>
-    <div><span>模型架构</span><b>关注度 87</b></div>
-    <h3>MoE</h3>
-    <p><strong>它是什么：</strong>混合专家架构：每次只激活模型中的部分专家网络处理任务。</p>
-    <p><strong>为什么重要：</strong>它能在扩大总参数量的同时控制计算成本，是多个前沿开放模型的重要架构。</p>
+    <div><span data-en="Architecture">模型架构</span><b data-en="INTEREST 87">关注度 87</b></div>
+    <h3 data-en="MoE">MoE</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="Mixture of Experts, an architecture that activates only part of a model for each input.">混合专家架构：每次只激活模型中的部分专家网络处理任务。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It expands total capacity while controlling computation and is widely used in frontier open models.">它能在扩大总参数量的同时控制计算成本，是多个前沿开放模型的重要架构。</span></p>
   </article>
   <article class="term-detail" data-term-detail="10" hidden>
-    <div><span>开放生态</span><b>关注度 86</b></div>
-    <h3>开放权重</h3>
-    <p><strong>它是什么：</strong>模型参数可被下载、运行或进一步训练，但许可条件不一定等同于开源软件。</p>
-    <p><strong>为什么重要：</strong>它影响技术自主、研究透明度、部署成本以及安全治理方式。</p>
+    <div><span data-en="Open Ecosystem">开放生态</span><b data-en="INTEREST 86">关注度 86</b></div>
+    <h3 data-en="Open Weights">开放权重</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="Model parameters that can be downloaded, run or adapted, under license terms that may differ from open-source software.">模型参数可被下载、运行或进一步训练，但许可条件不一定等同于开源软件。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="They affect autonomy, research transparency, deployment cost and safety governance.">它影响技术自主、研究透明度、部署成本以及安全治理方式。</span></p>
   </article>
   <article class="term-detail" data-term-detail="11" hidden>
-    <div><span>基础概念</span><b>关注度 85</b></div>
-    <h3>Token</h3>
-    <p><strong>它是什么：</strong>模型处理文本时使用的基本片段，可能是一个字、词或词的一部分。</p>
-    <p><strong>为什么重要：</strong>上下文长度、API 价格和输出速度通常都以 Token 计算。</p>
+    <div><span data-en="Fundamentals">基础概念</span><b data-en="INTEREST 85">关注度 85</b></div>
+    <h3 data-en="Token">Token</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="The basic unit a model uses to process text, often a character, word or part of a word.">模型处理文本时使用的基本片段，可能是一个字、词或词的一部分。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="Context limits, API prices and output speed are commonly measured in tokens.">上下文长度、API 价格和输出速度通常都以 Token 计算。</span></p>
   </article>
   <article class="term-detail" data-term-detail="12" hidden>
-    <div><span>算力</span><b>关注度 84</b></div>
-    <h3>AI 推理</h3>
-    <p><strong>它是什么：</strong>训练完成后，模型接收输入并生成结果的计算过程。</p>
-    <p><strong>为什么重要：</strong>随着用户和 Agent 增长，推理成本、延迟与能源消耗正在成为产业竞争重点。</p>
+    <div><span data-en="Compute">算力</span><b data-en="INTEREST 84">关注度 84</b></div>
+    <h3 data-en="AI Inference">AI 推理</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="The computation performed when a trained model receives input and generates a result.">训练完成后，模型接收输入并生成结果的计算过程。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="As users and agents scale, inference cost, latency and energy are becoming decisive industry constraints.">随着用户和 Agent 增长，推理成本、延迟与能源消耗正在成为产业竞争重点。</span></p>
   </article>
   <article class="term-detail" data-term-detail="13" hidden>
-    <div><span>安全与质量</span><b>关注度 82</b></div>
-    <h3>对齐</h3>
-    <p><strong>它是什么：</strong>让模型行为更符合人类意图、规则和安全目标的一系列方法。</p>
-    <p><strong>为什么重要：</strong>对齐决定模型是否可控、诚实且适合真实场景，也是前沿 AI 安全的核心问题。</p>
+    <div><span data-en="Safety &amp; Quality">安全与质量</span><b data-en="INTEREST 82">关注度 82</b></div>
+    <h3 data-en="Alignment">对齐</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="Methods for making model behavior better match human intent, rules and safety goals.">让模型行为更符合人类意图、规则和安全目标的一系列方法。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="Alignment shapes controllability and honesty and remains a central frontier-AI safety problem.">对齐决定模型是否可控、诚实且适合真实场景，也是前沿 AI 安全的核心问题。</span></p>
   </article>
   <article class="term-detail" data-term-detail="14" hidden>
-    <div><span>模型训练</span><b>关注度 80</b></div>
-    <h3>蒸馏</h3>
-    <p><strong>它是什么：</strong>让较小模型学习较大模型的输出或推理模式。</p>
-    <p><strong>为什么重要：</strong>蒸馏能把部分前沿能力迁移到成本更低、更容易本地部署的小模型。</p>
+    <div><span data-en="Model Training">模型训练</span><b data-en="INTEREST 80">关注度 80</b></div>
+    <h3 data-en="Distillation">蒸馏</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="Training a smaller model to learn from the outputs or reasoning patterns of a larger model.">让较小模型学习较大模型的输出或推理模式。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It transfers some frontier capability into cheaper models that are easier to deploy locally.">蒸馏能把部分前沿能力迁移到成本更低、更容易本地部署的小模型。</span></p>
   </article>
   <article class="term-detail" data-term-detail="15" hidden>
-    <div><span>模型训练</span><b>关注度 78</b></div>
-    <h3>微调</h3>
-    <p><strong>它是什么：</strong>用特定数据继续训练基础模型，使它更适合某类任务、语气或领域。</p>
-    <p><strong>为什么重要：</strong>它能增强专业适配，但数据质量、成本和模型更新维护都是现实门槛。</p>
+    <div><span data-en="Model Training">模型训练</span><b data-en="INTEREST 78">关注度 78</b></div>
+    <h3 data-en="Fine-tuning">微调</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="Continuing to train a base model on specialized data for a task, style or domain.">用特定数据继续训练基础模型，使它更适合某类任务、语气或领域。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It improves specialization, while data quality, cost and maintenance remain practical constraints.">它能增强专业适配，但数据质量、成本和模型更新维护都是现实门槛。</span></p>
   </article>
   <article class="term-detail" data-term-detail="16" hidden>
-    <div><span>开发生态</span><b>关注度 76</b></div>
-    <h3>向量数据库</h3>
-    <p><strong>它是什么：</strong>存储和检索文本、图片等内容的向量表示，用相似度寻找相关信息。</p>
-    <p><strong>为什么重要：</strong>它常用于语义搜索和 RAG，但并非所有知识库都必须使用专用向量数据库。</p>
+    <div><span data-en="Developer Ecosystem">开发生态</span><b data-en="INTEREST 76">关注度 76</b></div>
+    <h3 data-en="Vector Database">向量数据库</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="A system for storing and retrieving vector representations by similarity.">存储和检索文本、图片等内容的向量表示，用相似度寻找相关信息。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It is common in semantic search and RAG, though not every knowledge base needs a specialized vector database.">它常用于语义搜索和 RAG，但并非所有知识库都必须使用专用向量数据库。</span></p>
   </article>
   <article class="term-detail" data-term-detail="17" hidden>
-    <div><span>模型部署</span><b>关注度 74</b></div>
-    <h3>量化</h3>
-    <p><strong>它是什么：</strong>用更低精度表示模型参数，减少显存占用并提升推理速度。</p>
-    <p><strong>为什么重要：</strong>量化让大模型更容易在个人电脑、手机和边缘设备运行，但可能损失少量能力。</p>
+    <div><span data-en="Deployment">模型部署</span><b data-en="INTEREST 74">关注度 74</b></div>
+    <h3 data-en="Quantization">量化</h3>
+    <p><strong data-en="WHAT IT IS: ">它是什么：</strong><span data-en="Representing model parameters at lower precision to reduce memory and improve inference speed.">用更低精度表示模型参数，减少显存占用并提升推理速度。</span></p>
+    <p><strong data-en="WHY IT MATTERS: ">为什么重要：</strong><span data-en="It helps large models run on personal computers, phones and edge devices, with possible small quality tradeoffs.">量化让大模型更容易在个人电脑、手机和边缘设备运行，但可能损失少量能力。</span></p>
   </article></div>
     </div>
     <div class="empty" hidden>没有找到匹配内容，试试其他关键词。</div>
@@ -855,6 +859,7 @@ nav a:hover { color: var(--orange); }
     let selectedDate = "";
     let period = "7";
     let timelineYear = "all";
+    let language = localStorage.getItem("ai-radar-language") === "en" ? "en" : "zh";
     const input = document.querySelector("#search-input");
     const cards = [...document.querySelectorAll(".news-card")];
     const grid = document.querySelector(".news-grid");
@@ -868,7 +873,18 @@ nav a:hover { color: var(--orange); }
     const note = document.querySelector("#section-note");
     const dateInput = document.querySelector("#archive-date");
     const originalOrder = [...cards];
-    const regionLabel = () => activeRegion === "全部" ? "全球" : activeRegion;
+    const regionLabel = () => language === "en"
+      ? (activeRegion === "全部" ? "Global" : activeRegion === "北美" ? "North America" : activeRegion === "亚洲" ? "Asia" : "Europe")
+      : (activeRegion === "全部" ? "全球" : activeRegion);
+    function applyLanguage() {
+      document.documentElement.lang = language === "en" ? "en" : "zh-CN";
+      document.querySelectorAll("[data-en]").forEach((element) => {
+        if (!element.dataset.zh) element.dataset.zh = element.textContent;
+        element.textContent = language === "en" ? element.dataset.en : element.dataset.zh;
+      });
+      input.placeholder = language === "en" ? "Search topics, companies or keywords" : "搜索主题、公司或关键词";
+      document.querySelector("#language-switch").textContent = language === "en" ? "中文" : "EN";
+    }
     function restoreOrder() {
       originalOrder.forEach((card) => grid.appendChild(card));
     }
@@ -911,23 +927,25 @@ nav a:hover { color: var(--orange); }
           if (show) visible += 1;
         });
       }
-      count.textContent = "显示 " + visible + (isTimeline ? " 个重要事件" : isKnowledge ? " 个 AI 热词" : " 条新闻");
+      count.textContent = language === "en"
+        ? (visible + (isTimeline ? " major milestones" : isKnowledge ? " AI terms" : " stories"))
+        : ("显示 " + visible + (isTimeline ? " 个重要事件" : isKnowledge ? " 个 AI 热词" : " 条新闻"));
       empty.hidden = visible !== 0;
       if (mode === "latest") {
-        title.textContent = regionLabel() + "热点简报";
-        note.textContent = "正在显示" + regionLabel() + "的最新报道";
+        title.textContent = language === "en" ? regionLabel() + " AI Briefing" : regionLabel() + "热点简报";
+        note.textContent = language === "en" ? "Showing the latest coverage for " + regionLabel() : "正在显示" + regionLabel() + "的最新报道";
       } else if (mode === "archive") {
-        title.textContent = regionLabel() + "历史归档";
-        note.textContent = selectedDate ? "归档日期：" + selectedDate : "请选择日历日期，或浏览全部历史报道";
+        title.textContent = language === "en" ? regionLabel() + " Archive" : regionLabel() + "历史归档";
+        note.textContent = language === "en" ? (selectedDate ? "Archive date: " + selectedDate : "Choose a date or browse the complete archive") : (selectedDate ? "归档日期：" + selectedDate : "请选择日历日期，或浏览全部历史报道");
       } else if (mode === "top") {
-        title.textContent = regionLabel() + " TOP 新闻";
-        note.textContent = period === "all" ? "按全部时间热度排序" : "按近 " + period + " 天热度排序";
+        title.textContent = language === "en" ? regionLabel() + " Top Stories" : regionLabel() + " TOP 新闻";
+        note.textContent = language === "en" ? (period === "all" ? "Ranked across all time" : "Ranked over the last " + period + " days") : (period === "all" ? "按全部时间热度排序" : "按近 " + period + " 天热度排序");
       } else if (mode === "timeline") {
-        title.textContent = regionLabel() + " AI 大事记";
-        note.textContent = (timelineYear === "all" ? "2025 年至今" : timelineYear + " 年") + "的重要 AI 事件时间轴";
+        title.textContent = language === "en" ? regionLabel() + " AI Milestones" : regionLabel() + " AI 大事记";
+        note.textContent = language === "en" ? (timelineYear === "all" ? "Major AI events since 2025" : "Major AI events in " + timelineYear) : ((timelineYear === "all" ? "2025 年至今" : timelineYear + " 年") + "的重要 AI 事件时间轴");
       } else {
-        title.textContent = "AI 知识热力图";
-        note.textContent = "用通俗语言读懂正在塑造 AI 世界的核心概念";
+        title.textContent = language === "en" ? "AI Knowledge Heatmap" : "AI 知识热力图";
+        note.textContent = language === "en" ? "Plain-language explanations of the ideas shaping AI" : "用通俗语言读懂正在塑造 AI 世界的核心概念";
       }
     }
     document.querySelectorAll("[data-filter]").forEach((button) => button.addEventListener("click", () => {
@@ -975,6 +993,12 @@ nav a:hover { color: var(--orange); }
         detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
     }));
+    document.querySelector("#language-switch").addEventListener("click", () => {
+      language = language === "en" ? "zh" : "en";
+      localStorage.setItem("ai-radar-language", language);
+      applyLanguage();
+      update();
+    });
     dateInput.addEventListener("change", () => {
       selectedDate = dateInput.value;
       update();
@@ -985,6 +1009,7 @@ nav a:hover { color: var(--orange); }
       update();
     });
     input.addEventListener("input", update);
+    applyLanguage();
     update();
   })();
 </script>
