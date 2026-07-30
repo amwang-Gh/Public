@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./styles.css?v=20260730-4">
 </head>
 <body>
-  <div class="topline"><span>SC SIGNAL DESK · 2026.07.30</span><p>全球贸易 / 采购风险 / 运价 / 关键原料</p><div class="live">● DATA LIVE</div></div>
+  <div class="topline"><span>SC SIGNAL DESK · 2026.07.30</span><p>全球贸易 / 采购风险 / 运价 / 关键原料</p><div class="live">● PUBLIC DATA · VERIFIED</div></div>
   <header>
     <a class="brand" href="#"><span class="brandmark">链</span><span><b>链界情报</b><small>SUPPLY SIGNALS</small></span></a>
     <nav aria-label="主导航">
@@ -30,20 +30,13 @@
         <div class="command-search"><label for="global-search">INTELLIGENCE SEARCH</label><div><input id="global-search" placeholder="搜索公司 / 物料 / HS 编码 / 国家，例如：Copper Cathodes"><button>分析 →</button></div><p><span>快捷查询</span><button>钴供应风险</button><button>中国 → 美国</button><button>HS 8542 半导体</button></p></div>
       </div>
       <div class="pulse-card">
-        <div class="pulse-head"><span>全球供应链压力</span><time>SGT 07:00</time></div>
-        <div class="score"><strong>67</strong><span>/ 100<br><b>偏紧</b></span></div>
-        <div class="meter"><i style="width:67%"></i></div>
-        <div class="pulse-factors"><span><b>↑ 8</b> 地缘扰动</span><span><b>↑ 5</b> 能源成本</span><span><b>↓ 3</b> 海运压力</span></div>
+        <div class="pulse-head"><span>公开数据状态</span><time>核验 2026.07.30</time></div>
+        <div class="score"><strong>多源</strong><span><b>独立日期</b><br>逐项可追溯</span></div>
+        <div class="pulse-factors"><span><b>EIA</b> 能源现货</span><span><b>World Bank</b> 月度原料</span><span><b>Freightos</b> 周度运价</span></div>
       </div>
     </section>
 
-    <section class="ticker" aria-label="关键行情">
-      <article><span>BRENT 原油</span><b>$103.4</b><i class="up">+18.6% YTD</i></article>
-      <article><span>LME 铜</span><b>高位震荡</b><i class="up">历史高位区间</i></article>
-      <article><span>全球能源指数</span><b>-17.7%</b><i class="down">六月环比</i></article>
-      <article><span>关键矿物投资</span><b>-9.0%</b><i class="warn">2025 年</i></article>
-      <article><span>风险物料</span><b>8 项</b><i class="up">需要关注</i></article>
-    </section>
+    <section class="ticker" id="marketTicker" aria-label="关键行情"></section>
 
     <section class="terminal-strip">
       <div class="terminal-tabs"><button class="active">EXECUTIVE VIEW</button><button>TRADE FLOWS</button><button>RISK MATRIX</button><button>FREIGHT</button></div>
@@ -54,13 +47,8 @@
       <article class="trade-panel">
         <div class="panel-heading"><div><span>TRADE FLOW MONITOR</span><h2>关键贸易流与异常变化</h2></div><button>导出数据</button></div>
         <div class="table-wrap"><table>
-          <thead><tr><th>物料 / HS</th><th>主要起运地</th><th>主要目的地</th><th>30D 货量</th><th>同比</th><th>异常度</th><th>状态</th></tr></thead>
-          <tbody>
-            <tr><td><b>集成电路</b><small>HS 8542</small></td><td>中国台湾</td><td>中国大陆</td><td>18.4K TEU</td><td class="pos">+12.8%</td><td><i class="bar"><em style="width:72%"></em></i>72</td><td><span class="tag alert">关注</span></td></tr>
-            <tr><td><b>铜阴极</b><small>HS 7403</small></td><td>智利 / 秘鲁</td><td>中国</td><td>642K MT</td><td class="neg">-6.3%</td><td><i class="bar"><em style="width:81%"></em></i>81</td><td><span class="tag danger">偏紧</span></td></tr>
-            <tr><td><b>钴中间品</b><small>HS 8105</small></td><td>刚果（金）</td><td>中国</td><td>31.2K MT</td><td class="neg">-18.7%</td><td><i class="bar"><em style="width:93%"></em></i>93</td><td><span class="tag danger">高风险</span></td></tr>
-            <tr><td><b>天然石墨</b><small>HS 2504</small></td><td>中国</td><td>日韩</td><td>46.8K MT</td><td class="pos">+4.1%</td><td><i class="bar"><em style="width:58%"></em></i>58</td><td><span class="tag stable">稳定</span></td></tr>
-          </tbody>
+          <thead><tr><th>物料 / HS</th><th>主要起运地</th><th>主要目的地</th><th colspan="3">公开信号</th><th>数据日期与来源</th></tr></thead>
+          <tbody id="tradeSignalRows"></tbody>
         </table></div>
         <p class="data-note">示意性贸易流视图 · 结合公开数据与风险信号，不代表实时海关申报记录</p>
       </article>
@@ -73,19 +61,14 @@
           <div class="quadrant q3"><small>常规管理</small><b class="dot d4">铝</b></div>
           <div class="quadrant q4"><small>建立备选</small><b class="dot d5">锗</b><b class="dot d6">石墨</b></div>
         </div>
-        <div class="framework-score"><span>综合韧性评分</span><strong>62<small>/100</small></strong><p>较上周 -4 · 建议优先处理单一来源物料</p></div>
+        <div class="framework-score"><span>证据口径</span><p>矩阵为定性采购框架；定量信息仅展示可点击核验的公开观察。</p></div>
       </aside>
     </section>
 
     <section class="freight-deck">
       <div class="panel-heading light"><div><span>FREIGHT RATE PULSE</span><h2>全球集装箱航线周度变化</h2></div><div class="index-big"><span>FREIGHTOS FBX</span><b>07.22</b><em>WEEKLY</em></div></div>
-      <div class="route-grid">
-        <article><span>FBX01</span><h3>亚洲 → 美西</h3><b>-6.0% <small>周环比</small></b><em class="neg">降温</em><div class="mini-line l1"></div></article>
-        <article><span>FBX03</span><h3>亚洲 → 美东</h3><b>0.0% <small>周环比</small></b><em>持平</em><div class="mini-line l2"></div></article>
-        <article><span>FBX11</span><h3>亚洲 → 北欧</h3><b>-2.0% <small>周环比</small></b><em class="neg">回落</em><div class="mini-line l3"></div></article>
-        <article><span>FBX13</span><h3>亚洲 → 地中海</h3><b>-4.0% <small>周环比</small></b><em class="neg">回落</em><div class="mini-line l4"></div></article>
-      </div>
-      <p>截至 2026.07.22 的 Freightos 周报变化；公开页面未提供完整基准点位，请以 Freightos / Baltic Exchange 正式数据为准。</p>
+      <div class="route-grid" id="freightLaneGrid"></div>
+      <p id="freightNote"></p>
     </section>
 
     <section class="category-center" id="categories">
@@ -173,7 +156,7 @@
 
     <section class="section" id="geopolitics">
       <div class="section-title"><div><p class="eyebrow">GEOPOLITICAL MAP</p><h2>地缘风险传导链</h2></div><p>不是“发生了什么”，而是“会影响什么”</p></div>
-      <div class="risk-lanes">
+      <div class="risk-lanes" id="riskLaneGrid">
         <article><span class="region">中东 · 能源与航运</span><b>霍尔木兹航线与能源设施扰动</b><p>原油 / 铝 / 硫磺 → 能源与酸成本 → 化肥、铜、锂、镍加工</p><div><i style="width:88%"></i></div><small>冲击强度 88 · 影响周期 1–3 个月</small></article>
         <article><span class="region">非洲 · 关键矿物</span><b>刚果（金）钴出口配额</b><p>钴中间品 → 正极材料 → 动力电池与储能供应</p><div><i style="width:79%"></i></div><small>冲击强度 79 · 影响周期 3–12 个月</small></article>
         <article><span class="region">亚洲 · 精炼与磁材</span><b>战略小金属出口限制扩大</b><p>镓 / 锗 / 稀土 / 石墨 → 半导体、光通信、永磁电机与国防</p><div><i style="width:84%"></i></div><small>冲击强度 84 · 影响周期 6–18 个月</small></article>
@@ -182,7 +165,7 @@
 
     <section class="section shortage" id="shortage">
       <div class="section-title"><div><p class="eyebrow">SHORTAGE RADAR</p><h2>主要缺料与趋势</h2></div><div class="filters"><button class="active" data-filter="all">全部</button><button data-filter="electronics">电子</button><button data-filter="energy">新能源</button><button data-filter="industrial">工业</button></div></div>
-      <div class="shortage-grid">
+      <div class="shortage-grid" id="shortageGrid">
         <article data-cat="electronics"><span>01 · ELECTRONICS</span><h3>镓 / 锗</h3><p>高集中度与出口管制叠加，区域价差扩大；替代材料有限。</p><div class="trend"><i style="height:28%"></i><i style="height:38%"></i><i style="height:43%"></i><i style="height:56%"></i><i style="height:72%"></i><i style="height:88%"></i></div><footer><b>风险 ↑</b><em>备货 6–9 月</em></footer></article>
         <article data-cat="energy"><span>02 · BATTERY</span><h3>钴</h3><p>出口配额改变项目供应预期，价格较前期显著反弹。</p><div class="trend"><i style="height:25%"></i><i style="height:32%"></i><i style="height:49%"></i><i style="height:68%"></i><i style="height:81%"></i><i style="height:84%"></i></div><footer><b>风险 ↑</b><em>备货 4–6 月</em></footer></article>
         <article data-cat="industrial"><span>03 · METALS</span><h3>铜</h3><p>长期供需缺口仍在，但新项目推进令缺口预测略有收窄。</p><div class="trend"><i style="height:44%"></i><i style="height:48%"></i><i style="height:62%"></i><i style="height:59%"></i><i style="height:78%"></i><i style="height:80%"></i></div><footer><b>偏紧 ↗</b><em>锁价 3–6 月</em></footer></article>
@@ -223,11 +206,7 @@
 
     <section class="source-panel section" id="sources">
       <div class="section-title"><div><p class="eyebrow">SOURCE & TIMESTAMP</p><h2>数据来源与更新时间</h2></div><p>用于说明本页行情、新闻与预测的口径</p></div>
-      <div class="source-grid">
-        <article><span>市场与原材料</span><p>IEA、World Bank Commodity Markets、S&P Global Market Intelligence 公开研究。</p><time>资料核验：2026.07.30 07:00 SGT</time></article>
-        <article><span>航运与贸易</span><p>Freightos Baltic Index（截至 07.22）、公开贸易流信号；未公开的基准点位不作推算。</p><time>刷新频率：月度趋势 + 周度航运观察</time></article>
-        <article><span>新闻与供应风险</span><p>Gartner、S&P Global、Freightos 及行业公开新闻；摘要为采购情报视角归纳。</p><time>页面版本：2026.07.30-v4</time></article>
-      </div>
+      <div class="table-wrap source-table"><table><thead><tr><th>来源</th><th>数据截至</th><th>本站核验</th><th>原始链接</th></tr></thead><tbody id="sourceRegistry"></tbody></table></div>
     </section>
   </main>
 

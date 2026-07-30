@@ -1,4 +1,24 @@
 let currentLang=localStorage.getItem("supplySignalsLang")||"zh";
+const supplyData=window.SUPPLY_DATA;
+const localText=value=>typeof value==="object"&&value!==null?value[currentLang]:value;
+const dateLabel=value=>currentLang==="zh"?`数据截至 ${value}`:`Data through ${value}`;
+function renderMarkets(){
+  document.getElementById("marketTicker").innerHTML=supplyData.markets.map(item=>`<article><span>${localText(item.name)}</span><b>${item.value.toLocaleString()} <small>${item.unit}</small></b><i class="${item.change>0?"up":item.change<0?"down":"warn"}">${localText(item.note)}</i><a class="datum-source" href="${item.sourceUrl}" target="_blank" rel="noreferrer">${dateLabel(item.effectiveDate)} · ${item.source} ↗</a></article>`).join("");
+}
+function renderTradeSignals(){
+  document.getElementById("tradeSignalRows").innerHTML=supplyData.tradeSignals.map(item=>`<tr><td><b>${localText(item.material)}</b><small>${item.hs}</small></td><td>${localText(item.origin)}</td><td>${localText(item.destination)}</td><td colspan="3">${localText(item.signal)}</td><td><a href="${item.sourceUrl}" target="_blank" rel="noreferrer">${dateLabel(item.effectiveDate)} · ${item.source} ↗</a></td></tr>`).join("");
+}
+function renderFreight(){
+  document.getElementById("freightLaneGrid").innerHTML=supplyData.freight.lanes.map(item=>`<article><span>${item.id.toUpperCase()}</span><h3>${localText(item.name)}</h3><b>${item.value.toLocaleString()} <small>${item.unit}</small></b><em class="${item.change<0?"neg":"pos"}">${item.change>0?"+":""}${item.change}%</em><a class="datum-source dark" href="${item.sourceUrl}" target="_blank" rel="noreferrer">${dateLabel(item.effectiveDate)} · ${item.source} ↗</a></article>`).join("");
+  document.getElementById("freightNote").textContent=currentLang==="zh"?`Freightos 公开周报，报告日期 ${supplyData.freight.reportDate}；价格为公开页面所列每个40英尺箱费率。`:`Freightos public weekly report dated ${supplyData.freight.reportDate}; prices are the published rates per forty-foot container.`;
+}
+function renderRisks(){
+  document.getElementById("riskLaneGrid").innerHTML=supplyData.risks.map(item=>`<article><span class="region">${dateLabel(item.effectiveDate)}</span><b>${localText(item.title)}</b><p>${localText(item.summary)}</p><small>${localText(item.impactWindow)} · <a href="${item.sourceUrl}" target="_blank" rel="noreferrer">${item.source} ↗</a></small></article>`).join("");
+}
+function renderSources(){
+  document.getElementById("sourceRegistry").innerHTML=supplyData.sources.map(item=>`<tr><td><b>${item.name}</b></td><td>${item.effectiveDate}</td><td>${item.verifiedAt.replace("T"," ").replace("+08:00"," SGT")}</td><td><a href="${item.url}" target="_blank" rel="noreferrer">${currentLang==="zh"?"原始来源 ↗":"Original source ↗"}</a></td></tr>`).join("");
+}
+function renderSourcedModules(){renderMarkets();renderTradeSignals();renderFreight();renderRisks();renderSources()}
 const navButtons=[...document.querySelectorAll("nav button")];
 navButtons.forEach(btn=>btn.addEventListener("click",()=>{navButtons.forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.getElementById(btn.dataset.target)?.scrollIntoView({behavior:"smooth"})}));
 
@@ -132,6 +152,7 @@ function applyBilingualText(lang){
   document.querySelector("[data-lang-toggle]").textContent=lang==="zh"?"切换英文":"Switch to Chinese";
   localStorage.setItem("supplySignalsLang",lang);
   currentLang=lang;
+  renderSourcedModules();
   setCategoryProfile(document.querySelector("[data-category-filter].active")?.dataset.categoryFilter==="all"?"pcb":document.querySelector("[data-category-filter].active")?.dataset.categoryFilter||"pcb");
   draw();
 }

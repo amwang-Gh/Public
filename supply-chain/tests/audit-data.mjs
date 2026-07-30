@@ -67,4 +67,13 @@ for (const tag of requested) {
   }
 }
 
+const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
+for (const id of [
+  "marketTicker", "tradeSignalRows", "freightLaneGrid",
+  "riskLaneGrid", "shortageGrid", "sourceRegistry",
+]) {
+  if (!html.includes(`id="${id}"`)) throw new Error(`Missing mount ${id}`);
+}
+if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
+
 console.log("Supply data audit passed");
