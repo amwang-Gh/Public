@@ -26,14 +26,13 @@ const filterButtons=[...document.querySelectorAll("[data-filter]")];
 filterButtons.forEach(btn=>btn.addEventListener("click",()=>{filterButtons.forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.querySelectorAll(".shortage-grid article").forEach(card=>card.classList.toggle("hidden",btn.dataset.filter!=="all"&&!card.dataset.cat.includes(btn.dataset.filter)))}));
 
 const canvas=document.getElementById("trendChart"),ctx=canvas.getContext("2d");
-const months=Array.from({length:43},(_,i)=>{const d=new Date(2024,i,1);return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,"0")}`});
-const historicalCount=31;
-const series={
-  copper:{name:{zh:"铜",en:"Copper"},color:"#e5653f",unit:{zh:"美元/吨",en:"USD/metric ton"},data:[8330,8460,8690,9450,10120,9680,9120,8990,9230,9560,9020,8910,9010,9340,9740,9600,9480,9650,9890,10140,10420,10280,10560,10830,11020,11240,10980,11360,11620,11480,11740,11820,11980,12140,12060,12310,12480,12620,12840,12960,13120,13280,13450]},
-  lithium:{name:{zh:"锂",en:"Lithium"},color:"#7da241",unit:{zh:"元/吨（电池级碳酸锂）",en:"CNY/metric ton, battery-grade lithium carbonate"},data:[101000,97000,108000,111000,106000,96000,88000,79000,76000,74000,77000,75000,76000,78000,81000,84000,89000,93000,101000,109000,116000,124000,133000,141000,149000,156000,163000,171000,166000,173000,181000,184000,187000,191000,188000,193000,198000,201000,205000,209000,212000,216000,220000]},
-  cobalt:{name:{zh:"钴",en:"Cobalt"},color:"#596f9d",unit:{zh:"美元/吨",en:"USD/metric ton"},data:[28400,27900,27300,26900,26600,26100,25400,24900,24500,24100,23800,24000,24500,25800,27900,30200,32900,35800,39200,42700,46100,49300,52200,54800,56100,57400,56800,58300,59600,58100,59200,60400,61200,62100,61500,62600,63800,64700,65500,66200,67100,67900,68800]},
-  energy:{name:{zh:"能源",en:"Energy"},color:"#b19443",unit:{zh:"世界银行能源价格指数",en:"World Bank energy price index"},data:[105,103,105,108,106,104,102,99,96,94,95,97,99,102,105,109,113,118,121,125,128,124,119,116,112,108,104,101,98,82,84,86,88,90,91,92,94,95,96,97,98,99,100]}
-};
+const materialEntries=Object.entries(supplyData.materials);
+const months=[...materialEntries[0][1].actual,...materialEntries[0][1].forecast].map(point=>point.month.replace("-","."));
+const historicalCount=materialEntries[0][1].actual.length;
+const series=Object.fromEntries(materialEntries.map(([key,item])=>[key,{
+  name:item.name,color:item.color,unit:{zh:item.unit,en:item.unit},
+  data:[...item.actual,...item.forecast].map(point=>point.value),
+}]));
 let selected="all",historyRange=24,forecastRange=12;
 const formatValue=(value,key)=>key==="all"?value.toFixed(1):new Intl.NumberFormat(currentLang==="zh"?"zh-CN":"en-US",{maximumFractionDigits:0}).format(value);
 function visibleData(key,start,end){
@@ -85,13 +84,31 @@ const categoryProfiles={
   electronics:{zh:{name:"被动件 / 继电器 / 断路器 / 电源",summary:"人工智能、工业与能源基础设施拉动电源、保护器件、继电器和被动件的结构性需求。",balance:"通用被动件平衡，高可靠/高压产品偏紧",leadtime:"6-16 周，特殊规格更长",drivers:"铜、银、磁材、半导体、安规认证、产能利用率",risk:"中高：认证周期和关键子件供应决定恢复速度"},en:{name:"Passive / Relay / Circuit Breaker / Power Supply",summary:"AI, industrial, and energy infrastructure are lifting structural demand for power supplies, protection devices, relays, and passives.",balance:"Balanced in commodity passives; tighter for high-reliability and high-voltage products",leadtime:"6-16 weeks; longer for special specifications",drivers:"Copper, silver, magnetic materials, semiconductors, safety approvals, capacity utilization",risk:"Medium-high: qualification cycles and key subcomponents determine recovery speed"}}
 };
 function setCategoryProfile(key){
-  const item=(categoryProfiles[key]||categoryProfiles.pcb)[currentLang];
+  const profileGroups={
+    casting:"metals","precious-metal":"metals",stamping:"metals",busbar:"metals","metal-fab":"metals",fasteners:"metals",
+    "cable-wire":"connectors",heatsink:"machining","fans-blowers":"machining",labels:"plastics",
+    transformer:"electronics","power-supply":"electronics",passive:"electronics","circuit-breaker":"electronics",relay:"electronics",
+  };
+  const item=(categoryProfiles[profileGroups[key]||key]||categoryProfiles.pcb)[currentLang];
   document.getElementById("categoryName").textContent=item.name;
   document.getElementById("categorySummary").textContent=item.summary;
   document.getElementById("categoryBalance").textContent=item.balance;
   document.getElementById("categoryLeadtime").textContent=item.leadtime;
   document.getElementById("categoryDrivers").textContent=item.drivers;
   document.getElementById("categoryRisk").textContent=item.risk;
+}
+function renderNews(){
+  const labels={
+    all:{zh:"全部",en:"All"},pcb:{zh:"PCB",en:"PCB"},casting:{zh:"铸造",en:"Casting"},"precious-metal":{zh:"贵金属",en:"Precious Metal"},
+    stamping:{zh:"冲压",en:"Stamping"},machining:{zh:"机加工",en:"Machining"},"cable-wire":{zh:"线缆",en:"Cable & Wire"},
+    connectors:{zh:"连接器",en:"Connectors"},busbar:{zh:"母排",en:"Busbar"},"metal-fab":{zh:"金属加工",en:"Metal Fab"},
+    plastics:{zh:"塑胶",en:"Plastics"},heatsink:{zh:"散热器",en:"Heatsink"},"fans-blowers":{zh:"风扇与风机",en:"Fans & Blowers"},
+    transformer:{zh:"变压器",en:"Transformer"},"power-supply":{zh:"电源",en:"Power Supply"},passive:{zh:"被动件",en:"Passive"},
+    "circuit-breaker":{zh:"断路器",en:"Circuit Breaker"},relay:{zh:"继电器",en:"Relay"},labels:{zh:"标签",en:"Labels"},fasteners:{zh:"紧固件",en:"Fasteners"},
+  };
+  document.querySelectorAll("[data-category-filter]").forEach(button=>{button.textContent=labels[button.dataset.categoryFilter][currentLang]});
+  document.getElementById("newsBoard").innerHTML=supplyData.news.map(story=>`<article data-tags="${story.tags.join(" ")}"><div><span>${story.source}</span><time>${story.publishedAt}</time></div><h3>${localText(story.title)}</h3><p>${localText(story.summary)}</p><footer><span class="news-impact">${localText(story.impact)}</span><a href="${story.sourceUrl}" target="_blank" rel="noreferrer">${currentLang==="zh"?"原始来源 ↗":"Original source ↗"}</a></footer></article>`).join("");
+  filterCategoryNews();
 }
 function filterCategoryNews(){
   const active=document.querySelector("[data-category-filter].active")?.dataset.categoryFilter||"all";
@@ -153,6 +170,7 @@ function applyBilingualText(lang){
   localStorage.setItem("supplySignalsLang",lang);
   currentLang=lang;
   renderSourcedModules();
+  renderNews();
   setCategoryProfile(document.querySelector("[data-category-filter].active")?.dataset.categoryFilter==="all"?"pcb":document.querySelector("[data-category-filter].active")?.dataset.categoryFilter||"pcb");
   draw();
 }
