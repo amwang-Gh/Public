@@ -56,6 +56,8 @@ function draw(){
   ctx.font="9px Arial";ctx.fillStyle="#667983";ctx.textAlign="center";ctx.textBaseline="top";
   const tickCount=Math.min(6,end-start);for(let i=0;i<tickCount;i++){const idx=Math.round(i*(end-start-1)/(tickCount-1));ctx.fillText(months[start+idx],x(idx),h-bottom+12)}
   document.getElementById("chartUnit").textContent=selected==="all"?(currentLang==="zh"?"纵轴：价格指数（所选历史区间起点 = 100）":"Y-axis: price index (first month in selected range = 100)"):(currentLang==="zh"?`纵轴：价格（${series[selected].unit.zh}）`:`Y-axis: price (${series[selected].unit.en})`);
+  const material=selected==="all"?materialEntries[0][1]:supplyData.materials[selected];
+  document.getElementById("materialMeta").innerHTML=`${dateLabel(material.lastActual)} · <a href="${material.sourceUrl}" target="_blank" rel="noreferrer">${material.source} ↗</a><br>${localText(material.assumptions)} ${currentLang==="zh"?`预测生成 ${material.forecastGeneratedAt}`:`Forecast generated ${material.forecastGeneratedAt}`}`;
   renderMonthlyRows(start,end);
 }
 function renderMonthlyRows(start,end){
@@ -129,6 +131,10 @@ document.getElementById("category-search")?.addEventListener("input",filterCateg
 document.querySelectorAll("[data-profile]").forEach(btn=>btn.addEventListener("click",()=>{setCategoryProfile(btn.dataset.profile);document.querySelector(".category-profile").scrollIntoView({behavior:"smooth",block:"center"})}));
 
 const bilingualPairs=[
+  ["公开数据状态","Public data status"],["核验 2026.07.30","Verified 2026-07-30"],["多源","Multi-source"],["独立日期","Independent dates"],["逐项可追溯","Traceable by item"],["能源现货","Energy spot"],["月度原料","Monthly materials"],["周度运价","Weekly freight"],
+  ["公开信号","Public signal"],["数据日期与来源","Data date and source"],["证据口径","Evidence basis"],["矩阵为定性采购框架；定量信息仅展示可点击核验的公开观察。","The matrix is a qualitative procurement framework; quantitative items are limited to clickable, verifiable public observations."],
+  ["黄金","Gold"],["白银","Silver"],["来源","Source"],["数据截至","Data through"],["本站核验","Site verification"],["原始链接","Original link"],
+  ["免费公开数据；每个模块按来源独立标注数据日期","Free public data; each module shows its source-specific date"],["本站核验：2026.07.30 08:30 SGT","Site verified: 2026-07-30 08:30 SGT"],
   ["链","S"],["信","S"],["供应信号","SUPPLY SIGNALS"],["供应链信号台 · 2026.07.30","SC SIGNAL DESK · 2026.07.30"],["● 实时数据","● DATA LIVE"],["全球供应链情报","GLOBAL SUPPLY CHAIN INTELLIGENCE"],["情报搜索","INTELLIGENCE SEARCH"],["管理层视图","EXECUTIVE VIEW"],["贸易流","TRADE FLOWS"],["风险矩阵","RISK MATRIX"],["货运","FREIGHT"],["贸易流监控","TRADE FLOW MONITOR"],["决策框架","DECISION FRAMEWORK"],["运价脉搏","FREIGHT RATE PULSE"],["品类新闻中心","CATEGORY NEWS CENTER"],["选中品类快照","SELECTED SNAPSHOT"],["最高信号","TOP SIGNAL"],["观察清单","WATCHLIST"],["地缘风险地图","GEOPOLITICAL MAP"],["缺料雷达","SHORTAGE RADAR"],["原材料监控","MATERIAL MONITOR"],["情报简报","INTELLIGENCE BRIEF"],["数据来源与更新时间","SOURCE & TIMESTAMP"],
   ["供应链信号台 · 2026.07.30","SC Signal Desk · 2026.07.30"],["● 实时数据","● Data live"],
   ["全球贸易 / 采购风险 / 运价 / 关键原料","Global trade / sourcing risk / freight rates / critical materials"],

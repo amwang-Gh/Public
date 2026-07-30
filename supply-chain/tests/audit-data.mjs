@@ -75,5 +75,19 @@ for (const id of [
   if (!html.includes(`id="${id}"`)) throw new Error(`Missing mount ${id}`);
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
+if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
+
+const assertBilingual = (value, label) => {
+  if (!value?.zh || !value?.en) throw new Error(`${label} is not bilingual`);
+};
+data.markets.forEach((item, index) => assertBilingual(item.name, `markets[${index}].name`));
+data.news.forEach((item, index) => {
+  assertBilingual(item.title, `news[${index}].title`);
+  assertBilingual(item.summary, `news[${index}].summary`);
+});
+Object.values(data.materials).forEach((item) => {
+  assertBilingual(item.name, `${item.id}.name`);
+  assertBilingual(item.assumptions, `${item.id}.assumptions`);
+});
 
 console.log("Supply data audit passed");
