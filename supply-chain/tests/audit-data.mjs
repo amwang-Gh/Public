@@ -53,6 +53,9 @@ for (const material of Object.values(data.materials)) {
   if (material.forecast[0].month <= material.lastActual) {
     throw new Error(`${material.id} forecast overlaps actual data`);
   }
+  if (material.forecast.length !== 12) {
+    throw new Error(`${material.id} must include a 12-month forecast`);
+  }
 }
 
 const requested = [
@@ -76,6 +79,12 @@ for (const id of [
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
 if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
+if (data.verifiedAt < "2026-08-24") throw new Error("Site verification date is stale");
+if (data.freight.reportDate < "2026-08-18") throw new Error("Freightos report date is stale");
+if (data.materials.copper.lastActual < "2026-07") throw new Error("World Bank material data is stale");
+if (!data.news.some((story) => story.publishedAt >= "2026-08-19")) {
+  throw new Error("No current August category news");
+}
 
 const assertBilingual = (value, label) => {
   if (!value?.zh || !value?.en) throw new Error(`${label} is not bilingual`);
