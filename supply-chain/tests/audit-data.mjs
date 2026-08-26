@@ -79,10 +79,10 @@ for (const id of [
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
 if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
-if (data.verifiedAt < "2026-08-24") throw new Error("Site verification date is stale");
-if (data.freight.reportDate < "2026-08-18") throw new Error("Freightos report date is stale");
+if (data.verifiedAt < "2026-08-27") throw new Error("Site verification date is stale");
+if (data.freight.reportDate < "2026-08-25") throw new Error("Freightos report date is stale");
 if (data.materials.copper.lastActual < "2026-07") throw new Error("World Bank material data is stale");
-if (!data.news.some((story) => story.publishedAt >= "2026-08-19")) {
+if (!data.news.some((story) => story.publishedAt >= "2026-08-25")) {
   throw new Error("No current August category news");
 }
 

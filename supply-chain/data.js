@@ -1,5 +1,5 @@
 window.SUPPLY_DATA = {
-  verifiedAt: "2026-08-24T07:00:00+08:00",
+  verifiedAt: "2026-08-27T07:00:00+08:00",
   markets: [
     {
       id: "brent",
@@ -77,17 +77,27 @@ window.SUPPLY_DATA = {
     },
   ],
   freight: {
-    reportDate: "2026-08-18",
+    reportDate: "2026-08-25",
     source: "Freightos",
-    sourceUrl: "https://www.freightos.com/freight-resources/congestion-playing-a-bigger-role-in-container-rates-august-18-2026-update/",
+    sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/",
     lanes: [
-      { id: "fbx01", name: { zh: "亚洲—美西", en: "Asia–US West Coast" }, value: 7400, unit: "USD/FEU approx.", change: 9, effectiveDate: "2026-08-18", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/congestion-playing-a-bigger-role-in-container-rates-august-18-2026-update/" },
-      { id: "fbx03", name: { zh: "亚洲—美东", en: "Asia–US East Coast" }, value: 9400, unit: "USD/FEU approx.", change: 3, effectiveDate: "2026-08-18", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/congestion-playing-a-bigger-role-in-container-rates-august-18-2026-update/" },
-      { id: "fbx11", name: { zh: "亚洲—北欧", en: "Asia–North Europe" }, value: 4700, unit: "USD/FEU approx.", change: -1, effectiveDate: "2026-08-18", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/congestion-playing-a-bigger-role-in-container-rates-august-18-2026-update/" },
-      { id: "fbx13", name: { zh: "亚洲—地中海", en: "Asia–Mediterranean" }, value: 5000, unit: "USD/FEU approx.", change: -4, effectiveDate: "2026-08-18", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/congestion-playing-a-bigger-role-in-container-rates-august-18-2026-update/" },
+      { id: "fbx01", name: { zh: "亚洲—美西", en: "Asia–US West Coast" }, value: 7500, unit: "USD/FEU approx.", change: 1, effectiveDate: "2026-08-25", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
+      { id: "fbx03", name: { zh: "亚洲—美东", en: "Asia–US East Coast" }, value: 9800, unit: "USD/FEU approx.", change: 2, effectiveDate: "2026-08-25", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
+      { id: "fbx11", name: { zh: "亚洲—北欧", en: "Asia–North Europe" }, value: 4700, unit: "USD/FEU approx.", change: -6, effectiveDate: "2026-08-25", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
+      { id: "fbx13", name: { zh: "亚洲—地中海", en: "Asia–Mediterranean" }, value: 5000, unit: "USD/FEU approx.", change: -15, effectiveDate: "2026-08-25", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
     ],
   },
   news: [
+    {
+      id: "freightos-tariffs-iran-2026",
+      publishedAt: "2026-08-25",
+      source: "Freightos",
+      sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/",
+      tags: ["pcb", "cable-wire", "connectors", "metal-fab", "plastics", "transformer", "power-supply"],
+      title: { zh: "关税、伊朗制裁与港口拥堵继续推高跨太平洋不确定性", en: "Tariffs, Iran sanctions and port congestion sustain transpacific uncertainty" },
+      summary: { zh: "Freightos指出亚美航线仍受旺季需求、运力削减和中国主要枢纽拥堵支撑，而亚欧航线随需求降温回落。", en: "Freightos reports that peak demand, capacity reductions and congestion at major Chinese hubs continue to support transpacific rates, while Asia-Europe lanes ease with cooling demand." },
+      impact: { zh: "到岸成本与交期分化", en: "Diverging landed costs and lead times" },
+    },
     {
       id: "evertiq-pcb-fr4-2026",
       publishedAt: "2026-08-19",
@@ -290,7 +300,7 @@ window.SUPPLY_DATA = {
   sources: [
     { id: "eia", name: "U.S. EIA", effectiveDate: "2026-08-18", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/hist/RBRTED.htm" },
     { id: "world-bank", name: "World Bank Commodity Markets", effectiveDate: "2026-07", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.worldbank.org/en/research/commodity-markets" },
-    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-08-18", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/congestion-playing-a-bigger-role-in-container-rates-august-18-2026-update/" },
+    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-08-25", verifiedAt: "2026-08-27T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
     { id: "iea", name: "IEA", effectiveDate: "2026-07-16", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary" },
     { id: "gartner", name: "Gartner", effectiveDate: "2026-04-29", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.gartner.com/en/newsroom/topics/supply-chain" },
     { id: "semi", name: "SEMI", effectiveDate: "2026-07-14", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.semi.org/en/news-media-press/semi-press-releases/press-archive" },
