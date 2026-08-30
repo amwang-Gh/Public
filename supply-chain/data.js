@@ -1,14 +1,14 @@
 window.SUPPLY_DATA = {
-  verifiedAt: "2026-08-27T07:00:00+08:00",
+  verifiedAt: "2026-08-31T07:00:00+08:00",
   markets: [
     {
       id: "brent",
       name: { zh: "布伦特原油现货", en: "Brent spot crude" },
-      value: 95.29,
+      value: 88.24,
       unit: "USD/bbl",
       change: null,
-      effectiveDate: "2026-08-18",
-      verifiedAt: "2026-08-24T07:00:00+08:00",
+      effectiveDate: "2026-08-25",
+      verifiedAt: "2026-08-31T07:00:00+08:00",
       source: "U.S. EIA",
       sourceUrl: "https://www.eia.gov/dnav/pet/hist/RBRTED.htm",
       note: { zh: "公开页面最新观测", en: "Latest observation on the public page" },
@@ -88,6 +88,16 @@ window.SUPPLY_DATA = {
     ],
   },
   news: [
+    {
+      id: "pcim-wuerth-pcb-materials-2026",
+      publishedAt: "2026-08-28",
+      source: "PCIM / Würth Elektronik",
+      sourceUrl: "https://news.pcim.mesago.com/ai-boom-intensifies-pcb-material-shortages-a-69f95c3078045acfbb7868f4d872fbb4/",
+      tags: ["pcb", "connectors", "power-supply", "passive"],
+      title: { zh: "人工智能需求加剧印刷电路板基础材料短缺", en: "AI demand intensifies PCB base-material shortages" },
+      summary: { zh: "Würth Elektronik称，人工智能服务器用板层数通常为传统设计的三至五倍，覆铜板、铜箔、半固化片、高性能树脂及钻铣刀具材料均承压；玻纤布供应紧张预计在2028年前难以明显缓解。", en: "Würth Elektronik says AI-server boards typically use three to five times as many layers as conventional designs, pressuring copper-clad laminates, copper foil, prepregs, high-performance resins and tooling materials; fiberglass-fabric constraints may not ease materially before 2028." },
+      impact: { zh: "材料配额、涨价与交期延长风险", en: "Allocation, price and lead-time risk" },
+    },
     {
       id: "freightos-tariffs-iran-2026",
       publishedAt: "2026-08-25",
@@ -298,12 +308,13 @@ window.SUPPLY_DATA = {
     },
   },
   sources: [
-    { id: "eia", name: "U.S. EIA", effectiveDate: "2026-08-18", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/hist/RBRTED.htm" },
+    { id: "eia", name: "U.S. EIA", effectiveDate: "2026-08-25", verifiedAt: "2026-08-31T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/hist/RBRTED.htm" },
     { id: "world-bank", name: "World Bank Commodity Markets", effectiveDate: "2026-07", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.worldbank.org/en/research/commodity-markets" },
     { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-08-25", verifiedAt: "2026-08-27T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
     { id: "iea", name: "IEA", effectiveDate: "2026-07-16", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary" },
     { id: "gartner", name: "Gartner", effectiveDate: "2026-04-29", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.gartner.com/en/newsroom/topics/supply-chain" },
     { id: "semi", name: "SEMI", effectiveDate: "2026-07-14", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.semi.org/en/news-media-press/semi-press-releases/press-archive" },
     { id: "evertiq", name: "Evertiq / Confidee", effectiveDate: "2026-08-19", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://evertiq.com/news/2026-08-19-pcb-material-shortage-spreads-to-standard-fr-4-as-structural-shift-deepens" },
+    { id: "pcim-wuerth", name: "PCIM / Würth Elektronik", effectiveDate: "2026-08-28", verifiedAt: "2026-08-31T07:00:00+08:00", url: "https://news.pcim.mesago.com/ai-boom-intensifies-pcb-material-shortages-a-69f95c3078045acfbb7868f4d872fbb4/" },
   ],
 };
