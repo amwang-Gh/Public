@@ -1,5 +1,5 @@
 window.SUPPLY_DATA = {
-  verifiedAt: "2026-09-03T07:00:00+08:00",
+  verifiedAt: "2026-09-07T07:00:00+08:00",
   markets: [
     {
       id: "brent",
@@ -77,17 +77,27 @@ window.SUPPLY_DATA = {
     },
   ],
   freight: {
-    reportDate: "2026-08-25",
+    reportDate: "2026-09-02",
     source: "Freightos",
-    sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/",
+    sourceUrl: "https://www.freightos.com/freight-resources/typhoon-disruptions-driving-congestion-and-putting-pressure-on-rates-september-25-2026-update/",
     lanes: [
-      { id: "fbx01", name: { zh: "亚洲—美西", en: "Asia–US West Coast" }, value: 7500, unit: "USD/FEU approx.", change: 1, effectiveDate: "2026-08-25", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
-      { id: "fbx03", name: { zh: "亚洲—美东", en: "Asia–US East Coast" }, value: 9800, unit: "USD/FEU approx.", change: 2, effectiveDate: "2026-08-25", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
-      { id: "fbx11", name: { zh: "亚洲—北欧", en: "Asia–North Europe" }, value: 4700, unit: "USD/FEU approx.", change: -6, effectiveDate: "2026-08-25", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
-      { id: "fbx13", name: { zh: "亚洲—地中海", en: "Asia–Mediterranean" }, value: 5000, unit: "USD/FEU approx.", change: -15, effectiveDate: "2026-08-25", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
+      { id: "fbx01", name: { zh: "亚洲—美西", en: "Asia–US West Coast" }, value: 7600, unit: "USD/FEU approx.", change: 2, effectiveDate: "2026-09-02", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/typhoon-disruptions-driving-congestion-and-putting-pressure-on-rates-september-25-2026-update/" },
+      { id: "fbx03", name: { zh: "亚洲—美东", en: "Asia–US East Coast" }, value: 9800, unit: "USD/FEU approx.", change: 2, effectiveDate: "2026-09-02", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/typhoon-disruptions-driving-congestion-and-putting-pressure-on-rates-september-25-2026-update/" },
+      { id: "fbx11", name: { zh: "亚洲—北欧", en: "Asia–North Europe" }, value: 4600, unit: "USD/FEU approx.", change: -1, effectiveDate: "2026-09-02", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/typhoon-disruptions-driving-congestion-and-putting-pressure-on-rates-september-25-2026-update/" },
+      { id: "fbx13", name: { zh: "亚洲—地中海", en: "Asia–Mediterranean" }, value: 4800, unit: "USD/FEU approx.", change: -4, effectiveDate: "2026-09-02", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/typhoon-disruptions-driving-congestion-and-putting-pressure-on-rates-september-25-2026-update/" },
     ],
   },
   news: [
+    {
+      id: "foley-grid-materials-2026",
+      publishedAt: "2026-09-03",
+      source: "Foley & Lardner / CoBank",
+      sourceUrl: "https://www.foley.com/insights/publications/2026/09/the-grids-bottleneck-isnt-just-money-its-materials/",
+      tags: ["cable-wire", "transformer", "busbar", "connectors", "circuit-breaker", "relay", "metal-fab"],
+      title: { zh: "电网扩张仍受变压器、导线与开关设备供给约束", en: "Grid expansion remains constrained by transformers, conductors and switchgear" },
+      summary: { zh: "公开行业分析援引CoBank与Wood Mackenzie资料指出，需求超过关键材料和设备供应，部分设备交期达到三至四年；历史调查中的电力变压器平均交期为128周，需注意这些交期数据早于文章发布日期。", en: "Public industry analysis citing CoBank and Wood Mackenzie says demand continues to exceed critical-material and equipment supply, with some equipment carrying three- to four-year lead times; the cited 128-week average for power transformers comes from an earlier survey and should not be read as a September spot quote." },
+      impact: { zh: "电网设备排产与材料风险", en: "Grid-equipment scheduling and material risk" },
+    },
     {
       id: "pcim-wuerth-pcb-materials-2026",
       publishedAt: "2026-08-28",
@@ -99,14 +109,14 @@ window.SUPPLY_DATA = {
       impact: { zh: "材料配额、涨价与交期延长风险", en: "Allocation, price and lead-time risk" },
     },
     {
-      id: "freightos-tariffs-iran-2026",
-      publishedAt: "2026-08-25",
+      id: "freightos-typhoon-congestion-2026",
+      publishedAt: "2026-09-02",
       source: "Freightos",
-      sourceUrl: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/",
+      sourceUrl: "https://www.freightos.com/freight-resources/typhoon-disruptions-driving-congestion-and-putting-pressure-on-rates-september-25-2026-update/",
       tags: ["pcb", "cable-wire", "connectors", "metal-fab", "plastics", "transformer", "power-supply"],
-      title: { zh: "关税、伊朗制裁与港口拥堵继续推高跨太平洋不确定性", en: "Tariffs, Iran sanctions and port congestion sustain transpacific uncertainty" },
-      summary: { zh: "Freightos指出亚美航线仍受旺季需求、运力削减和中国主要枢纽拥堵支撑，而亚欧航线随需求降温回落。", en: "Freightos reports that peak demand, capacity reductions and congestion at major Chinese hubs continue to support transpacific rates, while Asia-Europe lanes ease with cooling demand." },
-      impact: { zh: "到岸成本与交期分化", en: "Diverging landed costs and lead times" },
+      title: { zh: "台风与亚洲港口拥堵推高跨太平洋运价", en: "Typhoons and Asian port congestion lift transpacific rates" },
+      summary: { zh: "Freightos称亚美西岸和东岸周度价格均上涨2%，分别超过约7,600与9,800美元/FEU；北欧与地中海航线随需求降温回落，但远东港口拥堵仍支撑运价。", en: "Freightos reports 2% weekly gains on both transpacific coasts, to above roughly $7,600/FEU and about $9,800/FEU; North Europe and Mediterranean lanes eased with cooling demand, though Far East port congestion continues to support rates." },
+      impact: { zh: "跨太平洋到岸成本偏强", en: "Firm transpacific landed costs" },
     },
     {
       id: "evertiq-pcb-fr4-2026",
@@ -314,11 +324,12 @@ window.SUPPLY_DATA = {
   sources: [
     { id: "eia", name: "U.S. EIA", effectiveDate: "2026-08-28", verifiedAt: "2026-09-03T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm" },
     { id: "world-bank", name: "World Bank Commodity Markets", effectiveDate: "2026-08", verifiedAt: "2026-09-03T07:00:00+08:00", url: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Pink-Sheet-September-2026.pdf" },
-    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-08-25", verifiedAt: "2026-08-27T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/new-us-ca-tariffs-and-sanctions-for-iran-which-could-rock-us-cn-boat-august-25-2026-update/" },
+    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-09-02", verifiedAt: "2026-09-07T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/typhoon-disruptions-driving-congestion-and-putting-pressure-on-rates-september-25-2026-update/" },
     { id: "iea", name: "IEA", effectiveDate: "2026-07-16", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary" },
     { id: "gartner", name: "Gartner", effectiveDate: "2026-04-29", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.gartner.com/en/newsroom/topics/supply-chain" },
     { id: "semi", name: "SEMI", effectiveDate: "2026-07-14", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.semi.org/en/news-media-press/semi-press-releases/press-archive" },
     { id: "evertiq", name: "Evertiq / Confidee", effectiveDate: "2026-08-19", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://evertiq.com/news/2026-08-19-pcb-material-shortage-spreads-to-standard-fr-4-as-structural-shift-deepens" },
     { id: "pcim-wuerth", name: "PCIM / Würth Elektronik", effectiveDate: "2026-08-28", verifiedAt: "2026-08-31T07:00:00+08:00", url: "https://news.pcim.mesago.com/ai-boom-intensifies-pcb-material-shortages-a-69f95c3078045acfbb7868f4d872fbb4/" },
+    { id: "foley-cobank", name: "Foley & Lardner / CoBank", effectiveDate: "2026-09-03", verifiedAt: "2026-09-07T07:00:00+08:00", url: "https://www.foley.com/insights/publications/2026/09/the-grids-bottleneck-isnt-just-money-its-materials/" },
   ],
 };
