@@ -79,7 +79,7 @@ for (const id of [
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
 if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
-if (data.verifiedAt < "2026-09-07") throw new Error("Site verification date is stale");
+if (data.verifiedAt < "2026-09-10") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
 if (!brent || brent.effectiveDate < "2026-08-28" || brent.value !== 89.73) {
   throw new Error("Latest verified EIA Brent observation is missing");
@@ -92,7 +92,7 @@ for (const [id, value] of Object.entries({ copper: 14326, aluminum: 3251, gold: 
     throw new Error(`${id} August World Bank observation is missing`);
   }
 }
-if (!data.news.some((story) => story.publishedAt >= "2026-09-03")) {
+if (!data.news.some((story) => story.publishedAt >= "2026-09-08")) {
   throw new Error("No current August category news");
 }
 

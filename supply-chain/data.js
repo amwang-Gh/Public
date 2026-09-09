@@ -1,5 +1,5 @@
 window.SUPPLY_DATA = {
-  verifiedAt: "2026-09-07T07:00:00+08:00",
+  verifiedAt: "2026-09-10T07:00:00+08:00",
   markets: [
     {
       id: "brent",
@@ -88,6 +88,16 @@ window.SUPPLY_DATA = {
     ],
   },
   news: [
+    {
+      id: "semi-eu-chips-act-2-2026",
+      publishedAt: "2026-09-08",
+      source: "SEMI Europe",
+      sourceUrl: "https://www.semi.org/en/semi-press-release/semi-calls-on-the-chips-act-2.0-to-strengthen-semiconductor-competitiveness-and-resilience",
+      tags: ["pcb", "machining", "connectors", "metal-fab", "heatsink", "fans-blowers", "power-supply", "passive", "relay"],
+      title: { zh: "SEMI建议欧盟Chips Act 2.0覆盖完整半导体供应链", en: "SEMI urges EU Chips Act 2.0 support across the semiconductor value chain" },
+      summary: { zh: "SEMI Europe提出九项政策建议，主张将支持范围扩展至设计、材料、设备、制造和先进封装，并加快投资与许可流程、建立行业主导的安全供应链监测。该文件是行业协会建议，并非已生效法规。", en: "SEMI Europe issued nine policy recommendations calling for support across design, materials, equipment, manufacturing and advanced packaging, faster investment and permitting, and secure industry-led supply-chain monitoring. The position paper is an industry recommendation, not enacted law." },
+      impact: { zh: "欧洲半导体投资与供应链政策信号", en: "European semiconductor investment and policy signal" },
+    },
     {
       id: "foley-grid-materials-2026",
       publishedAt: "2026-09-03",
@@ -327,7 +337,7 @@ window.SUPPLY_DATA = {
     { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-09-02", verifiedAt: "2026-09-07T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/typhoon-disruptions-driving-congestion-and-putting-pressure-on-rates-september-25-2026-update/" },
     { id: "iea", name: "IEA", effectiveDate: "2026-07-16", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary" },
     { id: "gartner", name: "Gartner", effectiveDate: "2026-04-29", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.gartner.com/en/newsroom/topics/supply-chain" },
-    { id: "semi", name: "SEMI", effectiveDate: "2026-07-14", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.semi.org/en/news-media-press/semi-press-releases/press-archive" },
+    { id: "semi", name: "SEMI", effectiveDate: "2026-09-08", verifiedAt: "2026-09-10T07:00:00+08:00", url: "https://www.semi.org/en/semi-press-release/semi-calls-on-the-chips-act-2.0-to-strengthen-semiconductor-competitiveness-and-resilience" },
     { id: "evertiq", name: "Evertiq / Confidee", effectiveDate: "2026-08-19", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://evertiq.com/news/2026-08-19-pcb-material-shortage-spreads-to-standard-fr-4-as-structural-shift-deepens" },
     { id: "pcim-wuerth", name: "PCIM / Würth Elektronik", effectiveDate: "2026-08-28", verifiedAt: "2026-08-31T07:00:00+08:00", url: "https://news.pcim.mesago.com/ai-boom-intensifies-pcb-material-shortages-a-69f95c3078045acfbb7868f4d872fbb4/" },
     { id: "foley-cobank", name: "Foley & Lardner / CoBank", effectiveDate: "2026-09-03", verifiedAt: "2026-09-07T07:00:00+08:00", url: "https://www.foley.com/insights/publications/2026/09/the-grids-bottleneck-isnt-just-money-its-materials/" },
