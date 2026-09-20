@@ -1,5 +1,5 @@
 window.SUPPLY_DATA = {
-  verifiedAt: "2026-09-17T07:00:00+08:00",
+  verifiedAt: "2026-09-21T07:00:00+08:00",
   markets: [
     {
       id: "brent",
@@ -77,14 +77,14 @@ window.SUPPLY_DATA = {
     },
   ],
   freight: {
-    reportDate: "2026-09-08",
+    reportDate: "2026-09-15",
     source: "Freightos",
-    sourceUrl: "https://www.freightos.com/freight-resources/mediterranean-ocean-rates-pull-even-with-asia-eu-possibly-from-red-sea-transit-bump-september-8-2026-update/",
+    sourceUrl: "https://www.freightos.com/freight-resources/red-sea-transits-accelerate-even-as-houthis-advance-september-15-2026-update/",
     lanes: [
       { id: "fbx01", name: { zh: "亚洲—美西", en: "Asia–US West Coast" }, value: 7600, unit: "USD/FEU approx.", change: -1, effectiveDate: "2026-09-08", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/mediterranean-ocean-rates-pull-even-with-asia-eu-possibly-from-red-sea-transit-bump-september-8-2026-update/" },
       { id: "fbx03", name: { zh: "亚洲—美东", en: "Asia–US East Coast" }, value: 9500, unit: "USD/FEU approx.", change: -3, effectiveDate: "2026-09-08", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/mediterranean-ocean-rates-pull-even-with-asia-eu-possibly-from-red-sea-transit-bump-september-8-2026-update/" },
-      { id: "fbx11", name: { zh: "亚洲—北欧", en: "Asia–North Europe" }, value: 4500, unit: "USD/FEU approx.", change: -3, effectiveDate: "2026-09-08", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/mediterranean-ocean-rates-pull-even-with-asia-eu-possibly-from-red-sea-transit-bump-september-8-2026-update/" },
-      { id: "fbx13", name: { zh: "亚洲—地中海", en: "Asia–Mediterranean" }, value: 4700, unit: "USD/FEU approx.", change: -1, effectiveDate: "2026-09-08", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/mediterranean-ocean-rates-pull-even-with-asia-eu-possibly-from-red-sea-transit-bump-september-8-2026-update/" },
+      { id: "fbx11", name: { zh: "亚洲—北欧", en: "Asia–North Europe" }, value: 4300, unit: "USD/FEU approx.", change: -3, effectiveDate: "2026-09-15", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/red-sea-transits-accelerate-even-as-houthis-advance-september-15-2026-update/" },
+      { id: "fbx13", name: { zh: "亚洲—地中海", en: "Asia–Mediterranean" }, value: 4200, unit: "USD/FEU approx.", change: -12, effectiveDate: "2026-09-15", source: "Freightos FBX", sourceUrl: "https://www.freightos.com/freight-resources/red-sea-transits-accelerate-even-as-houthis-advance-september-15-2026-update/" },
     ],
   },
   news: [
@@ -129,14 +129,14 @@ window.SUPPLY_DATA = {
       impact: { zh: "材料配额、涨价与交期延长风险", en: "Allocation, price and lead-time risk" },
     },
     {
-      id: "freightos-september-8-2026",
-      publishedAt: "2026-09-08",
+      id: "freightos-september-15-2026",
+      publishedAt: "2026-09-15",
       source: "Freightos",
-      sourceUrl: "https://www.freightos.com/freight-resources/mediterranean-ocean-rates-pull-even-with-asia-eu-possibly-from-red-sea-transit-bump-september-8-2026-update/",
+      sourceUrl: "https://www.freightos.com/freight-resources/red-sea-transits-accelerate-even-as-houthis-advance-september-15-2026-update/",
       tags: ["pcb", "cable-wire", "connectors", "metal-fab", "plastics", "transformer", "power-supply"],
-      title: { zh: "跨太平洋与亚欧运价回落，但燃料和拥堵支撑价格底部", en: "Transpacific and Asia-Europe rates ease while fuel and congestion support the floor" },
-      summary: { zh: "Freightos 9月8日周报显示，美西、美东、北欧和地中海航线分别环比下降1%、3%、3%和1%；公开参考价约为7,600、9,500、4,500和4,700美元/FEU。燃料成本、远东港口拥堵和欧洲港口罢工仍限制下行空间。", en: "Freightos' September 8 update shows weekly declines of 1%, 3%, 3% and 1% for the US West Coast, US East Coast, North Europe and Mediterranean lanes. Published reference rates were about $7,600, $9,500, $4,500 and $4,700/FEU, while fuel costs, Far East congestion and European port strikes continue to limit downside." },
-      impact: { zh: "运价温和回落，附加费风险仍在", en: "Moderate rate easing with surcharge risk intact" },
+      title: { zh: "红海运力回归压低亚欧运价，跨太平洋仍处旺季高位", en: "Red Sea capacity return lowers Asia-Europe rates while transpacific lanes remain elevated" },
+      summary: { zh: "Freightos 9月15日周报显示，美西和美东航线周环比分别上涨3%和2%，北欧与地中海航线分别下降3%和12%。正文公布北欧与地中海参考价约为4,300和4,200美元/FEU；红海运力回归与需求降温带来下行压力，但燃料成本和港口拥堵仍支撑运价。", en: "Freightos' September 15 update shows weekly gains of 3% and 2% for US West and East Coast lanes, while North Europe and Mediterranean rates fell 3% and 12%. The article publishes reference rates of about $4,300 and $4,200/FEU for the two Europe lanes; returning Red Sea capacity and easing demand add downside pressure, while fuel costs and congestion still support rates." },
+      impact: { zh: "亚欧到岸成本回落，跨太平洋仍偏高", en: "Asia-Europe landed costs ease while transpacific costs remain high" },
     },
     {
       id: "evertiq-pcb-fr4-2026",
@@ -344,7 +344,7 @@ window.SUPPLY_DATA = {
   sources: [
     { id: "eia", name: "U.S. EIA", effectiveDate: "2026-09-11", verifiedAt: "2026-09-17T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm" },
     { id: "world-bank", name: "World Bank Commodity Markets", effectiveDate: "2026-08", verifiedAt: "2026-09-03T07:00:00+08:00", url: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Pink-Sheet-September-2026.pdf" },
-    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-09-08", verifiedAt: "2026-09-14T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/mediterranean-ocean-rates-pull-even-with-asia-eu-possibly-from-red-sea-transit-bump-september-8-2026-update/" },
+    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-09-15", verifiedAt: "2026-09-21T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/red-sea-transits-accelerate-even-as-houthis-advance-september-15-2026-update/" },
     { id: "iea", name: "IEA", effectiveDate: "2026-07-16", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary" },
     { id: "gartner", name: "Gartner", effectiveDate: "2026-04-29", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.gartner.com/en/newsroom/topics/supply-chain" },
     { id: "semi", name: "SEMI", effectiveDate: "2026-09-08", verifiedAt: "2026-09-10T07:00:00+08:00", url: "https://www.semi.org/en/semi-press-release/semi-calls-on-the-chips-act-2.0-to-strengthen-semiconductor-competitiveness-and-resilience" },
