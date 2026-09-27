@@ -1,5 +1,5 @@
 window.SUPPLY_DATA = {
-  verifiedAt: "2026-09-24T07:00:00+08:00",
+  verifiedAt: "2026-09-28T07:00:00+08:00",
   markets: [
     {
       id: "brent",
@@ -8,7 +8,7 @@ window.SUPPLY_DATA = {
       unit: "USD/bbl",
       change: null,
       effectiveDate: "2026-09-18",
-      verifiedAt: "2026-09-24T07:00:00+08:00",
+      verifiedAt: "2026-09-28T07:00:00+08:00",
       source: "U.S. EIA",
       sourceUrl: "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm",
       note: { zh: "截至2026年9月18日的周均价", en: "Weekly average through September 18, 2026" },
@@ -342,9 +342,9 @@ window.SUPPLY_DATA = {
     },
   },
   sources: [
-    { id: "eia", name: "U.S. EIA", effectiveDate: "2026-09-18", verifiedAt: "2026-09-24T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm" },
-    { id: "world-bank", name: "World Bank Commodity Markets", effectiveDate: "2026-08", verifiedAt: "2026-09-03T07:00:00+08:00", url: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Pink-Sheet-September-2026.pdf" },
-    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-09-15", verifiedAt: "2026-09-21T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/red-sea-transits-accelerate-even-as-houthis-advance-september-15-2026-update/" },
+    { id: "eia", name: "U.S. EIA", effectiveDate: "2026-09-18", verifiedAt: "2026-09-28T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm" },
+    { id: "world-bank", name: "World Bank Commodity Markets", effectiveDate: "2026-08", verifiedAt: "2026-09-28T07:00:00+08:00", url: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Pink-Sheet-September-2026.pdf" },
+    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-09-15", verifiedAt: "2026-09-28T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/red-sea-transits-accelerate-even-as-houthis-advance-september-15-2026-update/" },
     { id: "iea", name: "IEA", effectiveDate: "2026-07-16", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary" },
     { id: "gartner", name: "Gartner", effectiveDate: "2026-04-29", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.gartner.com/en/newsroom/topics/supply-chain" },
     { id: "semi", name: "SEMI", effectiveDate: "2026-09-08", verifiedAt: "2026-09-10T07:00:00+08:00", url: "https://www.semi.org/en/semi-press-release/semi-calls-on-the-chips-act-2.0-to-strengthen-semiconductor-competitiveness-and-resilience" },
