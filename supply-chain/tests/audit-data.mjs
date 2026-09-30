@@ -79,12 +79,20 @@ for (const id of [
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
 if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
-if (data.verifiedAt < "2026-09-28") throw new Error("Site verification date is stale");
+if (data.verifiedAt < "2026-10-01") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
-if (!brent || brent.effectiveDate < "2026-09-18" || brent.value !== 124.15) {
+if (!brent || brent.effectiveDate < "2026-09-25" || brent.value !== 117.08) {
   throw new Error("Latest verified EIA Brent observation is missing");
 }
-if (data.freight.reportDate < "2026-09-15") throw new Error("Freightos report date is stale");
+if (data.freight.reportDate < "2026-09-22") throw new Error("Freightos report date is stale");
+for (const [id, value, change] of [
+  ["fbx01", 8100, 4], ["fbx03", 9600, -1], ["fbx11", 3700, -15], ["fbx13", 3900, -7],
+]) {
+  const lane = data.freight.lanes.find((item) => item.id === id);
+  if (!lane || lane.effectiveDate !== "2026-09-22" || lane.value !== value || lane.change !== change) {
+    throw new Error(`${id} September 22 Freightos observation is missing`);
+  }
+}
 if (data.materials.copper.lastActual < "2026-08") throw new Error("World Bank material data is stale");
 for (const [id, value] of Object.entries({ copper: 14326, aluminum: 3251, gold: 4411, silver: 65.4 })) {
   const latest = data.materials[id].actual.at(-1);
