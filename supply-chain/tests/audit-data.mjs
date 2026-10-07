@@ -79,9 +79,9 @@ for (const id of [
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
 if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
-if (data.verifiedAt < "2026-10-05") throw new Error("Site verification date is stale");
+if (data.verifiedAt < "2026-10-08") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
-if (!brent || brent.effectiveDate < "2026-09-25" || brent.value !== 117.08) {
+if (!brent || brent.effectiveDate < "2026-10-02" || brent.value !== 120.03) {
   throw new Error("Latest verified EIA Brent observation is missing");
 }
 for (const [id, value] of Object.entries({ "energy-index": 25.7, "metals-index": 0.9, "precious-index": -1.9 })) {
@@ -90,13 +90,13 @@ for (const [id, value] of Object.entries({ "energy-index": 25.7, "metals-index":
     throw new Error(`${id} September World Bank index change is missing`);
   }
 }
-if (data.freight.reportDate < "2026-09-30") throw new Error("Freightos report date is stale");
+if (data.freight.reportDate < "2026-10-06") throw new Error("Freightos report date is stale");
 for (const [id, value, change] of [
-  ["fbx01", 8400, 4], ["fbx03", 9600, 0], ["fbx11", 3400, -9], ["fbx13", 3600, -7],
+  ["fbx01", 8322, -1], ["fbx03", 9600, 0], ["fbx11", 3260, -3], ["fbx13", 3555, -2],
 ]) {
   const lane = data.freight.lanes.find((item) => item.id === id);
-  if (!lane || lane.effectiveDate !== "2026-09-30" || lane.value !== value || lane.change !== change) {
-    throw new Error(`${id} September 30 Freightos observation is missing`);
+  if (!lane || lane.effectiveDate !== "2026-10-06" || lane.value !== value || lane.change !== change) {
+    throw new Error(`${id} October 6 Freightos observation is missing`);
   }
 }
 if (data.materials.copper.lastActual < "2026-09") throw new Error("World Bank material data is stale");
@@ -106,7 +106,7 @@ for (const [id, value] of Object.entries({ copper: 14474, aluminum: 3283, gold: 
     throw new Error(`${id} September World Bank observation is missing`);
   }
 }
-if (!data.news.some((story) => story.publishedAt >= "2026-09-30")) {
+if (!data.news.some((story) => story.publishedAt >= "2026-10-06")) {
   throw new Error("No current category news");
 }
 
