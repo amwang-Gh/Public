@@ -79,6 +79,12 @@ for (const id of [
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
 if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
+if (!html.includes("<b>10.06</b>") || html.includes("<b>09.15</b>")) {
+  throw new Error("Freightos badge date is stale");
+}
+if (html.includes("八月原材料价格普遍反弹") || html.includes("世界银行能源价格指数八月环比回升")) {
+  throw new Error("August material commentary remains");
+}
 if (data.verifiedAt < "2026-10-12") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
 if (!brent || brent.effectiveDate < "2026-10-02" || brent.value !== 120.03) {
