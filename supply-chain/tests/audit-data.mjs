@@ -79,7 +79,7 @@ for (const id of [
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
 if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
-if (data.verifiedAt < "2026-10-08") throw new Error("Site verification date is stale");
+if (data.verifiedAt < "2026-10-12") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
 if (!brent || brent.effectiveDate < "2026-10-02" || brent.value !== 120.03) {
   throw new Error("Latest verified EIA Brent observation is missing");
