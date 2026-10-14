@@ -79,13 +79,13 @@ for (const id of [
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
 if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
-if (!html.includes("<b>10.06</b>") || html.includes("<b>09.15</b>")) {
+if (!html.includes("<b>10.13</b>") || html.includes("<b>10.06</b>") || html.includes("<b>09.15</b>")) {
   throw new Error("Freightos badge date is stale");
 }
 if (html.includes("八月原材料价格普遍反弹") || html.includes("世界银行能源价格指数八月环比回升")) {
   throw new Error("August material commentary remains");
 }
-if (data.verifiedAt < "2026-10-12") throw new Error("Site verification date is stale");
+if (data.verifiedAt < "2026-10-15") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
 if (!brent || brent.effectiveDate < "2026-10-02" || brent.value !== 120.03) {
   throw new Error("Latest verified EIA Brent observation is missing");
@@ -96,13 +96,13 @@ for (const [id, value] of Object.entries({ "energy-index": 25.7, "metals-index":
     throw new Error(`${id} September World Bank index change is missing`);
   }
 }
-if (data.freight.reportDate < "2026-10-06") throw new Error("Freightos report date is stale");
+if (data.freight.reportDate < "2026-10-13") throw new Error("Freightos report date is stale");
 for (const [id, value, change] of [
-  ["fbx01", 8322, -1], ["fbx03", 9600, 0], ["fbx11", 3260, -3], ["fbx13", 3555, -2],
+  ["fbx01", 8150, -2], ["fbx03", 9600, 0], ["fbx11", 3260, 0], ["fbx13", 3800, 7],
 ]) {
   const lane = data.freight.lanes.find((item) => item.id === id);
-  if (!lane || lane.effectiveDate !== "2026-10-06" || lane.value !== value || lane.change !== change) {
-    throw new Error(`${id} October 6 Freightos observation is missing`);
+  if (!lane || lane.effectiveDate !== "2026-10-13" || lane.value !== value || lane.change !== change) {
+    throw new Error(`${id} October 13 Freightos observation is missing`);
   }
 }
 if (data.materials.copper.lastActual < "2026-09") throw new Error("World Bank material data is stale");
@@ -114,6 +114,9 @@ for (const [id, value] of Object.entries({ copper: 14474, aluminum: 3283, gold: 
 }
 if (!data.news.some((story) => story.publishedAt >= "2026-10-06")) {
   throw new Error("No current category news");
+}
+if (!data.news.some((story) => story.id === "semi-300mm-fab-outlook-2026")) {
+  throw new Error("Latest SEMI fab outlook is missing");
 }
 
 const assertBilingual = (value, label) => {
