@@ -79,15 +79,15 @@ for (const id of [
 }
 if (html.includes("DATA LIVE")) throw new Error("False live-data label remains");
 if (html.includes("07.22")) throw new Error("Stale Freightos report date remains");
-if (!html.includes("<b>10.13</b>") || html.includes("<b>10.06</b>") || html.includes("<b>09.15</b>")) {
+if (!html.includes("<b>10.20</b>") || html.includes("<b>10.13</b>") || html.includes("<b>10.06</b>")) {
   throw new Error("Freightos badge date is stale");
 }
 if (html.includes("八月原材料价格普遍反弹") || html.includes("世界银行能源价格指数八月环比回升")) {
   throw new Error("August material commentary remains");
 }
-if (data.verifiedAt < "2026-10-19") throw new Error("Site verification date is stale");
+if (data.verifiedAt < "2026-10-22") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
-if (!brent || brent.effectiveDate !== "2026-10-09" || brent.value !== 127.43) {
+if (!brent || brent.effectiveDate !== "2026-10-16" || brent.value !== 125.59) {
   throw new Error("Latest verified EIA Brent observation is missing");
 }
 for (const [id, value] of Object.entries({ "energy-index": 25.7, "metals-index": 0.9, "precious-index": -1.9 })) {
@@ -96,13 +96,13 @@ for (const [id, value] of Object.entries({ "energy-index": 25.7, "metals-index":
     throw new Error(`${id} September World Bank index change is missing`);
   }
 }
-if (data.freight.reportDate < "2026-10-13") throw new Error("Freightos report date is stale");
+if (data.freight.reportDate < "2026-10-20") throw new Error("Freightos report date is stale");
 for (const [id, value, change] of [
-  ["fbx01", 8150, -2], ["fbx03", 9600, 0], ["fbx11", 3260, 0], ["fbx13", 3800, 7],
+  ["fbx01", 8126, 0], ["fbx03", 9700, 1], ["fbx11", 3442, 6], ["fbx13", 3927, 3],
 ]) {
   const lane = data.freight.lanes.find((item) => item.id === id);
-  if (!lane || lane.effectiveDate !== "2026-10-13" || lane.value !== value || lane.change !== change) {
-    throw new Error(`${id} October 13 Freightos observation is missing`);
+  if (!lane || lane.effectiveDate !== "2026-10-20" || lane.value !== value || lane.change !== change) {
+    throw new Error(`${id} October 20 Freightos observation is missing`);
   }
 }
 if (data.materials.copper.lastActual < "2026-09") throw new Error("World Bank material data is stale");
@@ -120,6 +120,9 @@ if (!data.news.some((story) => story.id === "semi-300mm-fab-outlook-2026")) {
 }
 if (!data.news.some((story) => story.id === "iea-energy-security-october-2026")) {
   throw new Error("Latest IEA energy-security statement is missing");
+}
+if (!data.news.some((story) => story.id === "freightos-october-20-2026")) {
+  throw new Error("Latest Freightos weekly news is missing");
 }
 
 const assertBilingual = (value, label) => {
