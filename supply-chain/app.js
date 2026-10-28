@@ -115,8 +115,9 @@ function renderNews(){
 function filterCategoryNews(){
   const active=document.querySelector("[data-category-filter].active")?.dataset.categoryFilter||"all";
   const term=document.getElementById("category-search")?.value.trim().toLowerCase()||"";
-  document.querySelectorAll("#newsBoard article").forEach(card=>{
-    const tags=card.dataset.tags||"",text=card.innerText.toLowerCase();
+  document.querySelectorAll("#newsBoard article").forEach((card,index)=>{
+    const story=supplyData.news[index],tags=card.dataset.tags||"";
+    const text=[story.title.zh,story.title.en,story.summary.zh,story.summary.en,story.impact.zh,story.impact.en].join(" ").toLowerCase();
     const tagMatch=active==="all"||tags.includes(active);
     const textMatch=!term||text.includes(term)||tags.includes(term);
     card.classList.toggle("hidden",!(tagMatch&&textMatch));
