@@ -1,5 +1,5 @@
 window.SUPPLY_DATA = {
-  verifiedAt: "2026-11-05T07:00:00+08:00",
+  verifiedAt: "2026-11-09T07:00:00+08:00",
   markets: [
     {
       id: "brent",
@@ -8,7 +8,7 @@ window.SUPPLY_DATA = {
       unit: "USD/bbl",
       change: null,
       effectiveDate: "2026-11-03",
-      verifiedAt: "2026-11-05T07:00:00+08:00",
+      verifiedAt: "2026-11-09T07:00:00+08:00",
       source: "U.S. EIA",
       sourceUrl: "https://www.eia.gov/dnav/pet/PET_PRI_SPT_S1_D.htm",
       note: { zh: "2026年11月3日每日现货价；EIA于11月4日发布", en: "Daily spot price for November 3, 2026; released by EIA on November 4" },
@@ -20,7 +20,7 @@ window.SUPPLY_DATA = {
       unit: "% MoM",
       change: 7.1,
       effectiveDate: "2026-10",
-      verifiedAt: "2026-11-05T07:00:00+08:00",
+      verifiedAt: "2026-11-09T07:00:00+08:00",
       source: "World Bank Commodity Markets",
       sourceUrl: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
       note: { zh: "2026年10月环比", en: "October 2026 month over month" },
@@ -32,7 +32,7 @@ window.SUPPLY_DATA = {
       unit: "% MoM",
       change: 0.8,
       effectiveDate: "2026-10",
-      verifiedAt: "2026-11-05T07:00:00+08:00",
+      verifiedAt: "2026-11-09T07:00:00+08:00",
       source: "World Bank Commodity Markets",
       sourceUrl: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
       note: { zh: "2026年10月环比", en: "October 2026 month over month" },
@@ -44,7 +44,7 @@ window.SUPPLY_DATA = {
       unit: "% MoM",
       change: -2.6,
       effectiveDate: "2026-10",
-      verifiedAt: "2026-11-05T07:00:00+08:00",
+      verifiedAt: "2026-11-09T07:00:00+08:00",
       source: "World Bank Commodity Markets",
       sourceUrl: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
       note: { zh: "2026年10月环比", en: "October 2026 month over month" },
@@ -88,6 +88,16 @@ window.SUPPLY_DATA = {
     ],
   },
   news: [
+    {
+      id: "semi-q3-wafer-shipments-2026",
+      publishedAt: "2026-11-04",
+      source: "SEMI",
+      sourceUrl: "https://www.semi.org/en/semi-press-release/worldwide-silicon-wafer-shipments-increase-13.4-percent-year-on-year-in-q3-2026-semi-reports",
+      tags: ["pcb", "connectors", "power-supply", "passive", "relay"],
+      title: { zh: "SEMI：2026年第三季度全球硅晶圆出货量同比增长13.4%", en: "SEMI: Global silicon wafer shipments rose 13.4% year on year in Q3 2026" },
+      summary: { zh: "SEMI硅制造商集团报告，2026年第三季度全球硅晶圆出货量达到3,756百万平方英寸，同比增长13.4%，环比增长5.1%。SEMI称增长受到人工智能相关需求、工业需求改善以及先进封装应用支持；该数据是已报告的季度出货统计，不是未来预测。", en: "The SEMI Silicon Manufacturers Group reported worldwide silicon wafer shipments of 3,756 million square inches in Q3 2026, up 13.4% year over year and 5.1% quarter over quarter. SEMI attributed the increase to AI-related demand, improving industrial demand and advanced-packaging applications. These are reported quarterly shipments, not a forward forecast." },
+      impact: { zh: "电子材料需求复苏的已实现出货信号", en: "Realized shipment signal of recovering electronic-material demand" },
+    },
     {
       id: "semi-silicon-wafer-forecast-2026",
       publishedAt: "2026-10-21",
@@ -268,7 +278,7 @@ window.SUPPLY_DATA = {
       unit: "USD/mt",
       color: "#0f7d8c",
       lastActual: "2026-10",
-      verifiedAt: "2026-11-05T07:00:00+08:00",
+      verifiedAt: "2026-11-09T07:00:00+08:00",
       source: "World Bank Commodity Markets",
       sourceUrl: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
       actual: [
@@ -297,7 +307,7 @@ window.SUPPLY_DATA = {
       unit: "USD/mt",
       color: "#d18b31",
       lastActual: "2026-10",
-      verifiedAt: "2026-11-05T07:00:00+08:00",
+      verifiedAt: "2026-11-09T07:00:00+08:00",
       source: "World Bank Commodity Markets",
       sourceUrl: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
       actual: [
@@ -326,7 +336,7 @@ window.SUPPLY_DATA = {
       unit: "USD/troy oz",
       color: "#b39536",
       lastActual: "2026-10",
-      verifiedAt: "2026-11-05T07:00:00+08:00",
+      verifiedAt: "2026-11-09T07:00:00+08:00",
       source: "World Bank Commodity Markets",
       sourceUrl: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
       actual: [
@@ -355,7 +365,7 @@ window.SUPPLY_DATA = {
       unit: "USD/troy oz",
       color: "#6b7b89",
       lastActual: "2026-10",
-      verifiedAt: "2026-11-05T07:00:00+08:00",
+      verifiedAt: "2026-11-09T07:00:00+08:00",
       source: "World Bank Commodity Markets",
       sourceUrl: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
       actual: [
@@ -380,13 +390,13 @@ window.SUPPLY_DATA = {
     },
   },
   sources: [
-    { id: "eia", name: "U.S. EIA", effectiveDate: "2026-11-03", verifiedAt: "2026-11-05T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/PET_PRI_SPT_S1_D.htm" },
-    { id: "world-bank", name: "World Bank Commodity Markets", effectiveDate: "2026-10", verifiedAt: "2026-11-05T07:00:00+08:00", url: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx" },
-    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-11-03", verifiedAt: "2026-11-05T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/asia-us-air-rates-already-nearing-last-years-high-on-peak-season-volumes-november-3-2026-update/" },
+    { id: "eia", name: "U.S. EIA", effectiveDate: "2026-11-03", verifiedAt: "2026-11-09T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/PET_PRI_SPT_S1_D.htm" },
+    { id: "world-bank", name: "World Bank Commodity Markets", effectiveDate: "2026-10", verifiedAt: "2026-11-09T07:00:00+08:00", url: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx" },
+    { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-11-03", verifiedAt: "2026-11-09T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/asia-us-air-rates-already-nearing-last-years-high-on-peak-season-volumes-november-3-2026-update/" },
     { id: "iea", name: "IEA", effectiveDate: "2026-07-16", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary" },
     { id: "gartner", name: "Gartner", effectiveDate: "2026-04-29", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://www.gartner.com/en/newsroom/topics/supply-chain" },
     { id: "iea-energy", name: "IEA Energy Security", effectiveDate: "2026-10-15", verifiedAt: "2026-10-22T07:00:00+08:00", url: "https://www.iea.org/news/iea-governing-board-statement-on-energy-markets-and-security" },
-    { id: "semi", name: "SEMI", effectiveDate: "2026-10-21", verifiedAt: "2026-10-29T07:00:00+08:00", url: "https://www.semi.org/en/semi-press-release/semi-forecasts-11.8-percent-growth-in-silicon-wafer-shipments-in-2026-with-record-highs-expected-through-2029" },
+    { id: "semi", name: "SEMI", effectiveDate: "2026-11-04", verifiedAt: "2026-11-09T07:00:00+08:00", url: "https://www.semi.org/en/semi-press-release/worldwide-silicon-wafer-shipments-increase-13.4-percent-year-on-year-in-q3-2026-semi-reports" },
     { id: "semi-resilient", name: "SEMI Europe / ReSiLient", effectiveDate: "2026-09-14", verifiedAt: "2026-09-17T07:00:00+08:00", url: "https://www.semi.org/en/semi-press-release/semi-europe-joins-resilient-consortium-to-strengthen-europes-silicon-and-silicon-carbide-raw-material-value-chains" },
     { id: "evertiq", name: "Evertiq / Confidee", effectiveDate: "2026-08-19", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://evertiq.com/news/2026-08-19-pcb-material-shortage-spreads-to-standard-fr-4-as-structural-shift-deepens" },
     { id: "pcim-wuerth", name: "PCIM / Würth Elektronik", effectiveDate: "2026-08-28", verifiedAt: "2026-08-31T07:00:00+08:00", url: "https://news.pcim.mesago.com/ai-boom-intensifies-pcb-material-shortages-a-69f95c3078045acfbb7868f4d872fbb4/" },

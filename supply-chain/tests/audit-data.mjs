@@ -85,7 +85,7 @@ if (!html.includes("<b>11.03</b>") || html.includes("<b>10.28</b>")) {
 if (html.includes("八月原材料价格普遍反弹") || html.includes("世界银行能源价格指数八月环比回升")) {
   throw new Error("August material commentary remains");
 }
-if (data.verifiedAt < "2026-11-05") throw new Error("Site verification date is stale");
+if (data.verifiedAt < "2026-11-09") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
 if (!brent || brent.effectiveDate !== "2026-11-03" || brent.value !== 107.03) {
   throw new Error("Latest verified EIA Brent observation is missing");
@@ -120,6 +120,9 @@ if (!data.news.some((story) => story.id === "semi-300mm-fab-outlook-2026")) {
 }
 if (!data.news.some((story) => story.id === "semi-silicon-wafer-forecast-2026")) {
   throw new Error("Latest SEMI silicon wafer forecast is missing");
+}
+if (!data.news.some((story) => story.id === "semi-q3-wafer-shipments-2026")) {
+  throw new Error("Latest SEMI silicon wafer shipment result is missing");
 }
 if (!data.news.some((story) => story.id === "iea-energy-security-october-2026")) {
   throw new Error("Latest IEA energy-security statement is missing");
