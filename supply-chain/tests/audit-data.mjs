@@ -85,9 +85,9 @@ if (!html.includes("<b>11.10</b>") || html.includes("<b>11.03</b>")) {
 if (html.includes("八月原材料价格普遍反弹") || html.includes("世界银行能源价格指数八月环比回升")) {
   throw new Error("August material commentary remains");
 }
-if (data.verifiedAt < "2026-11-12") throw new Error("Site verification date is stale");
+if (data.verifiedAt < "2026-11-16") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
-if (!brent || brent.effectiveDate !== "2026-11-03" || brent.value !== 107.03) {
+if (!brent || brent.effectiveDate !== "2026-11-11" || brent.value !== 92.14) {
   throw new Error("Latest verified EIA Brent observation is missing");
 }
 for (const [id, value] of Object.entries({ "energy-index": 7.1, "metals-index": 0.8, "precious-index": -2.6 })) {
@@ -135,6 +135,9 @@ if (!data.news.some((story) => story.id === "gartner-energy-constraint-2026")) {
 }
 if (!data.news.some((story) => story.id === "eia-steo-november-2026")) {
   throw new Error("Latest EIA energy outlook is missing");
+}
+if (!data.news.some((story) => story.id === "iea-omr-november-2026")) {
+  throw new Error("Latest IEA Oil Market Report is missing");
 }
 
 const assertBilingual = (value, label) => {
