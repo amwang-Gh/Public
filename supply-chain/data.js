@@ -1,5 +1,5 @@
 window.SUPPLY_DATA = {
-  verifiedAt: "2026-11-19T07:00:00+08:00",
+  verifiedAt: "2026-11-23T07:00:00+08:00",
   markets: [
     {
       id: "brent",
@@ -88,6 +88,26 @@ window.SUPPLY_DATA = {
     ],
   },
   news: [
+    {
+      id: "gea-pcb-squeeze-2026",
+      publishedAt: "2026-11-19",
+      source: "Global Electronics Association",
+      sourceUrl: "https://www.electronics.org/news-release/global-electronics-association-growing-shortages-across-pcb-supply-chain-threaten-next",
+      tags: ["pcb", "connectors", "power-supply", "passive", "relay"],
+      title: { zh: "全球电子协会警示印刷电路板供应链短缺正在扩大", en: "Global Electronics Association warns that PCB supply-chain shortages are widening" },
+      summary: { zh: "协会数据显示，2026年截至9月印刷电路板订单同比增长56.1%，出货量增长13.3%；高层板交期为16至20周或更长。人工智能服务器采用40至60层以上电路板，持续挤压玻纤布、树脂、铜箔和覆铜板供应。协会判断，标准材料至少到2027年上半年仍将受限，明显缓解可能要到2028年中；这是行业协会评估，不是供应商交付承诺。", en: "Association data show PCB bookings up 56.1% year over year through September 2026 while shipments rose 13.3%, with high-layer board lead times at 16–20 weeks or longer. AI-server boards using 40–60+ layers are straining glass fabric, resin, copper foil and laminates. The association assesses that standard materials will remain constrained through at least H1 2027, with meaningful relief unlikely before mid-2028. This is an industry-association assessment, not a supplier delivery commitment." },
+      impact: { zh: "高层板与上游材料可得性成为主要风险，应避免重复下单并认证替代料源", en: "High-layer board and upstream-material availability are the binding risks; avoid double-booking and qualify alternate sources" },
+    },
+    {
+      id: "gartner-healthcare-supply-chain-2026",
+      publishedAt: "2026-11-18",
+      source: "Gartner",
+      sourceUrl: "https://www.gartner.com/en/newsroom/press-releases/2026-11-18-gartner-announces-ranking-of-the-gartner-healthcare-supply-chain-top-25-for-2026",
+      tags: ["labels", "plastics", "connectors", "cable-wire", "power-supply", "passive", "relay"],
+      title: { zh: "Gartner医疗供应链榜单强调多层供应商情报与替代策略", en: "Gartner healthcare supply-chain ranking highlights multitier intelligence and substitution strategies" },
+      summary: { zh: "Gartner在2026年医疗供应链Top 25发布中称，领先医疗系统正在建设战略库存中心、整合服务中心和多层供应商情报，并把人工智能风险监测与经临床批准的替代策略结合。该发布是绩效排名与实践观察，不代表具体物料已经短缺或供应已经改善。", en: "In its 2026 Healthcare Supply Chain Top 25 release, Gartner says leading health systems are using strategic inventory hubs, consolidated service centers and multitier supplier intelligence, pairing AI-enabled risk monitoring with clinically approved substitution strategies. This is a performance ranking and practice observation, not evidence that a specific material is short or that supply has improved." },
+      impact: { zh: "医疗类采购应加强多层可视性、合格替代品和关键库存治理", en: "Healthcare procurement should strengthen multitier visibility, approved substitutes and critical-inventory governance" },
+    },
     {
       id: "semi-supply-chain-survey-2026",
       publishedAt: "2026-11-17",
@@ -444,5 +464,7 @@ window.SUPPLY_DATA = {
     { id: "evertiq", name: "Evertiq / Confidee", effectiveDate: "2026-08-19", verifiedAt: "2026-08-24T07:00:00+08:00", url: "https://evertiq.com/news/2026-08-19-pcb-material-shortage-spreads-to-standard-fr-4-as-structural-shift-deepens" },
     { id: "pcim-wuerth", name: "PCIM / Würth Elektronik", effectiveDate: "2026-08-28", verifiedAt: "2026-08-31T07:00:00+08:00", url: "https://news.pcim.mesago.com/ai-boom-intensifies-pcb-material-shortages-a-69f95c3078045acfbb7868f4d872fbb4/" },
     { id: "foley-cobank", name: "Foley & Lardner / CoBank", effectiveDate: "2026-09-03", verifiedAt: "2026-09-07T07:00:00+08:00", url: "https://www.foley.com/insights/publications/2026/09/the-grids-bottleneck-isnt-just-money-its-materials/" },
+    { id: "gea-pcb", name: "Global Electronics Association", effectiveDate: "2026-11-19", verifiedAt: "2026-11-23T07:00:00+08:00", url: "https://www.electronics.org/news-release/global-electronics-association-growing-shortages-across-pcb-supply-chain-threaten-next" },
+    { id: "gartner-healthcare", name: "Gartner Healthcare Supply Chain", effectiveDate: "2026-11-18", verifiedAt: "2026-11-23T07:00:00+08:00", url: "https://www.gartner.com/en/newsroom/press-releases/2026-11-18-gartner-announces-ranking-of-the-gartner-healthcare-supply-chain-top-25-for-2026" },
   ],
 };

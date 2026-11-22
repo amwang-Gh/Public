@@ -85,7 +85,7 @@ if (!html.includes("<b>11.17</b>") || html.includes("<b>11.10</b>")) {
 if (html.includes("八月原材料价格普遍反弹") || html.includes("世界银行能源价格指数八月环比回升")) {
   throw new Error("August material commentary remains");
 }
-if (data.verifiedAt < "2026-11-19") throw new Error("Site verification date is stale");
+if (data.verifiedAt < "2026-11-23") throw new Error("Site verification date is stale");
 const brent = data.markets.find((item) => item.id === "brent");
 if (!brent || brent.effectiveDate !== "2026-11-17" || brent.value !== 92.94) {
   throw new Error("Latest verified EIA Brent observation is missing");
@@ -141,6 +141,12 @@ if (!data.news.some((story) => story.id === "iea-omr-november-2026")) {
 }
 if (!data.news.some((story) => story.id === "semi-supply-chain-survey-2026")) {
   throw new Error("Latest SEMI supply-chain survey signal is missing");
+}
+if (!data.news.some((story) => story.id === "gea-pcb-squeeze-2026")) {
+  throw new Error("Latest Global Electronics Association PCB alert is missing");
+}
+if (!data.news.some((story) => story.id === "gartner-healthcare-supply-chain-2026")) {
+  throw new Error("Latest Gartner supply-chain release is missing");
 }
 
 const assertBilingual = (value, label) => {
