@@ -1,17 +1,17 @@
 window.SUPPLY_DATA = {
-  verifiedAt: "2026-11-23T07:00:00+08:00",
+  verifiedAt: "2026-11-26T07:00:00+08:00",
   markets: [
     {
       id: "brent",
       name: { zh: "布伦特原油现货价", en: "Brent crude spot price" },
-      value: 92.94,
+      value: 91.8,
       unit: "USD/bbl",
       change: null,
-      effectiveDate: "2026-11-17",
-      verifiedAt: "2026-11-19T07:00:00+08:00",
+      effectiveDate: "2026-11-24",
+      verifiedAt: "2026-11-26T07:00:00+08:00",
       source: "U.S. EIA",
-      sourceUrl: "https://www.eia.gov/dnav/pet/PET_PRI_SPT_S1_D.htm",
-      note: { zh: "2026年11月17日每日现货价；EIA官方日度序列", en: "Daily spot price for November 17, 2026; EIA official daily series" },
+      sourceUrl: "https://www.eia.gov/todayinenergy/prices.php",
+      note: { zh: "2026年11月24日批发市场收盘现货价；EIA每日价格快照", en: "Wholesale spot close for November 24, 2026; EIA daily price snapshot" },
     },
     {
       id: "energy-index",
@@ -88,6 +88,26 @@ window.SUPPLY_DATA = {
     ],
   },
   news: [
+    {
+      id: "kuehne-nagel-port-update-2026-11-24",
+      publishedAt: "2026-11-24",
+      source: "Kuehne+Nagel",
+      sourceUrl: "https://mykn.kuehne-nagel.com/news/article/port-operational-updates-from-24-11-2026",
+      tags: ["casting", "precious-metal", "stamping", "machining", "cable-wire", "connectors", "busbar", "metal-fab", "plastics", "heatsink", "fans-blowers", "transformer", "power-supply", "passive", "circuit-breaker", "relay", "labels", "fasteners"],
+      title: { zh: "全球港口周报显示亚洲多地堆场利用率和等待时间仍偏高", en: "Global port update shows elevated yard utilization and waiting times across parts of Asia" },
+      summary: { zh: "Kuehne+Nagel 11月24日港口更新显示，上海平均等待约2.33天，东京部分码头堆场利用率达到107%至120%，横滨约100%至110%，巴生港约90%至95%，釜山BNCT载箱堆场密度约98%。这些是11月18日至24日的港口运营快照，并非所有航线的统一平均值。", en: "Kuehne+Nagel's November 24 port update reports average waiting of about 2.33 days at Shanghai, yard utilization of 107%–120% at selected Tokyo terminals, roughly 100%–110% at Yokohama, 90%–95% at Port Klang, and laden-yard density near 98% at Busan BNCT. These are port-specific operating snapshots for November 18–24, not a single average across all lanes." },
+      impact: { zh: "亚洲出货需预留转运与堆场拥堵缓冲，并逐港核对计划", en: "Asia shipments need transshipment and yard-congestion buffers, checked port by port" },
+    },
+    {
+      id: "nvidia-supply-partners-2026",
+      publishedAt: "2026-11-17",
+      source: "NVIDIA",
+      sourceUrl: "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Expands-Commitments-With-Supply-Chain-Partners-to-Support-AI-Infrastructure-Buildout/default.aspx",
+      tags: ["pcb", "connectors", "heatsink", "fans-blowers", "power-supply", "passive", "relay"],
+      title: { zh: "NVIDIA扩大基板、先进封装和人工智能基础设施长期供应合作", en: "NVIDIA expands long-term substrate, advanced-packaging and AI-infrastructure supply commitments" },
+      summary: { zh: "NVIDIA宣布与Kinsus和Samsung Electro-Mechanics扩大基板产能合作，并与Amkor和SPIL扩充先进封装能力；公司称Vera Rubin NVL72与Vera CPU已于第三季度开始批量出货。协议显示高端基板与封装产能继续被长期锁定，但公告未披露采购量、价格或新增产能时间表，且部分陈述属于前瞻性信息。", en: "NVIDIA announced expanded substrate-capacity arrangements with Kinsus and Samsung Electro-Mechanics and advanced-packaging cooperation with Amkor and SPIL; it also said Vera Rubin NVL72 and Vera CPUs entered volume shipments in Q3. The agreements signal continued long-term reservation of advanced substrate and packaging capacity, but the release does not disclose purchase volumes, prices or a capacity-addition timetable, and some statements are forward-looking." },
+      impact: { zh: "高端基板、连接器、热管理与电源链需求得到支持，但通用供给可能继续分化", en: "Advanced substrates, interconnect, thermal and power demand are supported, while general-market supply may remain bifurcated" },
+    },
     {
       id: "gea-pcb-squeeze-2026",
       publishedAt: "2026-11-19",
@@ -450,7 +470,7 @@ window.SUPPLY_DATA = {
     },
   },
   sources: [
-    { id: "eia", name: "U.S. EIA", effectiveDate: "2026-11-17", verifiedAt: "2026-11-19T07:00:00+08:00", url: "https://www.eia.gov/dnav/pet/PET_PRI_SPT_S1_D.htm" },
+    { id: "eia", name: "U.S. EIA", effectiveDate: "2026-11-24", verifiedAt: "2026-11-26T07:00:00+08:00", url: "https://www.eia.gov/todayinenergy/prices.php" },
     { id: "eia-steo", name: "U.S. EIA STEO", effectiveDate: "2026-11-10", verifiedAt: "2026-11-19T07:00:00+08:00", url: "https://www.eia.gov/outlooks/steo/" },
     { id: "world-bank", name: "World Bank Commodity Markets", effectiveDate: "2026-10", verifiedAt: "2026-11-19T07:00:00+08:00", url: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx" },
     { id: "freightos", name: "Freightos FBX", effectiveDate: "2026-11-17", verifiedAt: "2026-11-19T07:00:00+08:00", url: "https://www.freightos.com/freight-resources/us-air-cargo-recovering-from-outage-new-us-cn-tensions-ahead-of-talks-november-17-2026-update/" },
@@ -466,5 +486,7 @@ window.SUPPLY_DATA = {
     { id: "foley-cobank", name: "Foley & Lardner / CoBank", effectiveDate: "2026-09-03", verifiedAt: "2026-09-07T07:00:00+08:00", url: "https://www.foley.com/insights/publications/2026/09/the-grids-bottleneck-isnt-just-money-its-materials/" },
     { id: "gea-pcb", name: "Global Electronics Association", effectiveDate: "2026-11-19", verifiedAt: "2026-11-23T07:00:00+08:00", url: "https://www.electronics.org/news-release/global-electronics-association-growing-shortages-across-pcb-supply-chain-threaten-next" },
     { id: "gartner-healthcare", name: "Gartner Healthcare Supply Chain", effectiveDate: "2026-11-18", verifiedAt: "2026-11-23T07:00:00+08:00", url: "https://www.gartner.com/en/newsroom/press-releases/2026-11-18-gartner-announces-ranking-of-the-gartner-healthcare-supply-chain-top-25-for-2026" },
+    { id: "nvidia-supply", name: "NVIDIA Supply Chain", effectiveDate: "2026-11-17", verifiedAt: "2026-11-26T07:00:00+08:00", url: "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Expands-Commitments-With-Supply-Chain-Partners-to-Support-AI-Infrastructure-Buildout/default.aspx" },
+    { id: "kuehne-nagel-ports", name: "Kuehne+Nagel Port Update", effectiveDate: "2026-11-24", verifiedAt: "2026-11-26T07:00:00+08:00", url: "https://mykn.kuehne-nagel.com/news/article/port-operational-updates-from-24-11-2026" },
   ],
 };
